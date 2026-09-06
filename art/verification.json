@@ -1,0 +1,50 @@
+{
+  "passed": true,
+  "errors": [],
+  "snapshot": {
+    "state": {
+      "version": 1,
+      "quest": 2,
+      "wisps": 0,
+      "coins": 30,
+      "caught": 5,
+      "upgrade": true,
+      "flag": "#287d82",
+      "emblem": "moon"
+    },
+    "position": [
+      0,
+      0.2,
+      20
+    ],
+    "boat": [
+      0,
+      0.2207328472229988,
+      42
+    ],
+    "aboard": false,
+    "sailing": false,
+    "started": true,
+    "paused": false,
+    "editing": false,
+    "artistModelLoaded": true,
+    "catching": null,
+    "drawCalls": 391
+  },
+  "checks": [
+    "real keyboard navigation",
+    "quest accepted",
+    "5 timing catches",
+    "quest turn-in",
+    "upgrade purchase",
+    "sell catches",
+    "board",
+    "helm",
+    "sail",
+    "return dock",
+    "map unlock",
+    "editor",
+    "GLB export",
+    "reload persistence"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "errors": [],
+  "checks": [
+    "Blender model loaded",
+    "menu to workshop keyboard transition",
+    "layout JSON import changes transform",
+    "layout save",
+    "layout download",
+    "gameplay render"
+  ]
+}

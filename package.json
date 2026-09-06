@@ -1,0 +1,27 @@
+{
+  "name": "cloudwake",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node server/index.js",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "test": "node --test --test-isolation=none tests/state.test.js tests/multiplayer.test.js",
+    "start": "node server/index.js --production"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@playwright/test": "^1.63.0",
+    "three": "^0.185.1",
+    "vite": "^8.2.2",
+    "ws": "^8.21.3"
+  },
+  "devDependencies": {
+    "agent-browser": "^0.36.0",
+    "prettier": "^3.9.6"
+  }
+}

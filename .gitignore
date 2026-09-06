@@ -1,0 +1,19 @@
+node_modules/
+dist/
+.npm-cache/
+tools/blender/
+tools/blender-portable.zip
+tools/*.log
+tools/blender-releases.html
+test-results/
+*.blend1
+
+# Local executables, runtime logs and credentials
+tools/*.exe
+*.log
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+

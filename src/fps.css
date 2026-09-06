@@ -1,0 +1,567 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap");
+:root {
+  font-family: "DM Sans", sans-serif;
+  color: #fff4d9;
+  background: #102d32;
+  font-synthesis: none;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  overflow: hidden;
+}
+button,
+input {
+  font: inherit;
+}
+button {
+  cursor: pointer;
+}
+canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.hidden {
+  display: none !important;
+}
+button {
+  color: #f6e8bd;
+  background: #224b4c;
+  border: 1px solid #aa945865;
+  border-radius: 5px;
+  padding: 12px 18px;
+  transition: background 0.18s;
+}
+button:hover {
+  background: #376768;
+}
+button:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid #efd79e;
+  outline-offset: 4px;
+}
+.primary {
+  background: #ddc394;
+  color: #1d3d3d;
+  font-weight: 700;
+}
+.primary:hover {
+  background: #f5ddae;
+}
+input {
+  background: #15393bc9;
+  border: 1px solid #c6b68055;
+  border-radius: 4px;
+  padding: 12px 14px;
+  color: #fff2d3;
+  min-width: 0;
+}
+.eyebrow {
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  font-weight: 600;
+  color: #e1c989;
+}
+h1,
+h2,
+h3 {
+  font-family: "Cormorant Garamond", serif;
+}
+#welcome {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(90deg, #112f34ed, #13343a80 40%, transparent 80%);
+  display: flex;
+  align-items: center;
+  padding: 6vw;
+}
+.intro {
+  width: 370px;
+}
+.intro h1 {
+  font-size: 86px;
+  letter-spacing: 5px;
+  line-height: 0.9;
+  margin: 22px 0;
+}
+.intro h1 span {
+  display: block;
+  color: #e2c792;
+}
+.intro p {
+  font:
+    23px/1.5 "Cormorant Garamond",
+    serif;
+  color: #e6e9d7;
+  margin: 25px 0;
+}
+.intro form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.join-row {
+  display: flex;
+  gap: 8px;
+}
+.join-row input {
+  width: 190px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+.intro small {
+  font-size: 10px;
+  color: #c3d0c1;
+  line-height: 1.8;
+  display: block;
+  margin-top: 16px;
+}
+.intro label {
+  font-size: 11px;
+  letter-spacing: 0.5px;
+}
+.intro #name {
+  width: 100%;
+}
+#loadText {
+  font-size: 11px;
+  margin-top: 20px;
+  color: #e6d6b0;
+}
+#hud {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  text-shadow: 0 2px 5px #112f34a0;
+}
+#top {
+  position: absolute;
+  left: 30px;
+  right: 30px;
+  top: 23px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.location .eyebrow {
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+.location strong {
+  font:
+    600 24px "Cormorant Garamond",
+    serif;
+  display: block;
+  margin-top: 5px;
+}
+.top-right {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+  pointer-events: auto;
+}
+.top-right button {
+  padding: 8px 12px;
+  font-size: 11px;
+  background: #183d40bf;
+}
+.wallet {
+  padding: 8px 15px;
+  border: 1px solid #dbc69060;
+  background: #14383bcc;
+  border-radius: 4px;
+  color: #e8ce94;
+  font-size: 18px;
+}
+.wallet small {
+  font-size: 9px;
+  letter-spacing: 1px;
+  margin-left: 7px;
+}
+#quest {
+  position: absolute;
+  right: 30px;
+  top: 86px;
+  max-width: 280px;
+  text-align: right;
+  font-size: 12px;
+  line-height: 1.6;
+}
+#quest strong {
+  display: block;
+  color: #efd298;
+  font:
+    600 21px "Cormorant Garamond",
+    serif;
+  margin-bottom: 4px;
+}
+#crew {
+  position: absolute;
+  left: 30px;
+  top: 96px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  font-size: 11px;
+  color: #d4e6d9;
+}
+#crosshair {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 4px;
+  height: 4px;
+  margin: -2px;
+  border-radius: 50%;
+  background: #fff8d8;
+  box-shadow: 0 0 0 3px #16333725;
+}
+#crosshair.target {
+  width: 12px;
+  height: 12px;
+  margin: -6px;
+  background: transparent;
+  border: 1px solid #efd092;
+}
+#health {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  width: 225px;
+}
+#health .numbers {
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 7px;
+}
+#health .bar {
+  height: 10px;
+  border: 1px solid #e9cea369;
+  background: #172f33c0;
+  padding: 2px;
+  border-radius: 3px;
+}
+#healthFill {
+  height: 100%;
+  background: #bf534a;
+  width: 100%;
+  transition: width 0.2s;
+}
+#slots {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 7px;
+  pointer-events: auto;
+}
+#slots button {
+  width: 65px;
+  height: 68px;
+  background: #15393dbb;
+  border: 1px solid #ae9b6866;
+  padding: 8px;
+  position: relative;
+  color: #dbd7bc;
+}
+#slots button.active {
+  border-color: #f2d28e;
+  box-shadow: inset 0 0 12px #e9c07525;
+  background: #405a4de0;
+}
+#slots span {
+  display: block;
+  font-size: 11px;
+  margin-top: 5px;
+}
+#slots b {
+  font:
+    600 22px "Cormorant Garamond",
+    serif;
+}
+#slots kbd {
+  position: absolute;
+  left: 6px;
+  top: 4px;
+  font-size: 9px;
+}
+kbd {
+  font:
+    10px "DM Sans",
+    sans-serif;
+  border: 1px solid #e1d5a855;
+  border-radius: 3px;
+  padding: 2px 4px;
+}
+#hint {
+  position: absolute;
+  bottom: 28px;
+  right: 30px;
+  font-size: 10px;
+  text-align: right;
+  line-height: 1.9;
+  color: #dbe4d5;
+}
+#focus {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  background: #163a40d9;
+  border: 1px solid #debf7d55;
+  border-radius: 5px;
+  padding: 10px 18px;
+  min-width: 190px;
+}
+#focus strong {
+  display: block;
+  font:
+    600 21px "Cormorant Garamond",
+    serif;
+}
+#focus small {
+  font-size: 11px;
+  color: #d9dfcf;
+}
+#itemCard {
+  position: absolute;
+  bottom: 135px;
+  right: 30px;
+  width: 245px;
+  background: #153a3df0;
+  border: 1px solid #d6b96c9c;
+  border-radius: 6px;
+  padding: 21px;
+  text-shadow: none;
+}
+#itemCard h3 {
+  font-size: 25px;
+  margin: 4px 0 10px;
+  color: #f0d69d;
+}
+#itemCard p {
+  font-size: 12px;
+  line-height: 1.6;
+}
+#itemCard .price {
+  font:
+    600 27px "Cormorant Garamond",
+    serif;
+  margin: 14px 0;
+}
+#targetHealth {
+  position: absolute;
+  left: 50%;
+  top: 43%;
+  transform: translateX(-50%);
+  width: 130px;
+  text-align: center;
+  font-size: 10px;
+}
+#targetHealth div {
+  height: 4px;
+  background: #163238;
+  margin-top: 5px;
+}
+#targetHealth i {
+  display: block;
+  height: 100%;
+  background: #df9c71;
+}
+#fishing {
+  position: absolute;
+  bottom: 125px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  background: #15383bdd;
+  border: 1px solid #dbc78d66;
+  border-radius: 5px;
+  padding: 14px 20px;
+  text-align: center;
+}
+#fishing strong {
+  font:
+    600 22px "Cormorant Garamond",
+    serif;
+}
+#fishing small {
+  display: block;
+  margin: 5px 0 10px;
+  font-size: 10px;
+  color: #cfdbcd;
+}
+.fbar {
+  height: 5px;
+  background: #061e2477;
+  margin: 7px 0;
+}
+.fbar i {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: #b9d399;
+}
+#tension {
+  background: #e5b579;
+}
+#toast {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 520px;
+  background: #153b3ef0;
+  border: 1px solid #d1bb7b80;
+  padding: 12px 20px;
+  border-radius: 5px;
+  font-size: 12px;
+  text-align: center;
+  line-height: 1.5;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+#toast.show {
+  opacity: 1;
+}
+#damage {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 0 0 140px #ce463e;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+#menu {
+  position: fixed;
+  inset: 0;
+  background: #102c3599;
+  backdrop-filter: blur(7px);
+  display: grid;
+  place-items: center;
+}
+#menu section {
+  width: min(470px, 90vw);
+  background: #173c3ef5;
+  border: 1px solid #d1b67570;
+  border-radius: 9px;
+  padding: 30px;
+}
+#menu h2 {
+  font-size: 38px;
+  margin: 10px 0;
+}
+#menu p {
+  font-size: 13px;
+  line-height: 1.8;
+  color: #d5dfd2;
+}
+#menu button {
+  margin: 5px 5px 0 0;
+}
+#status {
+  position: absolute;
+  bottom: 8px;
+  left: 30px;
+  font-size: 8px;
+  letter-spacing: 1px;
+  color: #b5cfc5;
+}
+#downed {
+  position: fixed;
+  inset: 0;
+  background: #582d2870;
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+#downed h2 {
+  font-size: 55px;
+  margin: 0;
+}
+#downed p {
+  font-size: 15px;
+}
+#worldLabels {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+.world-label {
+  position: absolute;
+  color: #fff2c9;
+  font-size: 10px;
+  padding: 4px 8px;
+  background: #183d40a6;
+  border-radius: 3px;
+  transform: translate(-50%, -100%);
+}
+#reconnect {
+  position: fixed;
+  inset: 0;
+  background: #102e38cc;
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+#reconnect h2 {
+  font-size: 38px;
+}
+#loadFail {
+  color: #ffcabc !important;
+}
+@media (max-width: 850px) {
+  .intro {
+    width: 330px;
+  }
+  .intro h1 {
+    font-size: 66px;
+  }
+  #top {
+    left: 18px;
+    right: 18px;
+  }
+  #quest {
+    right: 18px;
+    font-size: 10px;
+    width: 200px;
+  }
+  #health {
+    width: 130px;
+    left: 18px;
+  }
+  #slots button {
+    width: 50px;
+    height: 57px;
+  }
+  #hint {
+    display: none;
+  }
+  #crew {
+    left: 18px;
+  }
+  #itemCard {
+    right: 18px;
+    width: 210px;
+  }
+  #toast {
+    top: 75px;
+    width: 80vw;
+  }
+  .location strong {
+    font-size: 20px;
+  }
+}

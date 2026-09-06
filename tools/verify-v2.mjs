@@ -1,0 +1,22 @@
+import {chromium} from '@playwright/test';
+import assert from 'node:assert/strict';
+const browser=await chromium.connectOverCDP('http://127.0.0.1:50356');
+const origin=process.env.GAME_URL||'http://127.0.0.1:4175'; const context=browser.contexts()[0],page=context.pages()[0];
+const errors=[];page.on('pageerror',e=>errors.push(e.message));
+await page.goto(origin);await page.waitForFunction(()=>window.cloudwake?.getSnapshot().ready);
+await page.locator('#start').click();await page.waitForFunction(()=>window.cloudwake.getSnapshot().started);
+await page.evaluate(()=>document.exitPointerLock());
+const code=await page.evaluate(()=>window.cloudwake.getSnapshot().code);
+const friend=await context.newPage();friend.on('pageerror',e=>errors.push(e.message));
+await friend.goto(origin);await friend.waitForFunction(()=>window.cloudwake?.getSnapshot().ready);
+await friend.locator('#roomInput').fill(code);await friend.locator('#join').click();
+await friend.waitForFunction(()=>window.cloudwake.getSnapshot().room?.players.length===2);
+await page.waitForFunction(()=>window.cloudwake.getSnapshot().room?.players.length===2);
+await friend.evaluate(()=>document.exitPointerLock());
+await page.bringToFront();await page.keyboard.down('w');await page.waitForTimeout(1100);await page.keyboard.up('w');
+const moved=await page.evaluate(()=>window.cloudwake.getSnapshot().self.z);assert.ok(moved<18,'W moves player');
+await friend.waitForFunction(z=>window.cloudwake.getSnapshot().room.players.some(p=>p.z<z),18);
+await page.screenshot({path:'E:/Try/art/v2/playable-first-person.png'});
+assert.deepEqual(errors,[]);console.log(JSON.stringify({twoBrowserPlayers:true,movementReplicated:true,errors,drawCalls:await page.evaluate(()=>window.cloudwake.getSnapshot().drawCalls)}));
+await friend.close();await browser.close();
+

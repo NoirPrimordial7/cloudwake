@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#173e40" />
+    <title>Cloudwake — Wind Bell Harbor</title>
+  </head>
+  <body>
+    <canvas id="world" aria-label="Cloudwake 3D game"></canvas>
+    <div id="hud" class="hidden">
+      <header>
+        <div class="brand">CLOUDWAKE<span>WIND BELL HARBOR</span></div>
+        <div class="top-actions">
+          <span id="wallet">0 crowns</span
+          ><button id="mapBtn">Map <kbd>M</kbd></button
+          ><button id="settingsBtn">Menu <kbd>Esc</kbd></button>
+        </div>
+      </header>
+      <aside class="quest">
+        <span class="eyebrow">ISLAND STORY · 01</span>
+        <h2 id="questTitle">A harbor without wind</h2>
+        <p id="questText">Find the bellkeeper beside the tower.</p>
+        <div class="quest-track"><span id="questFill"></span></div>
+      </aside>
+      <div class="location">
+        <span id="area">Wind Bell Harbor</span><small id="mode">ON FOOT</small>
+      </div>
+      <div id="prompt" class="hidden"></div>
+      <div id="toast" role="status"></div>
+      <footer>
+        <div>
+          <kbd>W A S D</kbd> Move <i></i><kbd>Drag</kbd> Look <i></i
+          ><kbd>E</kbd> Interact <i></i><kbd>Space</kbd> Jump
+        </div>
+        <div>
+          <button id="catchBtn">Cast bell <kbd>F</kbd></button
+          ><span id="inventory">0 wisps</span>
+        </div>
+      </footer>
+    </div>
+    <section id="welcome" class="screen">
+      <div class="intro">
+        <span class="eyebrow">A LITTLE ADVENTURE ABOVE THE CLOUDS</span>
+        <h1>CLOUD<br /><em>WAKE</em></h1>
+        <p>The wind has lost its way.<br />Perhaps you can help it home.</p>
+        <button id="start" class="primary">
+          Begin your voyage <span>→</span></button
+        ><small>WIND BELL HARBOR · PLAYABLE CHAPTER 01</small>
+      </div>
+      <div class="intro-note">
+        One boat. A pocketful of wishes.<br />A whole sky ahead.
+      </div>
+    </section>
+    <div id="modal" class="modal hidden">
+      <section id="modalContent"></section>
+    </div>
+    <div id="catchUI" class="hidden">
+      <span class="eyebrow">SOMETHING HEARD YOUR BELL</span>
+      <h2 id="catchTitle">Listen to the clouds…</h2>
+      <div class="meter">
+        <div id="catchZone"></div>
+        <span id="needle"></span>
+      </div>
+      <p id="catchHelp">Press F when the marker enters the gold zone</p>
+    </div>
+    <aside id="editor" class="hidden">
+      <span class="eyebrow">HARBOR WORKSHOP</span>
+      <h2>Make it yours</h2>
+      <p>
+        Choose a landmark, then drag its arrows. Changes save on this browser.
+      </p>
+      <label>Landmark<select id="objectSelect"></select></label>
+      <div class="row">
+        <button id="translate">Move</button><button id="rotate">Rotate</button
+        ><button id="scale">Scale</button>
+      </div>
+      <label
+        >Flag color<input id="flagColor" type="color" value="#257e83" /></label
+      ><label
+        >Flag emblem<select id="flagEmblem">
+          <option value="star">Star</option>
+          <option value="moon">Moon</option>
+          <option value="sun">Sun</option>
+        </select></label
+      ><button id="saveLayout">Save layout</button
+      ><button id="exportLayout">Export layout JSON</button
+      ><label class="file-button"
+        >Import layout JSON<input
+          id="importLayout"
+          type="file"
+          accept=".json" /></label
+      ><button id="exportGLB">Export scene for Blender</button
+      ><button id="closeEditor" class="primary">Back to adventure</button
+      ><small
+        >Move props within the island. Terrain and walking bounds are fixed in
+        this first build.</small
+      >
+    </aside>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
