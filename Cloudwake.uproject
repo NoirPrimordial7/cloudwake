@@ -1,0 +1,8 @@
+{
+  "FileVersion": 3,
+  "EngineAssociation": "5.8",
+  "Category": "Games",
+  "Description": "Cloudwake Bellheart playable greybox",
+  "Modules": [{"Name": "Cloudwake", "Type": "Runtime", "LoadingPhase": "Default"}],
+  "Plugins": [{"Name": "PythonScriptPlugin", "Enabled": true}, {"Name": "EditorScriptingUtilities", "Enabled": true}, {"Name": "AndroidFileServer", "Enabled": false}]
+}

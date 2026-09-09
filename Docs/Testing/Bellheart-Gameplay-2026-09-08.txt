@@ -1,0 +1,32 @@
+[2026.09.08-14.56.10:454][ 71]LogTemp: Display: BH_TEST_PASS Player standing on dock at correct capsule height
+[2026.09.08-14.56.10:454][ 71]LogTemp: Display: BH_QUEST advanced=1 event=MeetOrin
+[2026.09.08-14.56.10:454][ 71]LogTemp: Display: BH_TEST_PASS Camera trace talks to Orin
+[2026.09.08-14.56.10:857][162]LogTemp: Display: BH_QUEST advanced=2 event=GetRod
+[2026.09.08-14.56.10:857][162]LogTemp: Display: BH_TEST_PASS Mira gives rod and advances tutorial
+[2026.09.08-14.56.11:261][251]LogTemp: Display: BH_TEST_PASS Cast creates traveling physical bobber
+[2026.09.08-14.56.14:406][887]LogTemp: Display: BH_TEST_PASS Fish AI investigates and bites; input hooks it
+[2026.09.08-14.56.18:772][676]LogTemp: Display: BH_QUEST advanced=3 event=CatchFish
+[2026.09.08-14.56.18:776][677]LogTemp: Display: BH_TEST_PASS Reeling lands physical fish and advances quest
+[2026.09.08-14.56.19:989][943]LogTemp: Display: BH_TEST_PASS Dead fish picked up through camera interaction
+[2026.09.08-14.56.20:391][ 32]LogTemp: Display: BH_QUEST advanced=4 event=SellFish
+[2026.09.08-14.56.20:391][ 32]LogTemp: Display: BH_TEST_PASS Sale consumes carried fish and pays Crowns
+[2026.09.08-14.56.20:792][ 90]LogTemp: Display: BH_QUEST advanced=5 event=BuyKnife
+[2026.09.08-14.56.20:792][ 90]LogTemp: Display: BH_TEST_PASS Shop purchase spends currency and equips knife
+[2026.09.08-14.56.21:195][179]LogTemp: Display: BH_TEST_PASS Grindstone upgrade changes damage
+[2026.09.08-14.56.21:595][268]LogTemp: Display: BH_QUEST advanced=6 event=InspectTower
+[2026.09.08-14.56.21:595][268]LogTemp: Display: BH_TEST_PASS Tower inspection opens bait quest
+[2026.09.08-14.56.21:997][356]LogTemp: Display: BH_QUEST advanced=7 event=GetBait
+[2026.09.08-14.56.21:997][356]LogTemp: Display: BH_TEST_PASS Mira grants quest bait
+[2026.09.08-14.56.22:400][445]LogTemp: Display: BH_TEST_PASS Quest bait summons boss
+[2026.09.08-14.56.22:804][501]LogTemp: Display: BH_CRAB health=150
+[2026.09.08-14.56.23:207][588]LogTemp: Display: BH_CRAB health=120
+[2026.09.08-14.56.23:609][676]LogTemp: Display: BH_CRAB health=90
+[2026.09.08-14.56.24:012][765]LogTemp: Display: BH_CRAB health=60
+[2026.09.08-14.56.24:415][854]LogTemp: Display: BH_CRAB health=30
+[2026.09.08-14.56.24:820][944]LogTemp: Display: BH_CRAB health=0
+[2026.09.08-14.56.24:820][944]LogTemp: Display: BH_QUEST advanced=8 event=DefeatCrab
+[2026.09.08-14.56.25:227][ 35]LogTemp: Display: BH_TEST_PASS Knife combat defeats boss and advances quest
+[2026.09.08-14.56.25:227][ 35]LogTemp: Display: BH_TEST_PASS Boss drops a physical carryable Bellheart
+[2026.09.08-14.56.25:630][124]LogTemp: Display: BH_QUEST advanced=9 event=Restore
+[2026.09.08-14.56.25:632][124]LogTemp: Display: BH_TEST_PASS Physical Bellheart installation completes quest
+[2026.09.08-14.56.26:034][188]LogTemp: Display: BH_TEST_COMPLETE full arrival-to-restoration loop 15.89s

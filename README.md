@@ -1,4 +1,13 @@
-# Cloudwake — first-person multiplayer prototype
+# Cloudwake - Unreal greybox and browser prototype
+
+## Unreal greybox milestone
+
+The native Unreal 5.8.2 project is [Cloudwake.uproject](Cloudwake.uproject). Run `Open-Unreal.cmd` and press Play in the Bellheart map. The editable greybox supports the arrival → fishing → physical fish → selling → knife shop → Bellcrab → Bellheart restoration loop.
+
+See [Unreal controls and architecture](Docs/UNREAL_GREYBOX.md). Run `Build-Unreal.cmd` to compile and `Test-Unreal.ps1` for runtime progression and grounded traversal checks. This is a single-player gameplay greybox; final environment art is deliberately deferred. The browser prototype below remains separate.
+
+## Browser prototype
+
 
 Play locally at http://127.0.0.1:4175 after running `Start-Cloudwake.cmd` (`npm run dev`). Node.js is required. For a production server: `npm run build`, then `npm start`. Set PORT to change the port. The server listens on all interfaces.
 

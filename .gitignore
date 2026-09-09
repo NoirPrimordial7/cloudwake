@@ -17,3 +17,12 @@ tools/*.exe
 *.pem
 *.key
 
+# Unreal generated products (source, Config and Content are versioned)
+Binaries/
+Intermediate/
+Saved/
+DerivedDataCache/
+.vs/
+*.sln
+*.suo
+

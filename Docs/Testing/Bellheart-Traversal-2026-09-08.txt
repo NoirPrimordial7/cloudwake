@@ -1,0 +1,31 @@
+[2026.09.08-14.55.59:711][914]LogTemp: Display: BH_TEST_PASS Route waypoint reached on foot at intended elevation
+[2026.09.08-14.55.59:711][914]LogTemp: Display: BH_WALK_PASS point=0 position=X=0.000 Y=-6564.830 Z=383.417
+[2026.09.08-14.56.01:956][206]LogTemp: Display: BH_TEST_PASS Route waypoint reached on foot at intended elevation
+[2026.09.08-14.56.01:956][206]LogTemp: Display: BH_WALK_PASS point=1 position=X=0.000 Y=-5464.945 Z=771.840
+[2026.09.08-14.56.03:176][135]LogTemp: Display: BH_TEST_PASS Route waypoint reached on foot at intended elevation
+[2026.09.08-14.56.03:176][135]LogTemp: Display: BH_WALK_PASS point=2 position=X=0.000 Y=-4964.792 Z=792.150
+[2026.09.08-14.56.07:484][357]LogTemp: Display: BH_TEST_PASS Route waypoint reached on foot at intended elevation
+[2026.09.08-14.56.07:484][357]LogTemp: Display: BH_WALK_PASS point=3 position=X=1650.511 Y=-3542.109 Z=792.150
+[2026.09.08-14.56.10:990][685]LogTemp: Display: BH_TEST_PASS Route waypoint reached on foot at intended elevation
+[2026.09.08-14.56.10:990][685]LogTemp: Display: BH_WALK_PASS point=4 position=X=2661.946 Y=-2152.558 Z=792.150
+[2026.09.08-14.56.16:635][289]LogTemp: Display: BH_TEST_PASS Route waypoint reached on foot at intended elevation
+[2026.09.08-14.56.16:635][289]LogTemp: Display: BH_WALK_PASS point=5 position=X=2894.431 Y=435.380 Z=792.150
+[2026.09.08-14.56.20:757][909]LogTemp: Display: BH_TEST_PASS Route waypoint reached on foot at intended elevation
+[2026.09.08-14.56.20:757][909]LogTemp: Display: BH_WALK_PASS point=6 position=X=1644.861 Y=1753.392 Z=1471.152
+[2026.09.08-14.56.22:373][159]LogTemp: Display: BH_TEST_PASS Route waypoint reached on foot at intended elevation
+[2026.09.08-14.56.22:373][159]LogTemp: Display: BH_WALK_PASS point=7 position=X=1245.709 Y=2154.159 Z=1492.274
+[2026.09.08-14.56.25:731][356]LogTemp: Display: BH_TEST_PASS Route waypoint reached on foot at intended elevation
+[2026.09.08-14.56.25:731][356]LogTemp: Display: BH_WALK_PASS point=8 position=X=53.708 Y=2963.713 Z=1492.274
+[2026.09.08-14.56.29:233][865]LogTemp: Display: BH_TEST_PASS Route waypoint reached on foot at intended elevation
+[2026.09.08-14.56.29:233][865]LogTemp: Display: BH_WALK_PASS point=9 position=X=-961.849 Y=4347.615 Z=2072.690
+[2026.09.08-14.56.31:413][601]LogTemp: Display: BH_TEST_PASS Route waypoint reached on foot at intended elevation
+[2026.09.08-14.56.31:413][601]LogTemp: Display: BH_WALK_PASS point=10 position=X=-1373.061 Y=5240.901 Z=2092.150
+[2026.09.08-14.56.33:568][432]LogTemp: Display: BH_TEST_PASS Route waypoint reached on foot at intended elevation
+[2026.09.08-14.56.33:568][432]LogTemp: Display: BH_WALK_PASS point=11 position=X=-1398.797 Y=6235.189 Z=2093.568
+[2026.09.08-14.56.35:790][646]LogTemp: Display: BH_TEST_PASS Route waypoint reached on foot at intended elevation
+[2026.09.08-14.56.35:790][646]LogTemp: Display: BH_WALK_PASS point=12 position=X=-363.199 Y=6485.826 Z=2665.485
+[2026.09.08-14.56.36:760][723]LogTemp: Display: BH_TEST_PASS Route waypoint reached on foot at intended elevation
+[2026.09.08-14.56.36:760][723]LogTemp: Display: BH_WALK_PASS point=13 position=X=-64.742 Y=6498.094 Z=2692.354
+[2026.09.08-14.56.38:213][704]LogTemp: Display: BH_TEST_PASS Route waypoint reached on foot at intended elevation
+[2026.09.08-14.56.38:213][704]LogTemp: Display: BH_WALK_PASS point=14 position=X=-5.006 Y=7035.195 Z=2692.354
+[2026.09.08-14.56.38:555][465]LogTemp: Display: BH_WALK_COMPLETE dock-to-pond-to-village-to-elder-to-tower 46.92s
