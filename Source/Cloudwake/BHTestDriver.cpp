@@ -36,6 +36,36 @@ void ABHTestDriver::Tick(float D) {
  Super::Tick(D); Time+=D; Total+=D;
  if(Total>120) { Check(false,TEXT("120 second loop timeout")); SetActorTickEnabled(false); return; }
  auto* P=Cast<ABHPlayer>(UGameplayStatics::GetPlayerPawn(this,0)); if(!P || Time<.4)return;
+ if(FParse::Param(FCommandLine::Get(),TEXT("BHSaveTest"))) {
+  UGameplayStatics::DeleteGameInSlot(P->SaveSlot(),0);
+  P->Progress->Quest=8; P->Progress->Crowns=91; P->Progress->HasRod=true; P->Progress->HasKnife=true; P->Progress->KnifeDamage=30;
+  auto* Heart=GetWorld()->SpawnActor<ABHPhysicalItem>(P->GetActorLocation(),FRotator::ZeroRotator);
+  Heart->Kind=EBHItem::Bellheart; Heart->Health=0; Heart->State=EBHFishState::Dead; Heart->Use(P);
+  if(!Check(P->SaveCheckpoint(),TEXT("Checkpoint writes to isolated slot")))return;
+  P->Progress->Quest=0; P->Progress->Crowns=0; P->Progress->KnifeDamage=18;
+  if(!Check(P->LoadCheckpoint(),TEXT("Checkpoint loads from disk")))return;
+  if(!Check(P->Progress->Quest==8 && P->Progress->Crowns==91 && P->Progress->KnifeDamage==30 && P->HeldItem && P->HeldItem->Kind==EBHItem::Bellheart,TEXT("Quest money upgrade and carried heart survive load")))return;
+  P->LoadCheckpoint(); int32 Hearts=0;
+  for(TActorIterator<ABHPhysicalItem> It(GetWorld());It;++It) if(It->Kind==EBHItem::Bellheart)++Hearts;
+  if(!Check(Hearts==1,TEXT("Repeated load cannot duplicate Bellheart")))return;
+  P->HeldItem->Destroy(); P->HeldItem=nullptr; P->SaveCheckpoint(); P->LoadCheckpoint(); Hearts=0;
+  for(TActorIterator<ABHPhysicalItem> It(GetWorld());It;++It)if(It->Kind==EBHItem::Bellheart)++Hearts;
+  if(!Check(Hearts==1,TEXT("Missing quest object is recovered")))return;
+  auto* Fish=GetWorld()->SpawnActor<ABHPhysicalItem>(P->GetActorLocation()+FVector(150,0,0),FRotator::ZeroRotator);
+  Fish->Label=TEXT("PersistenceTestFish"); Fish->Value=47; Fish->Health=0; Fish->Land(Fish->GetActorLocation()); Fish->State=EBHFishState::Dead;
+  P->Health=63; P->SaveCheckpoint(); P->Health=100; P->LoadCheckpoint();
+  int32 SavedFish=0;
+  for(TActorIterator<ABHPhysicalItem> It(GetWorld());It;++It)if(It->Label==TEXT("PersistenceTestFish") && It->Value==47 && It->Health==0 && It->Mesh->IsSimulatingPhysics())++SavedFish;
+  if(!Check(SavedFish==1 && P->Health==63,TEXT("Landed fish value physics and player health survive load")))return;
+  P->Charging=true; P->CastCharge=1; P->CancelCast();
+  if(!Check(!P->Charging && !P->Bobber && !P->HookedFish,TEXT("Cancel clears pending fishing input")))return;
+  for(TActorIterator<ABHBellcrab> It(GetWorld());It;++It) { It->Active=true; It->Health=40; }
+  P->RecoverAtDock();
+  for(TActorIterator<ABHBellcrab> It(GetWorld());It;++It)if(!Check(!It->Active && It->Health==180,TEXT("Recovery resets interrupted boss encounter")))return;
+  UGameplayStatics::DeleteGameInSlot(P->SaveSlot(),0);
+  UE_LOG(LogTemp,Display,TEXT("BH_SAVE_TEST_COMPLETE persistence and recovery"));
+  FPlatformMisc::RequestExitWithStatus(false,0); SetActorTickEnabled(false); return;
+ }
  if(FParse::Param(FCommandLine::Get(),TEXT("BHWalk"))) {
   const TArray<FVector> Route={{0,-65,3},{0,-54,7},{0,-49,7},{17,-35,7},{27,-21,7},{29,5,7},{16,18,14},{12,22,14},{0,30,14},{-10,44,20},{-14,53,20},{-14,63,20},{-3,65,26},{0,65,26},{0,71,26}};
   if(WalkPoint>=Route.Num()) { UE_LOG(LogTemp,Display,TEXT("BH_WALK_COMPLETE dock-to-pond-to-village-to-elder-to-tower %.2fs"),Total); FPlatformMisc::RequestExitWithStatus(false,0); SetActorTickEnabled(false); return; }

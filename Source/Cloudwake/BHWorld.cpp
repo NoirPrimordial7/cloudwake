@@ -140,14 +140,14 @@ ABHGameMode::ABHGameMode() { DefaultPawnClass=ABHPlayer::StaticClass(); HUDClass
 void ABHGameMode::BeginPlay() {
  Super::BeginPlay(); if(!UGameplayStatics::GetActorOfClass(this,ABHWorld::StaticClass())) GetWorld()->SpawnActor<ABHWorld>();
  if(APawn* P=UGameplayStatics::GetPlayerPawn(this,0)) { P->SetActorLocation(FVector(0,-8600,110)); if(P->GetController())P->GetController()->SetControlRotation(FRotator(0,90,0)); }
- if(FParse::Param(FCommandLine::Get(),TEXT("BHTest")) || FParse::Param(FCommandLine::Get(),TEXT("BHWalk"))) GetWorld()->SpawnActor<ABHTestDriver>();
+ if(FParse::Param(FCommandLine::Get(),TEXT("BHTest")) || FParse::Param(FCommandLine::Get(),TEXT("BHWalk")) || FParse::Param(FCommandLine::Get(),TEXT("BHSaveTest"))) GetWorld()->SpawnActor<ABHTestDriver>();
 }
-void ABHWorld::Restore() {
- Restored=true;
+void ABHWorld::Restore(bool IsRestored, bool PlayCue) {
+ Restored=IsRestored;
  for(TActorIterator<AStaticMeshActor> It(GetWorld());It;++It) if(It->Tags.Contains(FName(TEXT("Bell placeholder")))) {
-  It->GetStaticMeshComponent()->SetMaterial(0,LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/Greybox/MI_Restored.MI_Restored")));
+  It->GetStaticMeshComponent()->SetMaterial(0,LoadObject<UMaterialInterface>(nullptr,Restored ? TEXT("/Game/Greybox/MI_Restored.MI_Restored") : TEXT("/Game/Greybox/MI_Bronze.MI_Bronze")));
  }
- if(USoundBase* Sound=LoadObject<USoundBase>(nullptr,TEXT("/Game/Audio/S_Bell.S_Bell"))) UGameplayStatics::PlaySound2D(this,Sound);
+ if(PlayCue && Restored) if(USoundBase* Sound=LoadObject<USoundBase>(nullptr,TEXT("/Game/Audio/S_Bell.S_Bell"))) UGameplayStatics::PlaySound2D(this,Sound);
 }
 void ABHHUD::DrawHUD() {
  Super::DrawHUD(); ABHPlayer* P=Cast<ABHPlayer>(GetOwningPawn()); if(!P || !Canvas)return;
@@ -157,6 +157,12 @@ void ABHHUD::DrawHUD() {
  DrawText(P->Progress->Objective(),FLinearColor::White,35,60,nullptr,1.05);
  DrawText(FString::Printf(TEXT("Health %.0f / 100     Crowns %d"),P->Health,P->Progress->Crowns),FLinearColor::White,30,H-70,nullptr,1.3);
  DrawText(TEXT("[1] Rod   [2] Knife   [E] Interact   [G] Drop   [Shift] Sprint"),FLinearColor::White,30,H-40,nullptr,1);
+ DrawText(TEXT("F5 Save / F9 Load / R Retrieve line"),FLinearColor::White,W-320,H-40,nullptr,1);
+ for(TActorIterator<ABHBellcrab> It(GetWorld());It;++It) if(It->Active) {
+  DrawRect(FLinearColor(0,0,0,.7f),W*.5f-160,115,320,50);
+  DrawText(It->Telegraph ? TEXT("BELLCRAB - DODGE!") : TEXT("BELLCRAB - STRIKE"),It->Telegraph ? FLinearColor::Red : FLinearColor::White,W*.5f-145,120);
+  DrawRect(FLinearColor(.8f,.2f,.12f),W*.5f-145,146,290*It->Health/180,10);
+ }
  DrawLine(W*.5f-6,H*.5f,W*.5f+6,H*.5f,FLinearColor::White); DrawLine(W*.5f,H*.5f-6,W*.5f,H*.5f+6,FLinearColor::White);
  if(P->Target) DrawText(P->Target->Prompt(P),FLinearColor(1,.85,.4),W*.5f-180,H*.5f+35,nullptr,1.2);
  if(P->MessageTime>0) { DrawRect(FLinearColor(0,0,0,.8),30,H-180,W-60,65); DrawText(P->Message,FLinearColor::White,45,H-160,nullptr,.95); }

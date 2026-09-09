@@ -7,6 +7,9 @@
 #include "Engine/World.h"
 #include "DrawDebugHelpers.h"
 #include "EngineUtils.h"
+#include "TimerManager.h"
+#include "Misc/CommandLine.h"
+#include "Misc/Parse.h"
 
 bool UBHProgress::Spend(int32 Amount) {
  if (Amount < 0 || Crowns < Amount) return false;
@@ -89,6 +92,7 @@ ABHPhysicalItem::ABHPhysicalItem() {
 }
 void ABHPhysicalItem::Tick(float D) {
  Super::Tick(D); Age += D;
+ if(Kind==EBHItem::Bellheart && GetActorLocation().Z < -2000) { Mesh->SetSimulatePhysics(false); SetActorLocation(FVector(0,-8200,150)); Mesh->SetSimulatePhysics(true); }
  if (Kind != EBHItem::Fish) return;
  ABHPlayer* P = Cast<ABHPlayer>(UGameplayStatics::GetPlayerPawn(this,0));
  if (!P) return;
@@ -145,7 +149,7 @@ ABHPlayer::ABHPlayer() {
  GetCharacterMovement()->MaxWalkSpeed = 500; GetCharacterMovement()->JumpZVelocity = 500;
  GetCharacterMovement()->MaxStepHeight = 35;
 }
-void ABHPlayer::BeginPlay() { Super::BeginPlay(); EquipRod(); Say(TEXT("BELLHEART ISLE - Greybox. WASD move, mouse look, E interact, Shift sprint, Space jump. Follow the gold paths.")); }
+void ABHPlayer::BeginPlay() { Super::BeginPlay(); EquipRod(); Say(TEXT("BELLHEART ISLE - WASD move, E interact, F5 save, F9 load, R cancel cast.")); GetWorldTimerManager().SetTimerForNextTick(FTimerDelegate::CreateWeakLambda(this,[this]() { if(!FParse::Param(FCommandLine::Get(),TEXT("BHSaveTest"))) LoadCheckpoint(); })); }
 void ABHPlayer::SetupPlayerInputComponent(UInputComponent* I) {
  Super::SetupPlayerInputComponent(I);
  I->BindAxis("Forward",this,&ABHPlayer::Forward); I->BindAxis("Right",this,&ABHPlayer::Right);
@@ -156,6 +160,9 @@ void ABHPlayer::SetupPlayerInputComponent(UInputComponent* I) {
  I->BindAction("Drop",IE_Pressed,this,&ABHPlayer::Drop);
  I->BindAction("Rod",IE_Pressed,this,&ABHPlayer::EquipRod); I->BindAction("Knife",IE_Pressed,this,&ABHPlayer::EquipKnife);
  I->BindAction("Sprint",IE_Pressed,this,&ABHPlayer::Sprint); I->BindAction("Sprint",IE_Released,this,&ABHPlayer::Walk);
+ I->BindKey(EKeys::F5,IE_Pressed,this,&ABHPlayer::QuickSave);
+ I->BindKey(EKeys::F9,IE_Pressed,this,&ABHPlayer::QuickLoad);
+ I->BindKey(EKeys::R,IE_Pressed,this,&ABHPlayer::CancelCast);
 }
 void ABHPlayer::Forward(float V) { AddMovementInput(FRotationMatrix(FRotator(0,GetControlRotation().Yaw,0)).GetUnitAxis(EAxis::X),V); }
 void ABHPlayer::Right(float V) { AddMovementInput(FRotationMatrix(FRotator(0,GetControlRotation().Yaw,0)).GetUnitAxis(EAxis::Y),V); }
@@ -166,7 +173,7 @@ FHitResult ABHPlayer::Trace(float Range) const {
  GetWorld()->LineTraceSingleByChannel(H,Camera->GetComponentLocation(),Camera->GetComponentLocation()+Camera->GetForwardVector()*Range,ECC_Visibility,Q); return H;
 }
 void ABHPlayer::Say(const FString& T) { Message=T; MessageTime=9; UE_LOG(LogTemp,Display,TEXT("BH_MESSAGE %s"),*T); }
-void ABHPlayer::Interact() { Target=Cast<ABHInteractable>(Trace(350).GetActor()); if(Target) Target->Use(this); else UE_LOG(LogTemp,Display,TEXT("BH_INTERACT no target hit=%s camera=%s direction=%s"),*GetNameSafe(Trace(350).GetActor()),*Camera->GetComponentLocation().ToString(),*Camera->GetForwardVector().ToString()); }
+void ABHPlayer::Interact() { Target=Cast<ABHInteractable>(Trace(350).GetActor()); if(Target) { Target->Use(this); SaveCheckpoint(); } else UE_LOG(LogTemp,Display,TEXT("BH_INTERACT no target hit=%s camera=%s direction=%s"),*GetNameSafe(Trace(350).GetActor()),*Camera->GetComponentLocation().ToString(),*Camera->GetForwardVector().ToString()); }
 void ABHPlayer::EquipRod() { KnifeEquipped=false; HeldTool->SetVisibility(Progress->HasRod); HeldTool->SetRelativeLocation(FVector(75,28,-35)); HeldTool->SetRelativeRotation(FRotator(35,0,0)); HeldTool->SetRelativeScale3D(FVector(.025,.025,1.9)); }
 void ABHPlayer::EquipKnife() { if(!Progress->HasKnife) { Say(TEXT("Buy an Iron Knife from Bram. Bare hands can finish your first fish.")); return; } CancelCast(); KnifeEquipped=true; HeldTool->SetVisibility(true); HeldTool->SetRelativeLocation(FVector(40,23,-25)); HeldTool->SetRelativeRotation(FRotator(55,0,0)); HeldTool->SetRelativeScale3D(FVector(.04,.08,.28)); }
 void ABHPlayer::Drop() { if(!HeldItem)return; ABHPhysicalItem* I=HeldItem; HeldItem=nullptr; I->DetachFromActor(FDetachmentTransformRules::KeepWorldTransform); I->Mesh->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics); I->Mesh->SetSimulatePhysics(true); I->Mesh->AddImpulse(Camera->GetForwardVector()*180,NAME_None,true); }
@@ -197,11 +204,13 @@ void ABHPlayer::CastLine(float Charge) {
  B->SetStaticMesh(LoadObject<UStaticMesh>(nullptr,TEXT("/Engine/BasicShapes/Sphere.Sphere"))); B->SetWorldScale3D(FVector(.12)); B->SetCollisionEnabled(ECollisionEnabled::NoCollision);
  BobberGoal=Goal; BobberInWater=false; Tension=0; Say(TEXT("Cast! Watch the bobber and wait for BITE."));
 }
-void ABHPlayer::CancelCast() { if(Bobber)Bobber->Destroy(); Bobber=nullptr; BobberInWater=false; if(HookedFish && HookedFish->State==EBHFishState::Hooked)HookedFish->State=EBHFishState::Wander; HookedFish=nullptr; Reeling=false; Tension=0; }
+void ABHPlayer::CancelCast() { Charging=false; CastCharge=0; if(Bobber)Bobber->Destroy(); Bobber=nullptr; BobberInWater=false; if(HookedFish && HookedFish->State==EBHFishState::Hooked)HookedFish->State=EBHFishState::Wander; HookedFish=nullptr; Reeling=false; Tension=0; }
 void ABHPlayer::Tick(float D) {
  Super::Tick(D); MessageTime-=D; AttackCooldown-=D; if(Charging)CastCharge+=D;
  Target=Cast<ABHInteractable>(Trace(350).GetActor());
- if(GetActorLocation().Z < -2500) { SetActorLocation(FVector(0,-8600,110)); DamagePlayer(10); Say(TEXT("Recovered at the dock.")); }
+ if(GetActorLocation().Z < -2500) RecoverAtDock();
+ AutoSaveTime+=D; if(AutoSaveTime>=30) { AutoSaveTime=0; SaveCheckpoint(); }
+ if(Bobber && FVector::Dist2D(GetActorLocation(),BobberGoal)>2200) { CancelCast(); Say(TEXT("Line retrieved: you moved too far from the pond.")); }
  if(Bobber) {
   if(!BobberInWater) { Bobber->SetActorLocation(FMath::VInterpConstantTo(Bobber->GetActorLocation(),BobberGoal,D,1100)); BobberInWater=FVector::Dist(Bobber->GetActorLocation(),BobberGoal)<10; }
   DrawDebugLine(GetWorld(),Camera->GetComponentLocation()+Camera->GetForwardVector()*90,Bobber->GetActorLocation(),FColor::White,false,0,0,1.5);
@@ -211,10 +220,10 @@ void ABHPlayer::Tick(float D) {
   FVector Bank=GetActorLocation()+GetActorForwardVector()*110; Bank.Z=GetActorLocation().Z+20;
   if(Reeling) { FVector Pos=FMath::VInterpConstantTo(HookedFish->GetActorLocation(),Bank,D,230); HookedFish->SetActorLocation(Pos); if(Bobber)Bobber->SetActorLocation(Pos); }
   if(Tension>=1) { CancelCast(); Say(TEXT("The line snapped. The fish escaped. Ease tension by releasing the mouse.")); }
-  else if(FVector::Dist2D(HookedFish->GetActorLocation(),Bank)<100) { ABHPhysicalItem* I=HookedFish; HookedFish=nullptr; CancelCast(); I->Land(Bank); Progress->Event("CatchFish"); Say(TEXT("LANDED! Click the flopping fish to finish it, then [E] carry it to Mira.")); }
+  else if(FVector::Dist2D(HookedFish->GetActorLocation(),Bank)<100) { ABHPhysicalItem* I=HookedFish; HookedFish=nullptr; CancelCast(); I->Land(Bank); Progress->Event("CatchFish"); SaveCheckpoint(); Say(TEXT("LANDED! Click the flopping fish to finish it, then [E] carry it to Mira.")); }
  }
 }
-void ABHPlayer::DamagePlayer(float D) { Health=FMath::Max(0.f,Health-D); if(Health<=0) { Drop(); CancelCast(); Health=100; SetActorLocation(FVector(0,-8600,110)); Say(TEXT("Recovered at the dock. Your quest and Crowns are retained.")); } }
+void ABHPlayer::DamagePlayer(float D) { Health=FMath::Max(0.f,Health-D); if(Health<=0) RecoverAtDock(); }
 
 ABHBellcrab::ABHBellcrab() {
  PrimaryActorTick.bCanEverTick=true; Label=TEXT("Bellcrab"); SetActorScale3D(FVector(3.5,3.5,1.5));
@@ -248,5 +257,6 @@ void ABHBellcrab::Hurt(float D) {
   Heart->Kind=EBHItem::Bellheart; Heart->Health=0; Heart->State=EBHFishState::Dead; Heart->SetActorScale3D(FVector(.3,.3,.7)); Heart->Mesh->SetSimulatePhysics(true);
   if(auto* P=Cast<ABHPlayer>(UGameplayStatics::GetPlayerPawn(this,0))) { P->Progress->Event("DefeatCrab"); P->Say(TEXT("Bellcrab defeated. [E] carry the Bellheart back to the tower.")); }
   SetActorEnableCollision(false); SetActorHiddenInGame(true); Active=false;
+  if(auto* P=Cast<ABHPlayer>(UGameplayStatics::GetPlayerPawn(this,0)))P->SaveCheckpoint();
  }
 }

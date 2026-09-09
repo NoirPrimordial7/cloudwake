@@ -102,6 +102,7 @@ public:
  bool Charging = false;
  FVector BobberGoal;
  bool BobberInWater = false;
+ float AutoSaveTime = 0;
  virtual void BeginPlay() override;
  virtual void Tick(float DeltaSeconds) override;
  virtual void SetupPlayerInputComponent(UInputComponent* Input) override;
@@ -113,6 +114,13 @@ public:
  void CancelCast();
  FHitResult Trace(float Range) const;
  void CastLine(float Charge);
+ bool SaveCheckpoint();
+ bool LoadCheckpoint();
+ FString SaveSlot() const;
+ bool IsLoopTest() const;
+ void QuickSave();
+ void QuickLoad();
+ void RecoverAtDock();
 };
 
 UCLASS()
@@ -130,7 +138,7 @@ public:
  ABHInteractable* Station(FName Action, const FString& Label, FVector P, int32 Price = 0);
  void Label(const FString& Text, FVector P);
  UFUNCTION(BlueprintCallable, CallInEditor) void Build();
- void Restore();
+ void Restore(bool IsRestored = true, bool PlayCue = true);
 };
 
 UCLASS()

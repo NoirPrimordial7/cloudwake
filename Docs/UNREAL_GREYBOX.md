@@ -25,7 +25,18 @@ The first fish can be finished with bare hands for 8 damage, avoiding the circul
 - `ABHBellcrab`: arena-bound combat prototype with visible slam telegraph.
 - `ABHWorld`: reproducible measured greybox builder, saved as editable map actors.
 - `ABHTestDriver`: command-line-only runtime integration test (`-BHTest`).
+- `UBHSaveGame` / `BHPersistence.cpp`: versioned local checkpoints and encounter recovery.
 
 ## Scope and review gate
 
-This is a single-player greybox milestone. Multiplayer replication, persistence, full dialogue branching, six authored species, polished UI, final models, animations and audio are subsequent work. None of the primitive architecture is final environment production. The scale/layout review must distinguish automated progression tests from manual navigation and combat feel.
+This is a single-player greybox milestone. Multiplayer replication, full dialogue branching, six authored species, polished UI, final models, animations and audio are subsequent work. None of the primitive architecture is final environment production. The scale/layout review must distinguish automated progression tests from manual navigation and combat feel.
+
+## Checkpoints and recovery — 2026-09-09
+
+F5 saves; F9 loads. Normal play resumes the last compatible checkpoint on startup. Interactions, landed catches, boss defeat and dock recovery save progress; an autosave also runs every 30 seconds. The local slot is `Saved/SaveGames/Bellheart_Checkpoint_v1.sav` and is excluded from Git.
+
+Checkpoints store Crowns, quest stage, tool ownership, knife sharpening, health, player position/view, carried items and landed/dead fish. Airborne saves resume at the dock. Wild fish remain the map's renewable population; in-progress casts and partial boss fights restart. This is checkpoint persistence, not a complete simulation snapshot.
+
+R retrieves the line and cancels charging. Moving too far away also cancels fishing. Falling or dying returns the player and carried item to the dock and resets an active boss for a retry at the lure. A Bellheart dropped below the island returns near the dock; loading a quest at restoration stage recreates a missing heart and prevents duplicate hearts.
+
+The boss HUD now shows remaining health and a DODGE/STRIKE cue. `BHSaveTest` uses an isolated temporary save slot and removes it afterward; normal loop/traversal tests never modify player saves.

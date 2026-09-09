@@ -1,0 +1,17 @@
+[2026.09.09-17.20.55:765][734]LogTemp: Display: BH_SAVE OK quest=8 items=1
+[2026.09.09-17.20.55:765][734]LogTemp: Display: BH_TEST_PASS Checkpoint writes to isolated slot
+[2026.09.09-17.20.55:770][734]LogTemp: Display: BH_LOAD OK quest=8 items=1
+[2026.09.09-17.20.55:770][734]LogTemp: Display: BH_TEST_PASS Checkpoint loads from disk
+[2026.09.09-17.20.55:770][734]LogTemp: Display: BH_TEST_PASS Quest money upgrade and carried heart survive load
+[2026.09.09-17.20.55:770][734]LogTemp: Display: BH_LOAD OK quest=8 items=1
+[2026.09.09-17.20.55:770][734]LogTemp: Display: BH_TEST_PASS Repeated load cannot duplicate Bellheart
+[2026.09.09-17.20.55:770][734]LogTemp: Display: BH_SAVE OK quest=8 items=0
+[2026.09.09-17.20.55:773][734]LogTemp: Display: BH_LOAD OK quest=8 items=0
+[2026.09.09-17.20.55:773][734]LogTemp: Display: BH_TEST_PASS Missing quest object is recovered
+[2026.09.09-17.20.55:774][734]LogTemp: Display: BH_SAVE OK quest=8 items=2
+[2026.09.09-17.20.55:777][734]LogTemp: Display: BH_LOAD OK quest=8 items=2
+[2026.09.09-17.20.55:777][734]LogTemp: Display: BH_TEST_PASS Landed fish value physics and player health survive load
+[2026.09.09-17.20.55:777][734]LogTemp: Display: BH_TEST_PASS Cancel clears pending fishing input
+[2026.09.09-17.20.55:777][734]LogTemp: Display: BH_SAVE OK quest=8 items=2
+[2026.09.09-17.20.55:777][734]LogTemp: Display: BH_TEST_PASS Recovery resets interrupted boss encounter
+[2026.09.09-17.20.55:778][734]LogTemp: Display: BH_SAVE_TEST_COMPLETE persistence and recovery

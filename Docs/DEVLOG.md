@@ -1,5 +1,13 @@
 # Development log
 
+## 2026-09-09 — Checkpoints and recovery
+
+Added versioned Unreal SaveGame checkpoints for currency, quests, upgrades, health, safe player position, carried items and landed fish. F5/F9 save/load; meaningful interactions and a 30-second timer autosave. The game attempts to resume a compatible checkpoint on startup. Saves are local and ignored by Git.
+
+Added explicit fishing cancellation (R), line-distance cancellation, dock recovery retaining carried items, interrupted boss reset, and lost-Bellheart recovery. Boss HUD now displays health and attack timing cues. No environment art changes.
+
+Compiled successfully. Isolated on-disk persistence tests passed for quest/currency/equipment, carried heart, repeated-load duplication prevention, missing-heart recovery, landed fish sale value and physics, player health, cancellation and boss reset. The rendered arrival-to-restoration regression also passed in 15.88 simulated seconds. Evidence is in Docs/Testing. Wild fish and active encounters intentionally restart rather than persisting every simulation detail.
+
 ## 2026-09-08 — Unreal greybox and first playable loop
 
 User released Phase 0 for greybox/gameplay production only. Found installed Unreal 5.8.2 at E:\UE_5.8. Installed Visual Studio 2022 Build Tools, MSVC and Windows/.NET SDK prerequisites. Created a native C++ project alongside the browser game, compiled it, generated an editable Bellheart map and pressed Play in Unreal Editor.
