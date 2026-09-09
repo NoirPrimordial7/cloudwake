@@ -1,0 +1,8 @@
+*.uasset filter=lfs diff=lfs merge=lfs -text
+*.umap filter=lfs diff=lfs merge=lfs -text
+Docs/Art/**/*.png filter=lfs diff=lfs merge=lfs -text
+*.cpp text eol=lf
+*.h text eol=lf
+*.cs text eol=lf
+*.py text eol=lf
+*.md text eol=lf

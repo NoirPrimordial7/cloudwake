@@ -1,0 +1,1065 @@
+{
+  "schema_version": 1,
+  "phase": "0",
+  "complete": false,
+  "style_bible": "BELLHEART_STYLE_BIBLE.md",
+  "references": [
+    {
+      "id": "BH-ISLAND-MASTER-AERIAL",
+      "name": "Entire Bellheart Isle master",
+      "category": "Island",
+      "file": "01_Island/CW_BH_ISLAND_MASTER_AERIAL_V001.png",
+      "status": "candidate",
+      "description": "Entire Bellheart Isle master",
+      "purpose": "Entire island elevated south-to-north view; exact canonical spatial plan from style bible.",
+      "used_by": [
+        "L_Bellheart"
+      ],
+      "views": "MASTER_AERIAL",
+      "version": 1,
+      "provenance": "OpenAI image generation",
+      "review_notes": [],
+      "prompt": "Entire island elevated south-to-north view; exact canonical spatial plan from style bible.",
+      "sha256": "33602adaa09f4150add8dc0a76c90c5ee3bbf661b6d559185e0ba8ec6f65ad58"
+    },
+    {
+      "id": "BH-ISLAND-TOPDOWN",
+      "name": "Measured north-up level map",
+      "category": "Island",
+      "file": "01_Island/CW_BH_ISLAND_TOPDOWN_V001.png",
+      "status": "candidate",
+      "description": "Measured north-up level map",
+      "purpose": "Measured north-up level map",
+      "used_by": [
+        "L_Bellheart"
+      ],
+      "views": "TOPDOWN",
+      "version": 1,
+      "provenance": "deterministic diagram",
+      "review_notes": [],
+      "prompt": "Measured north-up level map",
+      "sha256": "fe60ad963211dce697ec76adcb0bef1a98f01e36bed5180fa6676a846e4b7ea4"
+    },
+    {
+      "id": "BH-ISLAND-GAMEPLAY-FLOW",
+      "name": "Traversal and quest routing",
+      "category": "Island",
+      "file": "01_Island/CW_BH_ISLAND_GAMEPLAY_FLOW_V001.png",
+      "status": "candidate",
+      "description": "Traversal and quest routing",
+      "purpose": "Traversal and quest routing",
+      "used_by": [
+        "L_Bellheart"
+      ],
+      "views": "GAMEPLAY_FLOW",
+      "version": 1,
+      "provenance": "deterministic diagram",
+      "review_notes": [],
+      "prompt": "Traversal and quest routing",
+      "sha256": "a82803421db845d7d14625aef7d316ea39f1399e07f17b992307b32b7362c254"
+    },
+    {
+      "id": "BH-ISLAND-ELEVATION",
+      "name": "Terrain and landmark elevations",
+      "category": "Island",
+      "file": "01_Island/CW_BH_ISLAND_ELEVATION_V001.png",
+      "status": "candidate",
+      "description": "Terrain and landmark elevations",
+      "purpose": "Terrain and landmark elevations",
+      "used_by": [
+        "L_Bellheart"
+      ],
+      "views": "ELEVATION",
+      "version": 1,
+      "provenance": "deterministic diagram",
+      "review_notes": [],
+      "prompt": "Terrain and landmark elevations",
+      "sha256": "9006c3bdcaf57b75fe20dd3686bc1900cf3cee5383d426b4857b92424a48d4fc"
+    },
+    {
+      "id": "BH-BELLTOWER-MASTER",
+      "name": "Bell Tower master",
+      "category": "BellTower",
+      "file": "02_BellTower/CW_BH_BELLTOWER_MASTER_V001.png",
+      "status": "planned",
+      "description": "Bell Tower master",
+      "purpose": "Hero south-east view. Four pale limestone corner piers, 8x7m footprint, 32m tall, pointed front arch, single bronze bell at top, timber service deck, east exterior stair, broken west parapet, split-bell teal banner. Human scale figure 1.8m.",
+      "used_by": [
+        "SM_BH_BellTower",
+        "BP_BH_BellMechanism"
+      ],
+      "views": "MASTER",
+      "version": 1,
+      "provenance": "pending",
+      "review_notes": [],
+      "prompt": "Hero south-east view. Four pale limestone corner piers, 8x7m footprint, 32m tall, pointed front arch, single bronze bell at top, timber service deck, east exterior stair, broken west parapet, split-bell teal banner. Human scale figure 1.8m."
+    },
+    {
+      "id": "BH-BELLTOWER-TURNAROUND",
+      "name": "Bell Tower orthographic elevations",
+      "category": "BellTower",
+      "file": "02_BellTower/CW_BH_BELLTOWER_TURNAROUND_V001.png",
+      "status": "planned",
+      "description": "Bell Tower orthographic elevations",
+      "purpose": "Four labeled FRONT / EAST SIDE / REAR / WEST SIDE views of exactly the reference tower, aligned heights and same openings. Neutral cream background. No perspective invention.",
+      "used_by": [
+        "SM_BH_BellTower"
+      ],
+      "views": "TURNAROUND",
+      "version": 1,
+      "provenance": "pending",
+      "review_notes": [],
+      "prompt": "Four labeled FRONT / EAST SIDE / REAR / WEST SIDE views of exactly the reference tower, aligned heights and same openings. Neutral cream background. No perspective invention."
+    },
+    {
+      "id": "BH-BELLTOWER-INTERIOR",
+      "name": "Bell Tower accessible service deck",
+      "category": "BellTower",
+      "file": "02_BellTower/CW_BH_BELLTOWER_INTERIOR_V001.png",
+      "status": "planned",
+      "description": "Bell Tower accessible service deck",
+      "purpose": "Interior cutaway revealing stair arrival, timber maintenance deck, bronze bell suspension, reachable missing clapper socket and safety rail. Same tower.",
+      "used_by": [
+        "SM_BH_BellTower",
+        "BP_BH_BellMechanism"
+      ],
+      "views": "INTERIOR",
+      "version": 1,
+      "provenance": "pending",
+      "review_notes": [],
+      "prompt": "Interior cutaway revealing stair arrival, timber maintenance deck, bronze bell suspension, reachable missing clapper socket and safety rail. Same tower."
+    },
+    {
+      "id": "BH-BELLTOWER-BELL-MECHANISM",
+      "name": "Bellheart installation mechanism",
+      "category": "BellTower",
+      "file": "02_BellTower/CW_BH_BELLTOWER_BELL_MECHANISM_V001.png",
+      "status": "planned",
+      "description": "Bellheart installation mechanism",
+      "purpose": "Mechanical detail sheet, assembled and exploded views: bronze bell yoke, pivot, pendant socket, removable bronze clapper with teal inlay and split-bell motif. Installation lever accessible from timber service deck. Show 70cm clapper.",
+      "used_by": [
+        "SM_BH_Bellheart",
+        "BP_BH_BellMechanism"
+      ],
+      "views": "BELL_MECHANISM",
+      "version": 1,
+      "provenance": "pending",
+      "review_notes": [],
+      "prompt": "Mechanical detail sheet, assembled and exploded views: bronze bell yoke, pivot, pendant socket, removable bronze clapper with teal inlay and split-bell motif. Installation lever accessible from timber service deck. Show 70cm clapper."
+    },
+    {
+      "id": "BH-FISHSHOP-MASTER",
+      "name": "The Cloud Catch master",
+      "category": "FishingShop",
+      "file": "04_FishingShop/CW_BH_FISHSHOP_MASTER_V001.png",
+      "status": "planned",
+      "description": "The Cloud Catch master",
+      "purpose": "9x7m building, 6.2m high single swept teal-shingle gable, pale stone plinth, honey oak frame. West stone chimney, south covered counter with rope-wrapped posts, east door, north stockroom window. Oval hanging fish sign THE CLOUD CATCH. Mira not necessary in architectural master.",
+      "used_by": [
+        "SM_BH_FishingShop",
+        "BP_BH_FishingShop"
+      ],
+      "views": "MASTER",
+      "version": 1,
+      "provenance": "pending",
+      "review_notes": [],
+      "prompt": "9x7m building, 6.2m high single swept teal-shingle gable, pale stone plinth, honey oak frame. West stone chimney, south covered counter with rope-wrapped posts, east door, north stockroom window. Oval hanging fish sign THE CLOUD CATCH. Mira not necessary in architectural master."
+    },
+    {
+      "id": "BH-FISHSHOP-EXTERIOR-TURNAROUND",
+      "name": "The Cloud Catch exterior elevations",
+      "category": "FishingShop",
+      "file": "04_FishingShop/CW_BH_FISHSHOP_EXTERIOR_TURNAROUND_V001.png",
+      "status": "planned",
+      "description": "The Cloud Catch exterior elevations",
+      "purpose": "Same shop orthographic FRONT / EAST SIDE / REAR / WEST SIDE. Align ridge, counter, chimney and door positions. No redesigned roof.",
+      "used_by": [
+        "SM_BH_FishingShop"
+      ],
+      "views": "EXTERIOR_TURNAROUND",
+      "version": 1,
+      "provenance": "pending",
+      "review_notes": [],
+      "prompt": "Same shop orthographic FRONT / EAST SIDE / REAR / WEST SIDE. Align ridge, counter, chimney and door positions. No redesigned roof."
+    },
+    {
+      "id": "BH-FISHSHOP-INTERIOR",
+      "name": "The Cloud Catch interior",
+      "category": "FishingShop",
+      "file": "04_FishingShop/CW_BH_FISHSHOP_INTERIOR_V001.png",
+      "status": "planned",
+      "description": "The Cloud Catch interior",
+      "purpose": "Same shop interior viewed through south counter, rods, bait jars, hook drawers, nets, rope, buckets, brass weighing scale, lanterns, shelves, fish trophy, teal cloth. Keep central work aisle readable. West chimney, east door.",
+      "used_by": [
+        "SM_BH_FishingShop",
+        "BP_BH_FishingShop"
+      ],
+      "views": "INTERIOR",
+      "version": 1,
+      "provenance": "pending",
+      "review_notes": [],
+      "prompt": "Same shop interior viewed through south counter, rods, bait jars, hook drawers, nets, rope, buckets, brass weighing scale, lanterns, shelves, fish trophy, teal cloth. Keep central work aisle readable. West chimney, east door."
+    },
+    {
+      "id": "BH-FISHSHOP-COUNTER-DISPLAY",
+      "name": "Mira counter and physical merchandise",
+      "category": "FishingShop",
+      "file": "04_FishingShop/CW_BH_FISHSHOP_COUNTER_DISPLAY_V001.png",
+      "status": "planned",
+      "description": "Mira counter and physical merchandise",
+      "purpose": "Two-panel counter closeup and item-display elevation, same shop. Rod stand left, bait jars center, hook/line spools right, teal mats and simple bronze price tags. No giant menu.",
+      "used_by": [
+        "BP_BH_ShopDisplay"
+      ],
+      "views": "COUNTER_DISPLAY",
+      "version": 1,
+      "provenance": "pending",
+      "review_notes": [],
+      "prompt": "Two-panel counter closeup and item-display elevation, same shop. Rod stand left, bait jars center, hook/line spools right, teal mats and simple bronze price tags. No giant menu."
+    },
+    {
+      "id": "BH-BLACKSMITH-MASTER",
+      "name": "Bram\u2019s Forge master",
+      "category": "Blacksmith",
+      "file": "05_Blacksmith/CW_BH_BLACKSMITH_MASTER_V001.png",
+      "status": "planned",
+      "description": "Bram\u2019s Forge master",
+      "purpose": "11x8m,6.8m ridge, asymmetric swept teal gable, pale stone west forge/chimney, oak south sales counter, east hand-cranked grindstone, rear anvil bay, hanging original split-bell banner. Broad welcoming silhouette, detailed joinery, same warm crafted quality as supplied forge.",
+      "used_by": [
+        "SM_BH_Blacksmith",
+        "BP_BH_Blacksmith"
+      ],
+      "views": "MASTER",
+      "version": 1,
+      "provenance": "pending",
+      "review_notes": [],
+      "prompt": "11x8m,6.8m ridge, asymmetric swept teal gable, pale stone west forge/chimney, oak south sales counter, east hand-cranked grindstone, rear anvil bay, hanging original split-bell banner. Broad welcoming silhouette, detailed joinery, same warm crafted quality as supplied forge."
+    },
+    {
+      "id": "BH-BLACKSMITH-EXTERIOR-TURNAROUND",
+      "name": "Bram\u2019s Forge front side rear",
+      "category": "Blacksmith",
+      "file": "05_Blacksmith/CW_BH_BLACKSMITH_EXTERIOR_TURNAROUND_V001.png",
+      "status": "planned",
+      "description": "Bram\u2019s Forge front side rear",
+      "purpose": "Aligned FRONT / EAST / REAR views of same building. Preserve west chimney, east grindstone, south counter and asymmetric teal roof.",
+      "used_by": [
+        "SM_BH_Blacksmith"
+      ],
+      "views": "EXTERIOR_TURNAROUND",
+      "version": 1,
+      "provenance": "pending",
+      "review_notes": [],
+      "prompt": "Aligned FRONT / EAST / REAR views of same building. Preserve west chimney, east grindstone, south counter and asymmetric teal roof."
+    },
+    {
+      "id": "BH-BLACKSMITH-INTERIOR-COUNTER-STATION",
+      "name": "Bram\u2019s Forge interior and sharpening details",
+      "category": "Blacksmith",
+      "file": "05_Blacksmith/CW_BH_BLACKSMITH_INTERIOR_COUNTER_STATION_V001.png",
+      "status": "planned",
+      "description": "Bram\u2019s Forge interior and sharpening details",
+      "purpose": "Three useful panels: spacious interior with west forge and rear tool wall; knife on teal counter mat; east grindstone crank/axle/support close-up. Same building; warm daylight and small lantern pools. No character redesign.",
+      "used_by": [
+        "SM_BH_Blacksmith",
+        "BP_BH_Sharpening"
+      ],
+      "views": "INTERIOR_COUNTER_STATION",
+      "version": 1,
+      "provenance": "pending",
+      "review_notes": [],
+      "prompt": "Three useful panels: spacious interior with west forge and rear tool wall; knife on teal counter mat; east grindstone crank/axle/support close-up. Same building; warm daylight and small lantern pools. No character redesign."
+    },
+    {
+      "id": "BH-ELDERHOUSE-MASTER",
+      "name": "Bellkeeper\u2019s House exterior master",
+      "category": "ElderHouse",
+      "file": "06_ElderHouse/CW_BH_ELDERHOUSE_MASTER_V001.png",
+      "status": "planned",
+      "description": "Bellkeeper\u2019s House exterior master",
+      "purpose": "8x7m,6m ridge, teal gable, east limestone chimney, south arched door, west round study window. Old maps, books, bronze bells, fireplace, quest table. South-east exterior three-quarter with small side elevation inset.",
+      "used_by": [
+        "SM_BH_ELDERHOUSE"
+      ],
+      "views": "MASTER",
+      "version": 1,
+      "provenance": "pending",
+      "review_notes": [],
+      "prompt": "8x7m,6m ridge, teal gable, east limestone chimney, south arched door, west round study window. Old maps, books, bronze bells, fireplace, quest table. South-east exterior three-quarter with small side elevation inset."
+    },
+    {
+      "id": "BH-ELDERHOUSE-INTERIOR",
+      "name": "Bellkeeper\u2019s House interior",
+      "category": "ElderHouse",
+      "file": "06_ElderHouse/CW_BH_ELDERHOUSE_INTERIOR_V001.png",
+      "status": "planned",
+      "description": "Bellkeeper\u2019s House interior",
+      "purpose": "8x7m,6m ridge, teal gable, east limestone chimney, south arched door, west round study window. Old maps, books, bronze bells, fireplace, quest table. Interior cutaway matching the exterior, continuous doors and windows, clear 1.2m work aisle.",
+      "used_by": [
+        "SM_BH_ELDERHOUSE"
+      ],
+      "views": "INTERIOR",
+      "version": 1,
+      "provenance": "pending",
+      "review_notes": [],
+      "prompt": "8x7m,6m ridge, teal gable, east limestone chimney, south arched door, west round study window. Old maps, books, bronze bells, fireplace, quest table. Interior cutaway matching the exterior, continuous doors and windows, clear 1.2m work aisle."
+    },
+    {
+      "id": "BH-WORKSHOP-MASTER",
+      "name": "Tinker\u2019s Workshop exterior master",
+      "category": "Workshop",
+      "file": "07_Workshop/CW_BH_WORKSHOP_MASTER_V001.png",
+      "status": "planned",
+      "description": "Tinker\u2019s Workshop exterior master",
+      "purpose": "12x9m,7m ridge, teal main gable with sawtooth annex, wide south skiff repair doors, east external pulley crane, west loft window. Skiff hull jig, rope hoists, repair bench and parts. South-east exterior three-quarter with small side elevation inset.",
+      "used_by": [
+        "SM_BH_WORKSHOP"
+      ],
+      "views": "MASTER",
+      "version": 1,
+      "provenance": "pending",
+      "review_notes": [],
+      "prompt": "12x9m,7m ridge, teal main gable with sawtooth annex, wide south skiff repair doors, east external pulley crane, west loft window. Skiff hull jig, rope hoists, repair bench and parts. South-east exterior three-quarter with small side elevation inset."
+    },
+    {
+      "id": "BH-WORKSHOP-INTERIOR",
+      "name": "Tinker\u2019s Workshop interior",
+      "category": "Workshop",
+      "file": "07_Workshop/CW_BH_WORKSHOP_INTERIOR_V001.png",
+      "status": "planned",
+      "description": "Tinker\u2019s Workshop interior",
+      "purpose": "12x9m,7m ridge, teal main gable with sawtooth annex, wide south skiff repair doors, east external pulley crane, west loft window. Skiff hull jig, rope hoists, repair bench and parts. Interior cutaway matching the exterior, continuous doors and windows, clear 1.2m work aisle.",
+      "used_by": [
+        "SM_BH_WORKSHOP"
+      ],
+      "views": "INTERIOR",
+      "version": 1,
+      "provenance": "pending",
+      "review_notes": [],
+      "prompt": "12x9m,7m ridge, teal main gable with sawtooth annex, wide south skiff repair doors, east external pulley crane, west loft window. Skiff hull jig, rope hoists, repair bench and parts. Interior cutaway matching the exterior, continuous doors and windows, clear 1.2m work aisle."
+    },
+    {
+      "id": "BH-DOCK-MASTER",
+      "name": "Bellheart Dock master",
+      "category": "Dock",
+      "file": "08_Dock/CW_BH_DOCK_MASTER_V001.png",
+      "status": "planned",
+      "description": "Bellheart Dock master",
+      "purpose": "Lowest south tip, 4m wide oak pier, east skiff berth, rope rails and posts, cargo, lanterns, two small fishing platforms. Clear north arrival path rises to pond and distant tower. Aerial close view.",
+      "used_by": [
+        "SM_BH_Dock",
+        "BP_BH_Skiff"
+      ],
+      "views": "MASTER",
+      "version": 1,
+      "provenance": "pending",
+      "review_notes": [],
+      "prompt": "Lowest south tip, 4m wide oak pier, east skiff berth, rope rails and posts, cargo, lanterns, two small fishing platforms. Clear north arrival path rises to pond and distant tower. Aerial close view."
+    },
+    {
+      "id": "BH-DOCK-ARRIVAL-AND-RETURN",
+      "name": "Dock arrival and reverse sightlines",
+      "category": "Dock",
+      "file": "08_Dock/CW_BH_DOCK_ARRIVAL_AND_RETURN_V001.png",
+      "status": "planned",
+      "description": "Dock arrival and reverse sightlines",
+      "purpose": "Two matched eye-level views: looking north from dock up arrival path to pond/tower; looking south back from island to dock and eastern skiff berth. Preserve layout.",
+      "used_by": [
+        "L_Bellheart",
+        "SM_BH_Dock"
+      ],
+      "views": "ARRIVAL_AND_RETURN",
+      "version": 1,
+      "provenance": "pending",
+      "review_notes": [],
+      "prompt": "Two matched eye-level views: looking north from dock up arrival path to pond/tower; looking south back from island to dock and eastern skiff berth. Preserve layout."
+    },
+    {
+      "id": "BH-GIANTTREE-MASTER",
+      "name": "Lantern tree master",
+      "category": "GiantTree",
+      "file": "09_GiantTree/CW_BH_GIANTTREE_MASTER_V001.png",
+      "status": "planned",
+      "description": "Lantern tree master",
+      "purpose": "17m tall,20m broad crown,2.8m trunk with three spreading boughs, dense layered broad leaf masses, hanging lanterns, exposed roots joined to rocks, flowers and sitting nook. Located west of pond. Scale person.",
+      "used_by": [
+        "SM_BH_GiantTree"
+      ],
+      "views": "MASTER",
+      "version": 1,
+      "provenance": "pending",
+      "review_notes": [],
+      "prompt": "17m tall,20m broad crown,2.8m trunk with three spreading boughs, dense layered broad leaf masses, hanging lanterns, exposed roots joined to rocks, flowers and sitting nook. Located west of pond. Scale person."
+    },
+    {
+      "id": "BH-GIANTTREE-BASE-AND-SILHOUETTE",
+      "name": "Tree roots and modeling silhouette",
+      "category": "GiantTree",
+      "file": "09_GiantTree/CW_BH_GIANTTREE_BASE_AND_SILHOUETTE_V001.png",
+      "status": "planned",
+      "description": "Tree roots and modeling silhouette",
+      "purpose": "Same tree: base closeup roots and bench/hidden collectible recess; front silhouette; side silhouette. Three main boughs and crown widths preserved. Useful modeling sheet.",
+      "used_by": [
+        "SM_BH_GiantTree"
+      ],
+      "views": "BASE_AND_SILHOUETTE",
+      "version": 1,
+      "provenance": "pending",
+      "review_notes": [],
+      "prompt": "Same tree: base closeup roots and bench/hidden collectible recess; front silhouette; side silhouette. Three main boughs and crown widths preserved. Useful modeling sheet."
+    },
+    {
+      "id": "BH-POND-MASTER",
+      "name": "Central pond and arena master",
+      "category": "Pond",
+      "file": "10_Pond/CW_BH_POND_MASTER_V001.png",
+      "status": "planned",
+      "description": "Central pond and arena master",
+      "purpose": "46x34m irregular turquoise basin, village north, tree northwest, open22x18m flat eastern arena, southern tutorial bank, west waterfall outlet. Three-quarter from southeast, full shoreline readable, fish silhouettes in water, access gaps in fence.",
+      "used_by": [
+        "BP_BH_FishingZone",
+        "L_Bellheart"
+      ],
+      "views": "MASTER",
+      "version": 1,
+      "provenance": "pending",
+      "review_notes": [],
+      "prompt": "46x34m irregular turquoise basin, village north, tree northwest, open22x18m flat eastern arena, southern tutorial bank, west waterfall outlet. Three-quarter from southeast, full shoreline readable, fish silhouettes in water, access gaps in fence."
+    },
+    {
+      "id": "BH-POND-NORTH-SOUTH-BANKS",
+      "name": "Pond access bank views",
+      "category": "Pond",
+      "file": "10_Pond/CW_BH_POND_NORTH_SOUTH_BANKS_V001.png",
+      "status": "planned",
+      "description": "Pond access bank views",
+      "purpose": "Two matched bank views: from south fishing bank north toward village/tower; from north bank south toward arrival bridge. Rounded pale shoreline rocks, clear standing ledges, same pond.",
+      "used_by": [
+        "BP_BH_FishingZone"
+      ],
+      "views": "NORTH_SOUTH_BANKS",
+      "version": 1,
+      "provenance": "pending",
+      "review_notes": [],
+      "prompt": "Two matched bank views: from south fishing bank north toward village/tower; from north bank south toward arrival bridge. Rounded pale shoreline rocks, clear standing ledges, same pond."
+    },
+    {
+      "id": "BH-POND-WATERFALL-ARENA",
+      "name": "Waterfall outlet and Bellcrab emergence bay",
+      "category": "Pond",
+      "file": "10_Pond/CW_BH_POND_WATERFALL_ARENA_V001.png",
+      "status": "planned",
+      "description": "Waterfall outlet and Bellcrab emergence bay",
+      "purpose": "Two panels: west outlet waterfall from6m water surface to-18m airborne cascade; eastern 22x18m arena, clear emergence ramp, two broad retreat routes, sparse edge vegetation. No giant boulders blocking combat.",
+      "used_by": [
+        "BP_BH_FishingZone",
+        "BP_BH_BellcrabArena"
+      ],
+      "views": "WATERFALL_ARENA",
+      "version": 1,
+      "provenance": "pending",
+      "review_notes": [],
+      "prompt": "Two panels: west outlet waterfall from6m water surface to-18m airborne cascade; eastern 22x18m arena, clear emergence ramp, two broad retreat routes, sparse edge vegetation. No giant boulders blocking combat."
+    },
+    {
+      "id": "BH-NPC-ORIN-CHARACTER-SHEET",
+      "name": "Elder Orin definitive character sheet",
+      "category": "NPCs",
+      "file": "11_NPCs/CW_BH_NPC_ORIN_CHARACTER_SHEET_V001.png",
+      "status": "planned",
+      "description": "Elder Orin definitive character sheet",
+      "purpose": "174cm elderly lean man, long silver brows, short forked beard, warm thoughtful eyes, teal long waistcoat over cream shirt, umber trousers and boots, bronze bell pendant, rolled chart. All adults 6.5-head proportions, believable joints, expressive but not anime. FRONT / THREE QUARTER / SIDE / REAR / FACE CLOSEUP, same person across views. Cream studio background, clothing breakdown and palette swatches. No weapons unless specified.",
+      "used_by": [
+        "SK_BH_ElderOrin",
+        "BP_BH_NPC_ORIN"
+      ],
+      "views": "CHARACTER_SHEET",
+      "version": 1,
+      "provenance": "pending",
+      "review_notes": [],
+      "prompt": "174cm elderly lean man, long silver brows, short forked beard, warm thoughtful eyes, teal long waistcoat over cream shirt, umber trousers and boots, bronze bell pendant, rolled chart. All adults 6.5-head proportions, believable joints, expressive but not anime. FRONT / THREE QUARTER / SIDE / REAR / FACE CLOSEUP, same person across views. Cream studio background, clothing breakdown and palette swatches. No weapons unless specified."
+    },
+    {
+      "id": "BH-NPC-MIRA-CHARACTER-SHEET",
+      "name": "Mira definitive character sheet",
+      "category": "NPCs",
+      "file": "11_NPCs/CW_BH_NPC_MIRA_CHARACTER_SHEET_V001.png",
+      "status": "candidate",
+      "description": "Mira definitive character sheet",
+      "purpose": "168cm adult woman, warm brown skin, curly auburn hair in short practical braid, alert friendly eyes, teal bandana, cream rolled sleeves, fitted teal vest, ochre sash, brown boots, bait pouch and net basket. All adults 6.5-head proportions, believable joints, expressive but not anime. FRONT / THREE QUARTER / SIDE / REAR / FACE CLOSEUP, same person across views. Cream studio background, clothing breakdown and palette swatches. No weapons unless specified.",
+      "used_by": [
+        "SK_BH_Mira",
+        "BP_BH_NPC_MIRA"
+      ],
+      "views": "CHARACTER_SHEET",
+      "version": 1,
+      "provenance": "OpenAI image generation",
+      "review_notes": [],
+      "prompt": "168cm adult woman, warm brown skin, curly auburn hair in short practical braid, alert friendly eyes, teal bandana, cream rolled sleeves, fitted teal vest, ochre sash, brown boots, bait pouch and net basket. All adults 6.5-head proportions, believable joints, expressive but not anime. FRONT / THREE QUARTER / SIDE / REAR / FACE CLOSEUP, same person across views. Cream studio background, clothing breakdown and palette swatches. No weapons unless specified.",
+      "sha256": "886d738604bf57a486d584fffea894616e3d0c4e044ec982f4541ce3fa9c4983"
+    },
+    {
+      "id": "BH-NPC-BRAM-CHARACTER-SHEET",
+      "name": "Bram definitive character sheet",
+      "category": "NPCs",
+      "file": "11_NPCs/CW_BH_NPC_BRAM_CHARACTER_SHEET_V001.png",
+      "status": "candidate",
+      "description": "Bram definitive character sheet",
+      "purpose": "190cm broad adult craftsman, warm tan skin, thick swept dark hair, full square dark beard, friendly eyes and nose, cream rolled sleeves, dark brown leather apron with split-bell patch, bronze buckles, strong hands. All adults 6.5-head proportions, believable joints, expressive but not anime. FRONT / THREE QUARTER / SIDE / REAR / FACE CLOSEUP, same person across views. Cream studio background, clothing breakdown and palette swatches. No weapons unless specified.",
+      "used_by": [
+        "SK_BH_Bram",
+        "BP_BH_NPC_BRAM"
+      ],
+      "views": "CHARACTER_SHEET",
+      "version": 1,
+      "provenance": "OpenAI image generation",
+      "review_notes": [],
+      "prompt": "190cm broad adult craftsman, warm tan skin, thick swept dark hair, full square dark beard, friendly eyes and nose, cream rolled sleeves, dark brown leather apron with split-bell patch, bronze buckles, strong hands. All adults 6.5-head proportions, believable joints, expressive but not anime. FRONT / THREE QUARTER / SIDE / REAR / FACE CLOSEUP, same person across views. Cream studio background, clothing breakdown and palette swatches. No weapons unless specified.",
+      "sha256": "ae4ef664d892dff25cbaebe3cd616d97a1c7d496c2b6819a776481cfb5ec737c"
+    },
+    {
+      "id": "BH-NPC-TAVI-CHARACTER-SHEET",
+      "name": "Tavi definitive character sheet",
+      "category": "NPCs",
+      "file": "11_NPCs/CW_BH_NPC_TAVI_CHARACTER_SHEET_V001.png",
+      "status": "planned",
+      "description": "Tavi definitive character sheet",
+      "purpose": "172cm young adult villager, slim build, olive skin, short wavy black hair, freckles, cheerful face, mustard short jacket, teal scarf, cream undershirt, patched brown trousers, satchel and small brass telescope. All adults 6.5-head proportions, believable joints, expressive but not anime. FRONT / THREE QUARTER / SIDE / REAR / FACE CLOSEUP, same person across views. Cream studio background, clothing breakdown and palette swatches. No weapons unless specified.",
+      "used_by": [
+        "SK_BH_Tavi",
+        "BP_BH_NPC_TAVI"
+      ],
+      "views": "CHARACTER_SHEET",
+      "version": 1,
+      "provenance": "pending",
+      "review_notes": [],
+      "prompt": "172cm young adult villager, slim build, olive skin, short wavy black hair, freckles, cheerful face, mustard short jacket, teal scarf, cream undershirt, patched brown trousers, satchel and small brass telescope. All adults 6.5-head proportions, believable joints, expressive but not anime. FRONT / THREE QUARTER / SIDE / REAR / FACE CLOSEUP, same person across views. Cream studio background, clothing breakdown and palette swatches. No weapons unless specified."
+    },
+    {
+      "id": "BH-FISH-STYLE-MASTER",
+      "name": "Fish family design language",
+      "category": "Fish",
+      "file": "12_Fish/CW_BH_FISH_STYLE_MASTER_V001.png",
+      "status": "candidate",
+      "description": "Fish family design language",
+      "purpose": "Studio fish family sheet. Six distinct species: Cloudfin silver-blue round body with broad cloudlike fins; Pebble Carp moss olive deep body stone-like scale plates; Lantern Minnow tiny teal amber luminous throat; Silver Snapper sleek silver angular jaw and red-gold fins; Stonejaw broad slate head ochre dorsal; Golden Cloudfin exactly same body as Cloudfin with golden colors. Readable natural eyes, selective broad scales, stylized not realistic. Side silhouettes and head/fin/scale treatment.",
+      "used_by": [
+        "DA_BH_FishSpecies"
+      ],
+      "views": "STYLE_MASTER",
+      "version": 1,
+      "provenance": "OpenAI image generation",
+      "review_notes": [],
+      "prompt": "Studio fish family sheet. Six distinct species: Cloudfin silver-blue round body with broad cloudlike fins; Pebble Carp moss olive deep body stone-like scale plates; Lantern Minnow tiny teal amber luminous throat; Silver Snapper sleek silver angular jaw and red-gold fins; Stonejaw broad slate head ochre dorsal; Golden Cloudfin exactly same body as Cloudfin with golden colors. Readable natural eyes, selective broad scales, stylized not realistic. Side silhouettes and head/fin/scale treatment.",
+      "sha256": "3e692a296ac553fd6d0a619a3591ed122ebefa6e4eab6c30bb8a22948a69f524"
+    },
+    {
+      "id": "BH-FISH-CLOUDFIN",
+      "name": "Cloudfin species sheet",
+      "category": "Fish",
+      "file": "12_Fish/CW_BH_FISH_CLOUDFIN_V001.png",
+      "status": "planned",
+      "description": "Cloudfin species sheet",
+      "purpose": "35cm, silver blue plump body, broad pale cloud-shaped fins, soft blunt snout. Same stylization as fish master; SIDE / FRONT / TOP / THREE QUARTER views aligned, scale ruler and palette, cream studio background. Consistent same fish across all views.",
+      "used_by": [
+        "SM_BH_CLOUDFIN",
+        "DA_BH_CLOUDFIN"
+      ],
+      "views": "",
+      "version": 1,
+      "provenance": "pending",
+      "review_notes": [],
+      "prompt": "35cm, silver blue plump body, broad pale cloud-shaped fins, soft blunt snout. Same stylization as fish master; SIDE / FRONT / TOP / THREE QUARTER views aligned, scale ruler and palette, cream studio background. Consistent same fish across all views."
+    },
+    {
+      "id": "BH-FISH-PEBBLECARP",
+      "name": "Pebble Carp species sheet",
+      "category": "Fish",
+      "file": "12_Fish/CW_BH_FISH_PEBBLECARP_V001.png",
+      "status": "planned",
+      "description": "Pebble Carp species sheet",
+      "purpose": "45cm, deep olive body, rounded stone-like scale plates, short rounded ochre fins, small barbels. Same stylization as fish master; SIDE / FRONT / TOP / THREE QUARTER views aligned, scale ruler and palette, cream studio background. Consistent same fish across all views.",
+      "used_by": [
+        "SM_BH_PEBBLECARP",
+        "DA_BH_PEBBLECARP"
+      ],
+      "views": "",
+      "version": 1,
+      "provenance": "pending",
+      "review_notes": [],
+      "prompt": "45cm, deep olive body, rounded stone-like scale plates, short rounded ochre fins, small barbels. Same stylization as fish master; SIDE / FRONT / TOP / THREE QUARTER views aligned, scale ruler and palette, cream studio background. Consistent same fish across all views."
+    },
+    {
+      "id": "BH-FISH-LANTERNMINNOW",
+      "name": "Lantern Minnow species sheet",
+      "category": "Fish",
+      "file": "12_Fish/CW_BH_FISH_LANTERNMINNOW_V001.png",
+      "status": "planned",
+      "description": "Lantern Minnow species sheet",
+      "purpose": "18cm, slender teal body, glowing amber throat pouch, translucent rounded fins. Same stylization as fish master; SIDE / FRONT / TOP / THREE QUARTER views aligned, scale ruler and palette, cream studio background. Consistent same fish across all views.",
+      "used_by": [
+        "SM_BH_LANTERNMINNOW",
+        "DA_BH_LANTERNMINNOW"
+      ],
+      "views": "",
+      "version": 1,
+      "provenance": "pending",
+      "review_notes": [],
+      "prompt": "18cm, slender teal body, glowing amber throat pouch, translucent rounded fins. Same stylization as fish master; SIDE / FRONT / TOP / THREE QUARTER views aligned, scale ruler and palette, cream studio background. Consistent same fish across all views."
+    },
+    {
+      "id": "BH-FISH-SILVERSNAPPER",
+      "name": "Silver Snapper species sheet",
+      "category": "Fish",
+      "file": "12_Fish/CW_BH_FISH_SILVERSNAPPER_V001.png",
+      "status": "planned",
+      "description": "Silver Snapper species sheet",
+      "purpose": "55cm, sleek silver torpedo body, squared jaw, pointed red-gold fins. Same stylization as fish master; SIDE / FRONT / TOP / THREE QUARTER views aligned, scale ruler and palette, cream studio background. Consistent same fish across all views.",
+      "used_by": [
+        "SM_BH_SILVERSNAPPER",
+        "DA_BH_SILVERSNAPPER"
+      ],
+      "views": "",
+      "version": 1,
+      "provenance": "pending",
+      "review_notes": [],
+      "prompt": "55cm, sleek silver torpedo body, squared jaw, pointed red-gold fins. Same stylization as fish master; SIDE / FRONT / TOP / THREE QUARTER views aligned, scale ruler and palette, cream studio background. Consistent same fish across all views."
+    },
+    {
+      "id": "BH-FISH-STONEJAW",
+      "name": "Stonejaw species sheet",
+      "category": "Fish",
+      "file": "12_Fish/CW_BH_FISH_STONEJAW_V001.png",
+      "status": "planned",
+      "description": "Stonejaw species sheet",
+      "purpose": "75cm, broad slate blue armored head and thick ochre dorsal fin, heavy body. Same stylization as fish master; SIDE / FRONT / TOP / THREE QUARTER views aligned, scale ruler and palette, cream studio background. Consistent same fish across all views.",
+      "used_by": [
+        "SM_BH_STONEJAW",
+        "DA_BH_STONEJAW"
+      ],
+      "views": "",
+      "version": 1,
+      "provenance": "pending",
+      "review_notes": [],
+      "prompt": "75cm, broad slate blue armored head and thick ochre dorsal fin, heavy body. Same stylization as fish master; SIDE / FRONT / TOP / THREE QUARTER views aligned, scale ruler and palette, cream studio background. Consistent same fish across all views."
+    },
+    {
+      "id": "BH-FISH-GOLDENCLOUDFIN",
+      "name": "Golden Cloudfin species sheet",
+      "category": "Fish",
+      "file": "12_Fish/CW_BH_FISH_GOLDENCLOUDFIN_V001.png",
+      "status": "planned",
+      "description": "Golden Cloudfin species sheet",
+      "purpose": "35cm, identical mesh silhouette and fins to Cloudfin, warm gold body and cream-gold cloud fins; rare color variant. Same stylization as fish master; SIDE / FRONT / TOP / THREE QUARTER views aligned, scale ruler and palette, cream studio background. Consistent same fish across all views.",
+      "used_by": [
+        "SM_BH_GOLDENCLOUDFIN",
+        "DA_BH_GOLDENCLOUDFIN"
+      ],
+      "views": "",
+      "version": 1,
+      "provenance": "pending",
+      "review_notes": [],
+      "prompt": "35cm, identical mesh silhouette and fins to Cloudfin, warm gold body and cream-gold cloud fins; rare color variant. Same stylization as fish master; SIDE / FRONT / TOP / THREE QUARTER views aligned, scale ruler and palette, cream studio background. Consistent same fish across all views."
+    },
+    {
+      "id": "BH-BELLCRAB-MASTER",
+      "name": "Bellcrab boss master",
+      "category": "Bellcrab",
+      "file": "13_Bellcrab/CW_BH_BELLCRAB_MASTER_V001.png",
+      "status": "planned",
+      "description": "Bellcrab boss master",
+      "purpose": "Original fantasy crab 4.8m wide claws extended,2.2m high,3.5m deep. Six walking legs plus two large blunt claws, chunky domed stone-blue shell with three bronze fragments, warm ochre joints. Teal inset weakpoint under central hinged bronze shell plate, split-bell motif. Non-grotesque readable friendly-dangerous silhouette. Three-quarter on cream backdrop, 1.8m human scale.",
+      "used_by": [
+        "SK_BH_Bellcrab",
+        "BP_BH_Bellcrab"
+      ],
+      "views": "MASTER",
+      "version": 1,
+      "provenance": "pending",
+      "review_notes": [],
+      "prompt": "Original fantasy crab 4.8m wide claws extended,2.2m high,3.5m deep. Six walking legs plus two large blunt claws, chunky domed stone-blue shell with three bronze fragments, warm ochre joints. Teal inset weakpoint under central hinged bronze shell plate, split-bell motif. Non-grotesque readable friendly-dangerous silhouette. Three-quarter on cream backdrop, 1.8m human scale."
+    },
+    {
+      "id": "BH-BELLCRAB-TURNAROUND",
+      "name": "Bellcrab aligned turnaround",
+      "category": "Bellcrab",
+      "file": "13_Bellcrab/CW_BH_BELLCRAB_TURNAROUND_V001.png",
+      "status": "planned",
+      "description": "Bellcrab aligned turnaround",
+      "purpose": "Same boss FRONT / SIDE / REAR / TOP, exactly six walking legs plus two claws, same three bronze fragments and weakpoint plate. Neutral backdrop with scale markers.",
+      "used_by": [
+        "SK_BH_Bellcrab"
+      ],
+      "views": "TURNAROUND",
+      "version": 1,
+      "provenance": "pending",
+      "review_notes": [],
+      "prompt": "Same boss FRONT / SIDE / REAR / TOP, exactly six walking legs plus two claws, same three bronze fragments and weakpoint plate. Neutral backdrop with scale markers."
+    },
+    {
+      "id": "BH-BELLCRAB-ATTACK-WEAKPOINT-SCALE",
+      "name": "Boss telegraphs and weakpoint",
+      "category": "Bellcrab",
+      "file": "13_Bellcrab/CW_BH_BELLCRAB_ATTACK_WEAKPOINT_SCALE_V001.png",
+      "status": "planned",
+      "description": "Boss telegraphs and weakpoint",
+      "purpose": "Same boss multi-panel animation reference: raised claw slam telegraph, forward charge crouch, double swipe broad arc, opened central bronze plate exposing teal weakpoint, 1.8m human beside4.8m boss. Arrows only indicate attacks, not extra limbs.",
+      "used_by": [
+        "ABP_BH_Bellcrab",
+        "BP_BH_Bellcrab"
+      ],
+      "views": "ATTACK_WEAKPOINT_SCALE",
+      "version": 1,
+      "provenance": "pending",
+      "review_notes": [],
+      "prompt": "Same boss multi-panel animation reference: raised claw slam telegraph, forward charge crouch, double swipe broad arc, opened central bronze plate exposing teal weakpoint, 1.8m human beside4.8m boss. Arrows only indicate attacks, not extra limbs."
+    },
+    {
+      "id": "BH-ITEM-RODS",
+      "name": "Old Rod and Basic Rod",
+      "category": "Items",
+      "file": "14_Items/CW_BH_ITEM_RODS_V001.png",
+      "status": "planned",
+      "description": "Old Rod and Basic Rod",
+      "purpose": "Old Rod 190cm tapered weathered oak simple iron reel, cord wraps; Basic Rod 210cm straight honey oak, brass reel, reinforced teal wraps. Side, reel detail and line-guide detail of both. Clean cream modeling reference sheet, plausible crafted construction.",
+      "used_by": [
+        "SM_BH_OldRod",
+        "SM_BH_BasicRod"
+      ],
+      "views": "RODS",
+      "version": 1,
+      "provenance": "pending",
+      "review_notes": [],
+      "prompt": "Old Rod 190cm tapered weathered oak simple iron reel, cord wraps; Basic Rod 210cm straight honey oak, brass reel, reinforced teal wraps. Side, reel detail and line-guide detail of both. Clean cream modeling reference sheet, plausible crafted construction."
+    },
+    {
+      "id": "BH-ITEM-KNIFE-LINE-HOOK",
+      "name": "Iron Knife, Reinforced Line and Basic Hook",
+      "category": "Items",
+      "file": "14_Items/CW_BH_ITEM_KNIFE_LINE_HOOK_V001.png",
+      "status": "planned",
+      "description": "Iron Knife, Reinforced Line and Basic Hook",
+      "purpose": "28cm iron working knife, broad single-edge blade, leather cord grip, bronze ring pommel;12cm line spool dark iron with cord;3cm bronze fishing hook. Orthographic and three-quarter views each, measured scale, no modern plastic. Clean cream modeling reference sheet, plausible crafted construction.",
+      "used_by": [
+        "SM_BH_IronKnife",
+        "SM_BH_ReinforcedLine",
+        "SM_BH_BasicHook"
+      ],
+      "views": "KNIFE_LINE_HOOK",
+      "version": 1,
+      "provenance": "pending",
+      "review_notes": [],
+      "prompt": "28cm iron working knife, broad single-edge blade, leather cord grip, bronze ring pommel;12cm line spool dark iron with cord;3cm bronze fishing hook. Orthographic and three-quarter views each, measured scale, no modern plastic. Clean cream modeling reference sheet, plausible crafted construction."
+    },
+    {
+      "id": "BH-ITEM-BAIT-BASKET",
+      "name": "Bellcrab Bait and Fish Basket",
+      "category": "Items",
+      "file": "14_Items/CW_BH_ITEM_BAIT_BASKET_V001.png",
+      "status": "planned",
+      "description": "Bellcrab Bait and Fish Basket",
+      "purpose": "15cm bronze chime-lure enclosed in braided teal bait bundle with hook eye;55x35x40cm woven willow fish basket, leather shoulder strap, hinged lid, broad opening. Multiple angles and materials. Clean cream modeling reference sheet, plausible crafted construction.",
+      "used_by": [
+        "SM_BH_BellcrabBait",
+        "SM_BH_FishBasket"
+      ],
+      "views": "BAIT_BASKET",
+      "version": 1,
+      "provenance": "pending",
+      "review_notes": [],
+      "prompt": "15cm bronze chime-lure enclosed in braided teal bait bundle with hook eye;55x35x40cm woven willow fish basket, leather shoulder strap, hinged lid, broad opening. Multiple angles and materials. Clean cream modeling reference sheet, plausible crafted construction."
+    },
+    {
+      "id": "BH-ITEM-BELLHEART",
+      "name": "Bellheart quest object",
+      "category": "Items",
+      "file": "14_Items/CW_BH_ITEM_BELLHEART_V001.png",
+      "status": "planned",
+      "description": "Bellheart quest object",
+      "purpose": "70cm tall bronze bell clapper, rounded weighted lower bulb, narrow neck, keyed top pivot eye, teal inlay ring, original split-bell emblem. Side/front/top and hand scale. Must fit tower socket; portable with both hands. Clean cream modeling reference sheet, plausible crafted construction.",
+      "used_by": [
+        "SM_BH_Bellheart"
+      ],
+      "views": "BELLHEART",
+      "version": 1,
+      "provenance": "pending",
+      "review_notes": [],
+      "prompt": "70cm tall bronze bell clapper, rounded weighted lower bulb, narrow neck, keyed top pivot eye, teal inlay ring, original split-bell emblem. Side/front/top and hand scale. Must fit tower socket; portable with both hands. Clean cream modeling reference sheet, plausible crafted construction."
+    },
+    {
+      "id": "BH-FP-ROD-HELD",
+      "name": "First-person rod presentation",
+      "category": "Items",
+      "file": "14_Items/CW_BH_FP_ROD_HELD_V001.png",
+      "status": "planned",
+      "description": "First-person rod presentation",
+      "purpose": "Player eye168cm. Both believable gloved hands, fingerless brown leather, cream sleeves; basic oak rod and brass reel held lower right, line guides visible, center view unobstructed. Fishing pond background softly simplified. No UI. Correct hand anatomy.",
+      "used_by": [
+        "SK_BH_PlayerArms",
+        "SM_BH_BasicRod"
+      ],
+      "views": "ROD_HELD",
+      "version": 1,
+      "provenance": "pending",
+      "review_notes": [],
+      "prompt": "Player eye168cm. Both believable gloved hands, fingerless brown leather, cream sleeves; basic oak rod and brass reel held lower right, line guides visible, center view unobstructed. Fishing pond background softly simplified. No UI. Correct hand anatomy."
+    },
+    {
+      "id": "BH-FP-KNIFE-HELD",
+      "name": "First-person knife presentation",
+      "category": "Items",
+      "file": "14_Items/CW_BH_FP_KNIFE_HELD_V001.png",
+      "status": "planned",
+      "description": "First-person knife presentation",
+      "purpose": "Same hands/gloves/sleeves as rod view.28cm iron knife in right hand low ready pose; open left hand lower-left. Three small grip/attack follow-through details. Center view unobstructed, village backdrop, no gore/no UI.",
+      "used_by": [
+        "SK_BH_PlayerArms",
+        "SM_BH_IronKnife"
+      ],
+      "views": "KNIFE_HELD",
+      "version": 1,
+      "provenance": "pending",
+      "review_notes": [],
+      "prompt": "Same hands/gloves/sleeves as rod view.28cm iron knife in right hand low ready pose; open left hand lower-left. Three small grip/attack follow-through details. Center view unobstructed, village backdrop, no gore/no UI."
+    },
+    {
+      "id": "BH-PROPSET-WOOD",
+      "name": "Wood prop family",
+      "category": "Props",
+      "file": "15_Props/CW_BH_PROPSET_WOOD_V001.png",
+      "status": "planned",
+      "description": "Wood prop family",
+      "purpose": "Labeled reusable prop family sheet: crate, barrel, bucket, bench, table, carved sign, two-rail fence section, dock post. Same honey oak/dark timber/pale stone/bronze/teal materials, generous spacing, separate 3/4 objects and a 1m scale ruler, no random extra props.",
+      "used_by": [
+        "SM_BH_Props_WOOD"
+      ],
+      "views": "WOOD",
+      "version": 1,
+      "provenance": "pending",
+      "review_notes": [],
+      "prompt": "Labeled reusable prop family sheet: crate, barrel, bucket, bench, table, carved sign, two-rail fence section, dock post. Same honey oak/dark timber/pale stone/bronze/teal materials, generous spacing, separate 3/4 objects and a 1m scale ruler, no random extra props."
+    },
+    {
+      "id": "BH-PROPSET-FISHING",
+      "name": "Fishing prop family",
+      "category": "Props",
+      "file": "15_Props/CW_BH_PROPSET_FISHING_V001.png",
+      "status": "planned",
+      "description": "Fishing prop family",
+      "purpose": "Labeled reusable prop family sheet: net, coiled rope, hook, cork float, bait jar, fish rack, rod stand, fish basket. Same honey oak/dark timber/pale stone/bronze/teal materials, generous spacing, separate 3/4 objects and a 1m scale ruler, no random extra props.",
+      "used_by": [
+        "SM_BH_Props_FISHING"
+      ],
+      "views": "FISHING",
+      "version": 1,
+      "provenance": "pending",
+      "review_notes": [],
+      "prompt": "Labeled reusable prop family sheet: net, coiled rope, hook, cork float, bait jar, fish rack, rod stand, fish basket. Same honey oak/dark timber/pale stone/bronze/teal materials, generous spacing, separate 3/4 objects and a 1m scale ruler, no random extra props."
+    },
+    {
+      "id": "BH-PROPSET-FORGE",
+      "name": "Forge prop family",
+      "category": "Props",
+      "file": "15_Props/CW_BH_PROPSET_FORGE_V001.png",
+      "status": "planned",
+      "description": "Forge prop family",
+      "purpose": "Labeled reusable prop family sheet: anvil, hand-cranked grindstone, hammer, tongs, wall tool rack. Same honey oak/dark timber/pale stone/bronze/teal materials, generous spacing, separate 3/4 objects and a 1m scale ruler, no random extra props.",
+      "used_by": [
+        "SM_BH_Props_FORGE"
+      ],
+      "views": "FORGE",
+      "version": 1,
+      "provenance": "pending",
+      "review_notes": [],
+      "prompt": "Labeled reusable prop family sheet: anvil, hand-cranked grindstone, hammer, tongs, wall tool rack. Same honey oak/dark timber/pale stone/bronze/teal materials, generous spacing, separate 3/4 objects and a 1m scale ruler, no random extra props."
+    },
+    {
+      "id": "BH-PROPSET-VILLAGE",
+      "name": "Village prop family",
+      "category": "Props",
+      "file": "15_Props/CW_BH_PROPSET_VILLAGE_V001.png",
+      "status": "planned",
+      "description": "Village prop family",
+      "purpose": "Labeled reusable prop family sheet: warm lantern, teal split-bell banner, flower pot, striped teal/cream market awning, notice board, small bronze bell ornament. Same honey oak/dark timber/pale stone/bronze/teal materials, generous spacing, separate 3/4 objects and a 1m scale ruler, no random extra props.",
+      "used_by": [
+        "SM_BH_Props_VILLAGE"
+      ],
+      "views": "VILLAGE",
+      "version": 1,
+      "provenance": "pending",
+      "review_notes": [],
+      "prompt": "Labeled reusable prop family sheet: warm lantern, teal split-bell banner, flower pot, striped teal/cream market awning, notice board, small bronze bell ornament. Same honey oak/dark timber/pale stone/bronze/teal materials, generous spacing, separate 3/4 objects and a 1m scale ruler, no random extra props."
+    },
+    {
+      "id": "BH-MATERIAL-BIBLE",
+      "name": "Material and surface swatches",
+      "category": "Style",
+      "file": "00_Style/CW_BH_MATERIAL_BIBLE_V001.png",
+      "status": "candidate",
+      "description": "Material and surface swatches",
+      "purpose": "Fourteen labeled samples: honey oak, dark timber, pale limestone, weathered limestone, bronze, iron, rope, teal fabric, cream cloth, leather, meadow grass, cream flowers, turquoise water, teal roof shingles. Stylized crafted believable surfaces, broad detail not noisy grime. Palette from bible, daylight-neutral presentation.",
+      "used_by": [
+        "M_BH_Master"
+      ],
+      "views": "BIBLE",
+      "version": 1,
+      "provenance": "OpenAI image generation",
+      "review_notes": [],
+      "prompt": "Fourteen labeled samples: honey oak, dark timber, pale limestone, weathered limestone, bronze, iron, rope, teal fabric, cream cloth, leather, meadow grass, cream flowers, turquoise water, teal roof shingles. Stylized crafted believable surfaces, broad detail not noisy grime. Palette from bible, daylight-neutral presentation.",
+      "sha256": "10c484e64942e7703c2fa07b49702151af9222b0752e8cedb006e009c5e3c999"
+    },
+    {
+      "id": "BH-LIGHTING-DAY-MASTER",
+      "name": "Lighting day master",
+      "category": "Lighting",
+      "file": "17_Lighting/CW_BH_LIGHTING_DAY_MASTER_V001.png",
+      "status": "planned",
+      "description": "Lighting day master",
+      "purpose": "Full island late-morning sunlight study matching master aerial camera and layout, warm southwest sun, cool fill, clouds and turquoise pond. Small exposure/color swatches optional, no sunset, no bloom haze obscuring structure.",
+      "used_by": [
+        "L_Bellheart"
+      ],
+      "views": "DAY_MASTER",
+      "version": 1,
+      "provenance": "pending",
+      "review_notes": [],
+      "prompt": "Full island late-morning sunlight study matching master aerial camera and layout, warm southwest sun, cool fill, clouds and turquoise pond. Small exposure/color swatches optional, no sunset, no bloom haze obscuring structure."
+    },
+    {
+      "id": "BH-LIGHTING-SHOP-INTERIOR",
+      "name": "Lighting shop interior",
+      "category": "Lighting",
+      "file": "17_Lighting/CW_BH_LIGHTING_SHOP_INTERIOR_V001.png",
+      "status": "planned",
+      "description": "Lighting shop interior",
+      "purpose": "Inside Bram forge toward south counter and sunlit village; warm lantern bounce, readable dark timber and tools, no night lighting. Small exposure/color swatches optional, no sunset, no bloom haze obscuring structure.",
+      "used_by": [
+        "L_Bellheart"
+      ],
+      "views": "SHOP_INTERIOR",
+      "version": 1,
+      "provenance": "pending",
+      "review_notes": [],
+      "prompt": "Inside Bram forge toward south counter and sunlit village; warm lantern bounce, readable dark timber and tools, no night lighting. Small exposure/color swatches optional, no sunset, no bloom haze obscuring structure."
+    },
+    {
+      "id": "BH-LIGHTING-BELLTOWER",
+      "name": "Lighting belltower",
+      "category": "Lighting",
+      "file": "17_Lighting/CW_BH_LIGHTING_BELLTOWER_V001.png",
+      "status": "planned",
+      "description": "Lighting belltower",
+      "purpose": "Same tower viewed up northern path; pale stone remains detailed in warm sun, blue sky, soft shadows, bronze bell clear. Small exposure/color swatches optional, no sunset, no bloom haze obscuring structure.",
+      "used_by": [
+        "L_Bellheart"
+      ],
+      "views": "BELLTOWER",
+      "version": 1,
+      "provenance": "pending",
+      "review_notes": [],
+      "prompt": "Same tower viewed up northern path; pale stone remains detailed in warm sun, blue sky, soft shadows, bronze bell clear. Small exposure/color swatches optional, no sunset, no bloom haze obscuring structure."
+    },
+    {
+      "id": "BH-UI-HUD-MASTER",
+      "name": "UI hud master",
+      "category": "UI",
+      "file": "16_UI/CW_BH_UI_HUD_MASTER_V001.png",
+      "status": "planned",
+      "description": "UI hud master",
+      "purpose": "Full original HUD over pond eye-level view: lower-left heart100/100, lower-center four small slots rod/knife/line/basket, upper-right crown32, quest below THE MISSING BELLHEART / Speak to Orin, tiny crosshair and E Interact, small Cloudfin landed notice. Fantasy crafted but highly legible UI, dark teal backing, original simple crown and split-bell icon. Do not trace supplied HUD.",
+      "used_by": [
+        "WBP_BH_HUD_MASTER"
+      ],
+      "views": "HUD_MASTER",
+      "version": 1,
+      "provenance": "pending",
+      "review_notes": [],
+      "prompt": "Full original HUD over pond eye-level view: lower-left heart100/100, lower-center four small slots rod/knife/line/basket, upper-right crown32, quest below THE MISSING BELLHEART / Speak to Orin, tiny crosshair and E Interact, small Cloudfin landed notice. Fantasy crafted but highly legible UI, dark teal backing, original simple crown and split-bell icon. Do not trace supplied HUD."
+    },
+    {
+      "id": "BH-UI-SHOP-DIALOGUE",
+      "name": "UI shop dialogue",
+      "category": "UI",
+      "file": "16_UI/CW_BH_UI_SHOP_DIALOGUE_V001.png",
+      "status": "planned",
+      "description": "UI shop dialogue",
+      "purpose": "Two clearly separated UI studies over muted world: SHOP small teal card IRON KNIFE / Damage8 to18 /24 crowns /E Buy; DIALOGUE lower narrow panel MIRA / The pond is restless today. / Tell me about fishing. / Show me your supplies. Readable cream typography and restrained bronze corners. Fantasy crafted but highly legible UI, dark teal backing, original simple crown and split-bell icon. Do not trace supplied HUD.",
+      "used_by": [
+        "WBP_BH_SHOP_DIALOGUE"
+      ],
+      "views": "SHOP_DIALOGUE",
+      "version": 1,
+      "provenance": "pending",
+      "review_notes": [],
+      "prompt": "Two clearly separated UI studies over muted world: SHOP small teal card IRON KNIFE / Damage8 to18 /24 crowns /E Buy; DIALOGUE lower narrow panel MIRA / The pond is restless today. / Tell me about fishing. / Show me your supplies. Readable cream typography and restrained bronze corners. Fantasy crafted but highly legible UI, dark teal backing, original simple crown and split-bell icon. Do not trace supplied HUD."
+    },
+    {
+      "id": "BH-UI-FISHING-QUEST",
+      "name": "UI fishing quest",
+      "category": "UI",
+      "file": "16_UI/CW_BH_UI_FISHING_QUEST_V001.png",
+      "status": "planned",
+      "description": "UI fishing quest",
+      "purpose": "Two clearly separated original UI studies: compact fishing tension arc and HOLD TO REEL with release hint; quest update panel THE MISSING BELLHEART / Bring the bronze fragment to Orin with three small checklist rows. No giant menus. Fantasy crafted but highly legible UI, dark teal backing, original simple crown and split-bell icon. Do not trace supplied HUD.",
+      "used_by": [
+        "WBP_BH_FISHING_QUEST"
+      ],
+      "views": "FISHING_QUEST",
+      "version": 1,
+      "provenance": "pending",
+      "review_notes": [],
+      "prompt": "Two clearly separated original UI studies: compact fishing tension arc and HOLD TO REEL with release hint; quest update panel THE MISSING BELLHEART / Bring the bronze fragment to Orin with three small checklist rows. No giant menus. Fantasy crafted but highly legible UI, dark teal backing, original simple crown and split-bell icon. Do not trace supplied HUD."
+    },
+    {
+      "id": "BH-GAMEPLAY-ARRIVAL-FISHING-MIRA",
+      "name": "Gameplay moments arrival fishing mira",
+      "category": "Island",
+      "file": "01_Island/CW_BH_GAMEPLAY_ARRIVAL_FISHING_MIRA_V001.png",
+      "status": "planned",
+      "description": "Gameplay moments arrival fishing mira",
+      "purpose": "Three wide cinematic gameplay panels: first-person arrival at south dock looking north; fishing central pond from south bank toward village; talking to Mira at western fishing-shop counter. Same island and Mira. Actual playable first-person framing with restrained minimal HUD, gloves consistent. These are concept targets not screenshots.",
+      "used_by": [
+        "L_Bellheart"
+      ],
+      "views": "ARRIVAL_FISHING_MIRA",
+      "version": 1,
+      "provenance": "pending",
+      "review_notes": [],
+      "prompt": "Three wide cinematic gameplay panels: first-person arrival at south dock looking north; fishing central pond from south bank toward village; talking to Mira at western fishing-shop counter. Same island and Mira. Actual playable first-person framing with restrained minimal HUD, gloves consistent. These are concept targets not screenshots."
+    },
+    {
+      "id": "BH-GAMEPLAY-FORGE-PATH-BOSS",
+      "name": "Gameplay moments forge path boss",
+      "category": "Island",
+      "file": "01_Island/CW_BH_GAMEPLAY_FORGE_PATH_BOSS_V001.png",
+      "status": "planned",
+      "description": "Gameplay moments forge path boss",
+      "purpose": "Three wide gameplay panels: shopping at Bram forge, walking north from plaza toward same bell tower, Bellcrab emerging onto eastern pond bank. Same Bram and boss references. Actual playable first-person framing with restrained minimal HUD, gloves consistent. These are concept targets not screenshots.",
+      "used_by": [
+        "L_Bellheart"
+      ],
+      "views": "FORGE_PATH_BOSS",
+      "version": 1,
+      "provenance": "pending",
+      "review_notes": [],
+      "prompt": "Three wide gameplay panels: shopping at Bram forge, walking north from plaza toward same bell tower, Bellcrab emerging onto eastern pond bank. Same Bram and boss references. Actual playable first-person framing with restrained minimal HUD, gloves consistent. These are concept targets not screenshots."
+    },
+    {
+      "id": "BH-GAMEPLAY-COMBAT-INSTALL-FINALE",
+      "name": "Gameplay moments combat install finale",
+      "category": "Island",
+      "file": "01_Island/CW_BH_GAMEPLAY_COMBAT_INSTALL_FINALE_V001.png",
+      "status": "planned",
+      "description": "Gameplay moments combat install finale",
+      "purpose": "Three wide gameplay panels: first-person knife against telegraphing Bellcrab on eastern arena; carrying/installing70cm Bellheart at tower service-deck socket; bronze bell ringing with clearing cloud band and restored village below. Late morning throughout. Actual playable first-person framing with restrained minimal HUD, gloves consistent. These are concept targets not screenshots.",
+      "used_by": [
+        "L_Bellheart"
+      ],
+      "views": "COMBAT_INSTALL_FINALE",
+      "version": 1,
+      "provenance": "pending",
+      "review_notes": [],
+      "prompt": "Three wide gameplay panels: first-person knife against telegraphing Bellcrab on eastern arena; carrying/installing70cm Bellheart at tower service-deck socket; bronze bell ringing with clearing cloud band and restored village below. Late morning throughout. Actual playable first-person framing with restrained minimal HUD, gloves consistent. These are concept targets not screenshots."
+    }
+  ]
+}
