@@ -1,5 +1,9 @@
 # Greybox layout revisions — 2026-09-08
 
+## 2026-09-10 — side-route playtest preparation
+
+The side route now passes west of the giant-tree trunk, approaches Mira and Bram from their open south fronts, and reaches the workshop from its south entrance. The previous polyline collided with the tree and crossed building walls. Landmark positions and building footprints are unchanged. `Side` in BHWorld.cpp is the implemented route; BHSideWalk verified grounded traversal in 50.61 seconds. The arrival-to-restoration regression and persistence tests also pass. These technical checks do not lock the layout; the first human playtest is pending.
+
 Reference landmark coordinates and footprints are unchanged. Collision testing requires the following path refinements to the 2D reference polyline:
 
 - Dock ramp reaches the 7 m south bank elevation at Y=-54 m, before the terrace edge.

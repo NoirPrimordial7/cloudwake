@@ -20,7 +20,15 @@
 
 static const FLinearColor Stone(.52,.54,.53), PathColor(.65,.48,.22), Teal(.08,.35,.38), Wood(.32,.22,.13);
 ABHWorld::ABHWorld() { PrimaryActorTick.bCanEverTick=false; }
-void ABHWorld::BeginPlay() { Super::BeginPlay(); if(!Built) Build(); }
+void ABHWorld::BeginPlay() {
+ Super::BeginPlay(); if(!Built) Build();
+ // Non-colliding cloud-volume placeholders, below the playable island. Final volumetrics follow art review.
+ for(int32 I=0;I<32;++I) {
+  const float A=I*2.f*PI/32.f; const float Radius=180.f+(I%3)*45.f;
+  AActor* Cloud=Box(FString::Printf(TEXT("Cloudsea placeholder %d"),I),FVector(FMath::Cos(A)*Radius,FMath::Sin(A)*Radius,-38-(I%3)*8),FVector(130,100,25),FLinearColor(.88f,.94f,1.f),false);
+  if(auto* Mesh=Cast<AStaticMeshActor>(Cloud))Mesh->GetStaticMeshComponent()->SetStaticMesh(LoadObject<UStaticMesh>(nullptr,TEXT("/Engine/BasicShapes/Sphere.Sphere")));
+ }
+}
 AActor* ABHWorld::Box(const FString& Name,FVector P,FVector Size,FLinearColor Color,bool Collision) {
  AStaticMeshActor* A=GetWorld()->SpawnActor<AStaticMeshActor>(P*100,FRotator::ZeroRotator);
  A->Tags.Add(FName(*Name));
@@ -92,7 +100,7 @@ void ABHWorld::Build() {
  const TArray<FVector> Main={ {0,-86,0},{0,-65,3},{0,-54,7},{0,-49,7},{17,-35,7},{27,-21,7},{29,5,7},{16,18,14},{12,22,14},{0,30,14},{-10,44,20},{-14,53,20},{-14,63,20},{-3,65,26},{0,65,26},{0,76,26} };
  for(int32 I=1;I<Main.Num();++I)Path(Main[I-1],Main[I]);
  Path(FVector(-14,53,20),FVector(-20,53,20));
- const TArray<FVector> Side={ {-10,-43,7},{-29,-36,7},{-47,-24,6},{-53,-2,9},{-51,17,11},{-34,5,10},{-24,30,14},{0,30,14},{27,30,14},{46,10,10} };
+ const TArray<FVector> Side={ {-10,-43,7},{-29,-36,7},{-47,-24,6},{-53,-2,9},{-51,17,11},{-38,5,10},{-38,17,10},{-24,18,14},{-24,24,14},{0,24,14},{27,24,14},{35,24,14},{38,3,10},{46,3,10} };
  for(int32 I=1;I<Side.Num();++I)Path(Side[I-1],Side[I],1.8);
  Path(FVector(0,-49,7),FVector(-10,-43,7)); Path(FVector(29,5,7),FVector(26,-11,7));
  Path(FVector(26,-11,7),FVector(27,-21,7)); Path(FVector(0,76,26),FVector(0,92,30));
@@ -140,7 +148,7 @@ ABHGameMode::ABHGameMode() { DefaultPawnClass=ABHPlayer::StaticClass(); HUDClass
 void ABHGameMode::BeginPlay() {
  Super::BeginPlay(); if(!UGameplayStatics::GetActorOfClass(this,ABHWorld::StaticClass())) GetWorld()->SpawnActor<ABHWorld>();
  if(APawn* P=UGameplayStatics::GetPlayerPawn(this,0)) { P->SetActorLocation(FVector(0,-8600,110)); if(P->GetController())P->GetController()->SetControlRotation(FRotator(0,90,0)); }
- if(FParse::Param(FCommandLine::Get(),TEXT("BHTest")) || FParse::Param(FCommandLine::Get(),TEXT("BHWalk")) || FParse::Param(FCommandLine::Get(),TEXT("BHSaveTest"))) GetWorld()->SpawnActor<ABHTestDriver>();
+ if(FParse::Param(FCommandLine::Get(),TEXT("BHTest")) || (FParse::Param(FCommandLine::Get(),TEXT("BHWalk")) || FParse::Param(FCommandLine::Get(),TEXT("BHSideWalk"))) || FParse::Param(FCommandLine::Get(),TEXT("BHSaveTest"))) GetWorld()->SpawnActor<ABHTestDriver>();
 }
 void ABHWorld::Restore(bool IsRestored, bool PlayCue) {
  Restored=IsRestored;
@@ -165,7 +173,28 @@ void ABHHUD::DrawHUD() {
  }
  DrawLine(W*.5f-6,H*.5f,W*.5f+6,H*.5f,FLinearColor::White); DrawLine(W*.5f,H*.5f-6,W*.5f,H*.5f+6,FLinearColor::White);
  if(P->Target) DrawText(P->Target->Prompt(P),FLinearColor(1,.85,.4),W*.5f-180,H*.5f+35,nullptr,1.2);
- if(P->MessageTime>0) { DrawRect(FLinearColor(0,0,0,.8),30,H-180,W-60,65); DrawText(P->Message,FLinearColor::White,45,H-160,nullptr,.95); }
+ if(P->MessageTime>0) {
+  const bool Talking=IsValid(P->DialogueSpeaker);
+  FVector2D Anchor=FVector2D::ZeroVector;
+  bool Visible=!Talking;
+  if(Talking && FVector::Dist(P->GetActorLocation(),P->DialogueSpeaker->GetActorLocation())<650)
+   Visible=GetOwningPlayerController()->ProjectWorldLocationToScreen(P->DialogueSpeaker->GetActorLocation()+FVector(0,0,110),Anchor);
+  if(Visible) {
+   const float PanelW=FMath::Min(460.f,W-40.f);
+   TArray<FString> Words,Lines; P->Message.ParseIntoArray(Words,TEXT(" "),true); FString Line;
+   for(const FString& Word:Words) { FString Candidate=Line.IsEmpty()?Word:Line+TEXT(" ")+Word; float TW,TH; GetTextSize(Candidate,TW,TH,nullptr,1.f);
+    if(TW>PanelW-32 && !Line.IsEmpty()) { Lines.Add(Line); Line=Word; } else Line=Candidate; }
+   if(!Line.IsEmpty())Lines.Add(Line);
+   const float PanelH=44+Lines.Num()*21;
+   const float X=Talking?FMath::Clamp(Anchor.X-PanelW*.5f,20.f,W-PanelW-20):30.f;
+   const float Y=Talking?FMath::Clamp(Anchor.Y-PanelH-18,115.f,FMath::Max(115.f,H-PanelH-100)):H-PanelH-100;
+   DrawRect(FLinearColor(.035f,.09f,.10f,.94f),X,Y,PanelW,PanelH);
+   DrawRect(FLinearColor(.75f,.58f,.28f),X,Y,PanelW,3);
+   DrawText(Talking?P->SpeakerName:TEXT("JOURNAL"),FLinearColor(1,.82f,.48f),X+16,Y+10);
+   for(int32 I=0;I<Lines.Num();++I)DrawText(Lines[I],FLinearColor::White,X+16,Y+35+I*21);
+   if(Talking && Anchor.Y>Y+PanelH && Anchor.Y<H-90)DrawLine(X+PanelW*.5f,Y+PanelH,Anchor.X,Anchor.Y,FLinearColor(.75f,.58f,.28f));
+  }
+ }
  if(P->HookedFish) { DrawRect(FLinearColor(.1,.1,.1),W*.5f-150,H-240,300,20); DrawRect(FLinearColor(P->Tension,1-P->Tension,.15),W*.5f-150,H-240,300*P->Tension,20); DrawText(TEXT("LINE TENSION - release to ease"),FLinearColor::White,W*.5f-150,H-265); }
  if(P->Charging) DrawText(FString::Printf(TEXT("CAST %.0f%% - release"),FMath::Min(P->CastCharge/1.5f,1.f)*100),FLinearColor::White,W*.5f-100,H*.5f+75);
 }

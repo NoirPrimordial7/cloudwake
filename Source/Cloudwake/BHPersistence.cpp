@@ -8,9 +8,10 @@
 #include "Misc/Parse.h"
 
 bool ABHPlayer::IsLoopTest() const {
- return FParse::Param(FCommandLine::Get(),TEXT("BHTest")) || FParse::Param(FCommandLine::Get(),TEXT("BHWalk"));
+ return FParse::Param(FCommandLine::Get(),TEXT("BHTest")) || (FParse::Param(FCommandLine::Get(),TEXT("BHWalk")) || FParse::Param(FCommandLine::Get(),TEXT("BHSideWalk")));
 }
 FString ABHPlayer::SaveSlot() const {
+ if(FParse::Param(FCommandLine::Get(),TEXT("BHPlaytest")))return TEXT("Bellheart_Playtest_v1");
  return FParse::Param(FCommandLine::Get(),TEXT("BHSaveTest")) ? TEXT("Bellheart_AutomationOnly") : TEXT("Bellheart_Checkpoint_v1");
 }
 bool ABHPlayer::SaveCheckpoint() {
@@ -86,5 +87,5 @@ void ABHPlayer::RecoverAtDock() {
   It->Active=false; It->Health=180; It->PhaseTime=0; It->Telegraph=false;
   It->SetActorLocation(It->Arena+FVector(0,0,90)); It->SetActorHiddenInGame(true); It->SetActorEnableCollision(false);
  }
- Say(TEXT("Recovered at the dock. Items and Crowns retained. Use the arena lure to retry Bellcrab.")); SaveCheckpoint();
+ Say(TEXT("Your rescue tether brought you back to the dock. Gear and Crowns kept; health restored. An interrupted Bellcrab fight resets.")); SaveCheckpoint();
 }

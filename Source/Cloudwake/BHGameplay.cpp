@@ -23,8 +23,8 @@ void UBHProgress::Event(FName Name) {
 }
 FString UBHProgress::Objective() const {
  static const TArray<FString> Text = {
-  "Find Elder Orin at the Bellkeeper's House",
-  "Visit Mira: collect your first fishing rod",
+  "STRANDED: ask Elder Orin why the sky route is closed",
+  "EARN YOUR PASSAGE: collect Mira's loan rod",
   "Fish at the lower pond bank. Reel a fish ashore",
   "Kill the landed fish, carry it to Mira's sell counter",
   "Buy an Iron Knife from Bram (24 Crowns)",
@@ -32,7 +32,7 @@ FString UBHProgress::Objective() const {
   "Ask Mira for Bellcrab bait",
   "Use the bait at the arena lure; defeat Bellcrab",
   "Carry Bellheart to the tower and restore the wind bell",
-  "Bellheart restored! Return to Tavi and the Cloud Skiff"
+  "FIRST BEACON RESTORED: meet Tavi at the workshop"
  }; return Text[FMath::Clamp(Quest, 0, Text.Num()-1)];
 }
 
@@ -48,15 +48,15 @@ void ABHInteractable::Use(ABHPlayer* P) {
  UBHProgress* S = P->Progress;
  if (Action == "Orin") {
   S->Event("MeetOrin");
-  P->Say(S->Quest < 6 ? TEXT("ORIN: Our wind bell is silent. Mira will lend you a rod. Earn your tools, then inspect the tower.") : TEXT("ORIN: Bellcrab took the Bellheart. Lure it out, then bring the heart back to its socket."));
+  P->Say(S->Quest >= 9 ? TEXT("You brought our wind back. Bellheart can trade again. Find Tavi: four more silent bells lie beyond the Cloudsea.") : S->Quest < 6 ? TEXT("Five wind bells once guided skiffs across the Cloudsea. Ours fell silent when something tore out its heart. You are stranded here. Mira can lend you a rod: sell pond fish for tools, then inspect the tower.") : TEXT("Those bronze marks belong to Bellcrab. It hoards ringing metal beneath the pond. Recover our Bellheart and the first safe sky route will return."));
  } else if (Action == "Mira") {
   if (S->Quest == 1) { S->HasRod = true; S->Event("GetRod"); P->EquipRod(); }
   if (S->Quest == 6) { S->HasBait = true; S->Event("GetBait"); }
-  P->Say(S->HasBait ? TEXT("MIRA: Your special bait is ready. Take it to the east arena lure.") : TEXT("MIRA: Cast from the lower bank. Click at BITE, hold to reel, release to ease tension. Land it, finish it, then sell at my counter."));
+  P->Say(S->HasBait ? TEXT("Bellcrab cannot resist this bell-scented bait. Take it to the east arena lure. Bring a knife, and leave room to dodge!") : TEXT("The village needs food while trade is cut off. Here is a loan rod. Fish the island pond, finish your catch and carry it to my sell counter. Click at BITE; hold to reel, release to ease tension."));
  } else if (Action == "Bram") {
-  P->Say(TEXT("BRAM: The counter has an Iron Knife. Use the grindstone after buying it. A bright shell means Bellcrab is preparing a strike."));
+  P->Say(TEXT("Your catches pay for steel. An Iron Knife costs 24 Crowns; sharpening costs 12. Bellcrab guards the stolen heart. Dodge its glowing slam, then strike while it recovers."));
  } else if (Action == "Tavi") {
-  P->Say(S->Quest >= 9 ? TEXT("TAVI: The wind routes are open! Bellheart Isle slice complete. The next island is a future milestone.") : TEXT("TAVI: No wind, no voyage. Restore the bell and we can sail again."));
+  P->Say(S->Quest >= 9 ? TEXT("One bell awake, four still silent. The first current points toward Mosshollow. I will ready the skiff here; that voyage is not available in this prototype.") : TEXT("Skiffs ride the currents above the Cloudsea, not pond water. Without our bell, the route is blind. Your rescue tether returns you here if you fall; your gear and Crowns stay with you."));
  } else if (Action == "Sell") {
   ABHPhysicalItem* I = P->HeldItem;
   if (!I || I->Kind != EBHItem::Fish || I->Health > 0) { P->Say(TEXT("Carry a dead fish here to sell it. [E] picks it up; [G] drops it.")); return; }
@@ -149,7 +149,7 @@ ABHPlayer::ABHPlayer() {
  GetCharacterMovement()->MaxWalkSpeed = 500; GetCharacterMovement()->JumpZVelocity = 500;
  GetCharacterMovement()->MaxStepHeight = 35;
 }
-void ABHPlayer::BeginPlay() { Super::BeginPlay(); EquipRod(); Say(TEXT("BELLHEART ISLE - WASD move, E interact, F5 save, F9 load, R cancel cast.")); GetWorldTimerManager().SetTimerForNextTick(FTimerDelegate::CreateWeakLambda(this,[this]() { if(!FParse::Param(FCommandLine::Get(),TEXT("BHSaveTest"))) LoadCheckpoint(); })); }
+void ABHPlayer::BeginPlay() { Super::BeginPlay(); EquipRod(); Say(TEXT("BELLHEART ISLE - WASD move, E interact, F5 save, F9 load, R cancel cast.")); GetWorldTimerManager().SetTimerForNextTick(FTimerDelegate::CreateWeakLambda(this,[this]() { if(!FParse::Param(FCommandLine::Get(),TEXT("BHSaveTest")) && !FParse::Param(FCommandLine::Get(),TEXT("BHFresh"))) LoadCheckpoint(); })); }
 void ABHPlayer::SetupPlayerInputComponent(UInputComponent* I) {
  Super::SetupPlayerInputComponent(I);
  I->BindAxis("Forward",this,&ABHPlayer::Forward); I->BindAxis("Right",this,&ABHPlayer::Right);
@@ -172,8 +172,8 @@ FHitResult ABHPlayer::Trace(float Range) const {
  FHitResult H; FCollisionQueryParams Q; Q.AddIgnoredActor(this); if (HeldItem) Q.AddIgnoredActor(HeldItem);
  GetWorld()->LineTraceSingleByChannel(H,Camera->GetComponentLocation(),Camera->GetComponentLocation()+Camera->GetForwardVector()*Range,ECC_Visibility,Q); return H;
 }
-void ABHPlayer::Say(const FString& T) { Message=T; MessageTime=9; UE_LOG(LogTemp,Display,TEXT("BH_MESSAGE %s"),*T); }
-void ABHPlayer::Interact() { Target=Cast<ABHInteractable>(Trace(350).GetActor()); if(Target) { Target->Use(this); SaveCheckpoint(); } else UE_LOG(LogTemp,Display,TEXT("BH_INTERACT no target hit=%s camera=%s direction=%s"),*GetNameSafe(Trace(350).GetActor()),*Camera->GetComponentLocation().ToString(),*Camera->GetForwardVector().ToString()); }
+void ABHPlayer::Say(const FString& T) { DialogueSpeaker=nullptr; SpeakerName.Empty(); Message=T; MessageTime=16; UE_LOG(LogTemp,Display,TEXT("BH_MESSAGE %s"),*T); }
+void ABHPlayer::Interact() { Target=Cast<ABHInteractable>(Trace(350).GetActor()); if(Target) { Target->Use(this); if(Target && (Target->Action=="Orin" || Target->Action=="Mira" || Target->Action=="Bram" || Target->Action=="Tavi")) { DialogueSpeaker=Target; SpeakerName=Target->Action.ToString(); } SaveCheckpoint(); } else UE_LOG(LogTemp,Display,TEXT("BH_INTERACT no target hit=%s camera=%s direction=%s"),*GetNameSafe(Trace(350).GetActor()),*Camera->GetComponentLocation().ToString(),*Camera->GetForwardVector().ToString()); }
 void ABHPlayer::EquipRod() { KnifeEquipped=false; HeldTool->SetVisibility(Progress->HasRod); HeldTool->SetRelativeLocation(FVector(75,28,-35)); HeldTool->SetRelativeRotation(FRotator(35,0,0)); HeldTool->SetRelativeScale3D(FVector(.025,.025,1.9)); }
 void ABHPlayer::EquipKnife() { if(!Progress->HasKnife) { Say(TEXT("Buy an Iron Knife from Bram. Bare hands can finish your first fish.")); return; } CancelCast(); KnifeEquipped=true; HeldTool->SetVisibility(true); HeldTool->SetRelativeLocation(FVector(40,23,-25)); HeldTool->SetRelativeRotation(FRotator(55,0,0)); HeldTool->SetRelativeScale3D(FVector(.04,.08,.28)); }
 void ABHPlayer::Drop() { if(!HeldItem)return; ABHPhysicalItem* I=HeldItem; HeldItem=nullptr; I->DetachFromActor(FDetachmentTransformRules::KeepWorldTransform); I->Mesh->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics); I->Mesh->SetSimulatePhysics(true); I->Mesh->AddImpulse(Camera->GetForwardVector()*180,NAME_None,true); }
