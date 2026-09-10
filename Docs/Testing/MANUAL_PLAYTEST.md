@@ -6,7 +6,9 @@ Spend about 15–30 minutes on this first pass. The blocks and text labels are p
 
 ## Controls
 
-Click inside the game to capture the mouse. WASD moves; mouse looks; Shift sprints; Space jumps. E interacts/picks up. G drops. 1 selects rod, 2 selects a purchased knife. Hold/release left click to cast, click during BITE to hook, then hold to reel and release to lower tension. R retrieves/cancels the line. Left click strikes a landed fish or attacks with the knife. F5 saves; F9 loads.
+Inventory update: mouse wheel or 1–4 selects a hotbar slot. Tab opens the kit: click gear, then a slot to move it. Buy a bag/bucket outside Mira's shop and use F to store carried items in the selected container. See INVENTORY_PLAYTEST.md for capacity and retrieval rules. Rod and knife are no longer permanently assigned to keys 1 and 2.
+
+Click inside the game to capture the mouse. WASD moves; mouse looks; Shift sprints; Space jumps. E interacts/picks up. G drops. 1-4 selects the assigned hotbar item; the mouse wheel cycles slots. Hold/release left click to cast, click during BITE to hook, then hold to reel and release to lower tension. R retrieves/cancels the line. Left click strikes a landed fish or attacks with the knife. F5 saves; F9 loads.
 
 ## Route to try
 
@@ -16,7 +18,7 @@ Click inside the game to capture the mouse. WASD moves; mouse looks; Shift sprin
 4. Click the landed fish until it is dead. E picks it up. Take it to Mira's **sell counter**, then press E.
 5. Buy the **Iron Knife** at Bram's counter. Try the sharpening station if you can afford it.
 6. Inspect the socket at the Bell Tower, then ask Mira for bait.
-7. Use the bait lure in the east arena. Equip the knife and fight Bellcrab. Move away during the red slam warning.
+7. Use the bait lure in the east arena. Select the knife in your hotbar and fight Bellcrab. Move away during the red slam warning.
 8. Pick up the dropped Bellheart, carry it back to the tower, and install it.
 9. Try the waterfall/hidden/tree side path and workshop approach. Drop an item and pick it up; save and reload once.
 

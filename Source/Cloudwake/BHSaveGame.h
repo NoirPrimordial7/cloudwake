@@ -13,6 +13,7 @@ struct FBHSavedItem {
  UPROPERTY() FString Label;
  UPROPERTY() FVector Position = FVector::ZeroVector;
  UPROPERTY() bool Held = false;
+ UPROPERTY() int32 StoredIn = 0;
 };
 
 UCLASS()
@@ -20,6 +21,10 @@ class UBHSaveGame : public USaveGame {
  GENERATED_BODY()
 public:
  UPROPERTY() int32 Version = 1;
+ UPROPERTY() bool HasBag = false;
+ UPROPERTY() bool HasBucket = false;
+ UPROPERTY() TArray<int32> Hotbar;
+ UPROPERTY() int32 SelectedSlot = 0;
  UPROPERTY() int32 Crowns = 12;
  UPROPERTY() int32 Quest = 0;
  UPROPERTY() int32 FishSold = 0;

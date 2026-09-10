@@ -34,7 +34,7 @@ void ABHTestDriver::Next() {
 }
 void ABHTestDriver::Tick(float D) {
  Super::Tick(D); Time+=D; Total+=D;
- if(Total>120) { Check(false,TEXT("120 second loop timeout")); SetActorTickEnabled(false); return; }
+ if(Total>(FParse::Param(FCommandLine::Get(),TEXT("BHManualPreview"))?1200:120)) { Check(false,TEXT("120 second loop timeout")); SetActorTickEnabled(false); return; }
  auto* P=Cast<ABHPlayer>(UGameplayStatics::GetPlayerPawn(this,0)); if(!P || Time<.4)return;
  if(FParse::Param(FCommandLine::Get(),TEXT("BHSaveTest"))) {
   UGameplayStatics::DeleteGameInSlot(P->SaveSlot(),0);
@@ -62,6 +62,31 @@ void ABHTestDriver::Tick(float D) {
   for(TActorIterator<ABHBellcrab> It(GetWorld());It;++It) { It->Active=true; It->Health=40; }
   P->RecoverAtDock();
   for(TActorIterator<ABHBellcrab> It(GetWorld());It;++It)if(!Check(!It->Active && It->Health==180,TEXT("Recovery resets interrupted boss encounter")))return;
+  // Containers retain actual physical item instances and round-trip alongside a carried object.
+  P->Progress->Crowns=200;
+  for(TActorIterator<ABHInteractable> It(GetWorld());It;++It)if(It->Action=="Bag" || It->Action=="Bucket")It->Use(P);
+  if(!Check(P->HasBag && P->HasBucket && P->Progress->Crowns==132,TEXT("Bag and bucket purchases charge exactly once")))return;
+  for(TActorIterator<ABHInteractable> It(GetWorld());It;++It)if(It->Action=="Bag" || It->Action=="Bucket")It->Use(P);
+  if(!Check(P->Progress->Crowns==132,TEXT("Duplicate container purchase rejected")))return;
+  P->AssignToSlot(1,3); P->SlotFour();
+  if(!Check(P->ActiveGear()==1,TEXT("Rod can be moved to slot four")))return;
+  P->ScrollNext(); if(!Check(P->SelectedSlot==0 && P->ActiveGear()==4,TEXT("Wheel wraps and selects assigned bucket")))return;
+  for(int32 I=0;I<7;++I) {
+   auto* F=GetWorld()->SpawnActor<ABHPhysicalItem>(P->GetActorLocation()+FVector(100,0,0),FRotator::ZeroRotator);
+   F->Label=TEXT("StoredTestFish"); F->Value=33+I; F->Health=0; F->State=EBHFishState::Dead; F->Use(P);
+   const bool Stored=P->StoreIn(4);
+   if(!Check(Stored==(I<6),TEXT("Bucket enforces six-fish capacity")))return;
+  }
+  // Seventh fish remains in hands; stored items must load even with hands occupied.
+  P->SaveCheckpoint(); P->LoadCheckpoint();
+  if(!Check(P->StoredItems(4).Num()==6 && P->HeldItem && P->HeldItem->Value==39 && P->Hotbar[3]==1 && P->ActiveGear()==4,TEXT("Stored catches carried fish and hotbar survive disk reload")))return;
+  P->Drop(); P->RetrieveStored(0);
+  if(!Check(P->StoredItems(4).Num()==5 && P->HeldItem && !P->HeldItem->StoredIn && !P->HeldItem->IsHidden(),TEXT("Retrieve restores one physical fish without duplication")))return;
+  P->Drop();
+  for(TActorIterator<ABHPhysicalItem> It(GetWorld());It;++It)if(It->Kind==EBHItem::Bellheart) { It->Use(P); break; }
+  if(!Check(P->HeldItem && !P->StoreIn(4) && P->StoreIn(3),TEXT("Quest heart rejected by bucket and accepted by bag")))return;
+  P->SaveCheckpoint(); P->LoadCheckpoint(); P->LoadCheckpoint();
+  if(!Check(P->StoredItems(3).Num()==1 && P->StoredItems(4).Num()==5,TEXT("Repeated reload preserves storage without duplication")))return;
   UGameplayStatics::DeleteGameInSlot(P->SaveSlot(),0);
   UE_LOG(LogTemp,Display,TEXT("BH_SAVE_TEST_COMPLETE persistence and recovery"));
   FPlatformMisc::RequestExitWithStatus(false,0); SetActorTickEnabled(false); return;
@@ -90,12 +115,24 @@ void ABHTestDriver::Tick(float D) {
   }
   Check(false,TEXT("Missing station"));
  };
+ if(FParse::Param(FCommandLine::Get(),TEXT("BHInventoryPreview")) && Step==2) {
+  if(FParse::Param(FCommandLine::Get(),TEXT("BHManualPreview")))return;
+  // Native clicks are verified separately; OS cursor warping is unreliable in unattended windows.
+  if(Time<1.2f)FScreenshotRequest::RequestScreenshot(FPaths::ProjectSavedDir()/TEXT("Screenshots/Bellheart_Inventory.png"),true,false);
+  if(Time>2.f) { UE_LOG(LogTemp,Display,TEXT("BH_INVENTORY_PREVIEW_COMPLETE")); FPlatformMisc::RequestExitWithStatus(false,0); }
+  return;
+ }
  switch(Step) {
  case 0:
   P->GetController()->SetIgnoreLookInput(true);
   if(!Check(P->GetActorLocation().Z>80 && P->GetActorLocation().Z<150,TEXT("Player standing on dock at correct capsule height")))return;
   Use("Orin"); if(Check(P->Progress->Quest==1 && P->DialogueSpeaker && P->SpeakerName==TEXT("Orin"),TEXT("Camera trace talks to Orin and anchors dialogue")))Next(); break;
  case 1:
+  if(FParse::Param(FCommandLine::Get(),TEXT("BHInventoryPreview"))) {
+   P->Progress->HasRod=true; P->Progress->HasKnife=true; P->HasBag=true; P->HasBucket=true;
+   for(int32 I=0;I<3;++I) { auto* F=GetWorld()->SpawnActor<ABHPhysicalItem>(P->GetActorLocation(),FRotator::ZeroRotator); F->Health=0; F->State=EBHFishState::Dead; F->Label=I==0?TEXT("Cloudfin"):TEXT("Pebblecarp"); F->Use(P); P->StoreIn(4); }
+   P->AssignToSlot(1,3); P->ToggleInventory(); Next(); return;
+  }
   if(FParse::Param(FCommandLine::Get(),TEXT("BHDialoguePreview"))) {
    if(Time<1.0f)return;
    if(Time<1.2f)FScreenshotRequest::RequestScreenshot(FPaths::ProjectSavedDir()/TEXT("Screenshots/Bellheart_Dialogue.png"),true,false);

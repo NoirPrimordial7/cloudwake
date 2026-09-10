@@ -1,0 +1,24 @@
+[2026.09.10-04.33.33:564][727]LogTemp: Display: BH_TEST_PASS Checkpoint writes to isolated slot
+[2026.09.10-04.33.33:568][727]LogTemp: Display: BH_TEST_PASS Checkpoint loads from disk
+[2026.09.10-04.33.33:568][727]LogTemp: Display: BH_TEST_PASS Quest money upgrade and carried heart survive load
+[2026.09.10-04.33.33:568][727]LogTemp: Display: BH_TEST_PASS Repeated load cannot duplicate Bellheart
+[2026.09.10-04.33.33:573][727]LogTemp: Display: BH_TEST_PASS Missing quest object is recovered
+[2026.09.10-04.33.33:577][727]LogTemp: Display: BH_TEST_PASS Landed fish value physics and player health survive load
+[2026.09.10-04.33.33:577][727]LogTemp: Display: BH_TEST_PASS Cancel clears pending fishing input
+[2026.09.10-04.33.33:577][727]LogTemp: Display: BH_TEST_PASS Recovery resets interrupted boss encounter
+[2026.09.10-04.33.33:577][727]LogTemp: Display: BH_TEST_PASS Bag and bucket purchases charge exactly once
+[2026.09.10-04.33.33:577][727]LogTemp: Display: BH_TEST_PASS Duplicate container purchase rejected
+[2026.09.10-04.33.33:577][727]LogTemp: Display: BH_TEST_PASS Rod can be moved to slot four
+[2026.09.10-04.33.33:577][727]LogTemp: Display: BH_TEST_PASS Wheel wraps and selects assigned bucket
+[2026.09.10-04.33.33:577][727]LogTemp: Display: BH_TEST_PASS Bucket enforces six-fish capacity
+[2026.09.10-04.33.33:577][727]LogTemp: Display: BH_TEST_PASS Bucket enforces six-fish capacity
+[2026.09.10-04.33.33:577][727]LogTemp: Display: BH_TEST_PASS Bucket enforces six-fish capacity
+[2026.09.10-04.33.33:577][727]LogTemp: Display: BH_TEST_PASS Bucket enforces six-fish capacity
+[2026.09.10-04.33.33:577][727]LogTemp: Display: BH_TEST_PASS Bucket enforces six-fish capacity
+[2026.09.10-04.33.33:577][727]LogTemp: Display: BH_TEST_PASS Bucket enforces six-fish capacity
+[2026.09.10-04.33.33:578][727]LogTemp: Display: BH_TEST_PASS Bucket enforces six-fish capacity
+[2026.09.10-04.33.33:584][727]LogTemp: Display: BH_TEST_PASS Stored catches carried fish and hotbar survive disk reload
+[2026.09.10-04.33.33:585][727]LogTemp: Display: BH_TEST_PASS Retrieve restores one physical fish without duplication
+[2026.09.10-04.33.33:585][727]LogTemp: Display: BH_TEST_PASS Quest heart rejected by bucket and accepted by bag
+[2026.09.10-04.33.33:592][727]LogTemp: Display: BH_TEST_PASS Repeated reload preserves storage without duplication
+[2026.09.10-04.33.33:592][727]LogTemp: Display: BH_SAVE_TEST_COMPLETE persistence and recovery

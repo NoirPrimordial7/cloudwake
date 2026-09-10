@@ -22,6 +22,8 @@ static const FLinearColor Stone(.52,.54,.53), PathColor(.65,.48,.22), Teal(.08,.
 ABHWorld::ABHWorld() { PrimaryActorTick.bCanEverTick=false; }
 void ABHWorld::BeginPlay() {
  Super::BeginPlay(); if(!Built) Build();
+ Station("Bag",TEXT("Buy satchel - 4 items"),FVector(-27,25,14.48),40);
+ Station("Bucket",TEXT("Buy fish bucket - 6 fish"),FVector(-29,25,14.48),28);
  // Non-colliding cloud-volume placeholders, below the playable island. Final volumetrics follow art review.
  for(int32 I=0;I<32;++I) {
   const float A=I*2.f*PI/32.f; const float Radius=180.f+(I%3)*45.f;
@@ -164,7 +166,7 @@ void ABHHUD::DrawHUD() {
  DrawText(TEXT("CLOUDWAKE / BELLHEART GREYBOX"),FLinearColor(.7,.9,.9),35,30,nullptr,1.25);
  DrawText(P->Progress->Objective(),FLinearColor::White,35,60,nullptr,1.05);
  DrawText(FString::Printf(TEXT("Health %.0f / 100     Crowns %d"),P->Health,P->Progress->Crowns),FLinearColor::White,30,H-70,nullptr,1.3);
- DrawText(TEXT("[1] Rod   [2] Knife   [E] Interact   [G] Drop   [Shift] Sprint"),FLinearColor::White,30,H-40,nullptr,1);
+ DrawText(TEXT("[E] Interact  [G] Drop  [F] Store  [Tab] Inventory"),FLinearColor::White,30,H-40,nullptr,1);
  DrawText(TEXT("F5 Save / F9 Load / R Retrieve line"),FLinearColor::White,W-320,H-40,nullptr,1);
  for(TActorIterator<ABHBellcrab> It(GetWorld());It;++It) if(It->Active) {
   DrawRect(FLinearColor(0,0,0,.7f),W*.5f-160,115,320,50);
@@ -196,5 +198,6 @@ void ABHHUD::DrawHUD() {
   }
  }
  if(P->HookedFish) { DrawRect(FLinearColor(.1,.1,.1),W*.5f-150,H-240,300,20); DrawRect(FLinearColor(P->Tension,1-P->Tension,.15),W*.5f-150,H-240,300*P->Tension,20); DrawText(TEXT("LINE TENSION - release to ease"),FLinearColor::White,W*.5f-150,H-265); }
- if(P->Charging) DrawText(FString::Printf(TEXT("CAST %.0f%% - release"),FMath::Min(P->CastCharge/1.5f,1.f)*100),FLinearColor::White,W*.5f-100,H*.5f+75);
+ P->DrawInventory(this);
+ if(P->Charging && !P->InventoryOpen) DrawText(FString::Printf(TEXT("CAST %.0f%% - release"),FMath::Min(P->CastCharge/1.5f,1.f)*100),FLinearColor::White,W*.5f-100,H*.5f+75);
 }
