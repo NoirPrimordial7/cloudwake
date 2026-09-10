@@ -8,7 +8,7 @@
 #include "Misc/Parse.h"
 
 bool ABHPlayer::IsLoopTest() const {
- return FParse::Param(FCommandLine::Get(),TEXT("BHTest")) || (FParse::Param(FCommandLine::Get(),TEXT("BHWalk")) || FParse::Param(FCommandLine::Get(),TEXT("BHSideWalk")));
+ return FParse::Param(FCommandLine::Get(),TEXT("BHAirTest")) || FParse::Param(FCommandLine::Get(),TEXT("BHTest")) || (FParse::Param(FCommandLine::Get(),TEXT("BHWalk")) || FParse::Param(FCommandLine::Get(),TEXT("BHSideWalk")));
 }
 FString ABHPlayer::SaveSlot() const {
  if(FParse::Param(FCommandLine::Get(),TEXT("BHPlaytest")))return TEXT("Bellheart_Playtest_v1");

@@ -1,0 +1,10 @@
+[2026.09.10-15.26.05:927][255]LogTemp: Display: BH_AIR_CASE W jump takeoff=500.0 peak=127.6 flight=1.02 displacement=X=512.418 Y=0.000 Z=-0.000 landing=X=500.000 Y=0.000 Z=0.000
+[2026.09.10-15.26.07:419][505]LogTemp: Display: BH_AIR_CASE Sprint W jump takeoff=800.0 peak=127.6 flight=1.02 displacement=X=819.764 Y=0.000 Z=0.000 landing=X=800.000 Y=0.000 Z=0.000
+[2026.09.10-15.26.08:968][563]LogTemp: Display: BH_AIR_CASE WA jump takeoff=500.0 peak=127.6 flight=1.02 displacement=X=362.290 Y=-362.290 Z=0.000 landing=X=353.553 Y=-353.553 Z=0.000
+[2026.09.10-15.26.10:442][778]LogTemp: Display: BH_AIR_CASE WD jump takeoff=500.0 peak=127.6 flight=1.02 displacement=X=362.363 Y=362.363 Z=0.000 landing=X=353.553 Y=353.553 Z=0.000
+[2026.09.10-15.26.11:993][904]LogTemp: Display: BH_AIR_CASE Sprint jump steer A takeoff=800.0 peak=127.6 flight=1.02 displacement=X=596.361 Y=-489.136 Z=0.000 landing=X=302.600 Y=-740.563 Z=0.000
+[2026.09.10-15.26.13:457][134]LogTemp: Display: BH_AIR_CASE Sprint jump steer D takeoff=800.0 peak=127.6 flight=1.02 displacement=X=596.331 Y=489.157 Z=0.000 landing=X=302.643 Y=740.545 Z=0.000
+[2026.09.10-15.26.14:948][361]LogTemp: Display: BH_AIR_CASE Air A-to-D reversal takeoff=800.0 peak=127.6 flight=1.03 displacement=X=707.192 Y=-153.861 Z=-0.000 landing=X=647.763 Y=304.997 Z=0.000
+[2026.09.10-15.26.16:440][605]LogTemp: Display: BH_AIR_CASE Sprint diagonal takeoff=800.0 peak=127.6 flight=1.02 displacement=X=579.676 Y=-579.676 Z=0.000 landing=X=565.685 Y=-565.685 Z=0.000
+[2026.09.10-15.26.17:879][883]LogTemp: Display: BH_AIR_CASE Release sprint airborne then steer/land takeoff=800.0 peak=127.6 flight=1.02 displacement=X=596.393 Y=489.311 Z=0.000 landing=X=301.935 Y=740.834 Z=0.000
+[2026.09.10-15.26.17:879][883]LogTemp: Display: BH_AIR_COMPLETE nine movement scenarios

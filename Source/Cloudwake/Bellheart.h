@@ -110,6 +110,7 @@ public:
  float AttackCooldown = 0;
  float CastCharge = 0;
  bool Charging = false;
+ bool SprintRequested = false;
  FVector BobberGoal;
  bool BobberInWater = false;
  float AutoSaveTime = 0;

@@ -34,6 +34,7 @@ void ABHTestDriver::Next() {
 }
 void ABHTestDriver::Tick(float D) {
  Super::Tick(D); Time+=D; Total+=D;
+ if(FParse::Param(FCommandLine::Get(),TEXT("BHAirTest"))) { AirTest(D); return; }
  if(Total>(FParse::Param(FCommandLine::Get(),TEXT("BHManualPreview"))?1200:120)) { Check(false,TEXT("120 second loop timeout")); SetActorTickEnabled(false); return; }
  auto* P=Cast<ABHPlayer>(UGameplayStatics::GetPlayerPawn(this,0)); if(!P || Time<.4)return;
  if(FParse::Param(FCommandLine::Get(),TEXT("BHSaveTest"))) {

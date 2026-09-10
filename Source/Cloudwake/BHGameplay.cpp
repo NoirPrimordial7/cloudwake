@@ -155,6 +155,12 @@ ABHPlayer::ABHPlayer() {
  Progress = CreateDefaultSubobject<UBHProgress>(TEXT("Progress"));
  GetCharacterMovement()->MaxWalkSpeed = 500; GetCharacterMovement()->JumpZVelocity = 500;
  GetCharacterMovement()->MaxStepHeight = 35;
+ // Responsive steering without lateral drag or airborne braking erasing takeoff momentum.
+ GetCharacterMovement()->AirControl = .62f;
+ GetCharacterMovement()->AirControlBoostMultiplier = 1.6f;
+ GetCharacterMovement()->AirControlBoostVelocityThreshold = 250.f;
+ GetCharacterMovement()->FallingLateralFriction = 0.f;
+ GetCharacterMovement()->BrakingDecelerationFalling = 0.f;
 }
 void ABHPlayer::BeginPlay() { Super::BeginPlay(); EquipRod(); Say(TEXT("BELLHEART ISLE - WASD move, E interact, F5 save, F9 load, R cancel cast.")); GetWorldTimerManager().SetTimerForNextTick(FTimerDelegate::CreateWeakLambda(this,[this]() { if(!FParse::Param(FCommandLine::Get(),TEXT("BHSaveTest")) && !FParse::Param(FCommandLine::Get(),TEXT("BHFresh"))) LoadCheckpoint(); })); }
 void ABHPlayer::SetupPlayerInputComponent(UInputComponent* I) {
@@ -178,7 +184,8 @@ void ABHPlayer::SetupPlayerInputComponent(UInputComponent* I) {
 void ABHPlayer::Forward(float V) { if(InventoryOpen)return; AddMovementInput(FRotationMatrix(FRotator(0,GetControlRotation().Yaw,0)).GetUnitAxis(EAxis::X),V); }
 void ABHPlayer::Right(float V) { if(InventoryOpen)return; AddMovementInput(FRotationMatrix(FRotator(0,GetControlRotation().Yaw,0)).GetUnitAxis(EAxis::Y),V); }
 void ABHPlayer::Turn(float V) { if(InventoryOpen)return; AddControllerYawInput(V); } void ABHPlayer::Look(float V) { if(InventoryOpen)return; AddControllerPitchInput(V); }
-void ABHPlayer::Sprint() { GetCharacterMovement()->MaxWalkSpeed = 800; } void ABHPlayer::Walk() { GetCharacterMovement()->MaxWalkSpeed = 500; }
+void ABHPlayer::Sprint() { SprintRequested=true; GetCharacterMovement()->MaxWalkSpeed = 800; }
+void ABHPlayer::Walk() { SprintRequested=false; if(!GetCharacterMovement()->IsFalling())GetCharacterMovement()->MaxWalkSpeed = 500; }
 FHitResult ABHPlayer::Trace(float Range) const {
  FHitResult H; FCollisionQueryParams Q; Q.AddIgnoredActor(this); if (HeldItem) Q.AddIgnoredActor(HeldItem);
  GetWorld()->LineTraceSingleByChannel(H,Camera->GetComponentLocation(),Camera->GetComponentLocation()+Camera->GetForwardVector()*Range,ECC_Visibility,Q); return H;
@@ -219,7 +226,7 @@ void ABHPlayer::CastLine(float Charge) {
 }
 void ABHPlayer::CancelCast() { Charging=false; CastCharge=0; if(Bobber)Bobber->Destroy(); Bobber=nullptr; BobberInWater=false; if(HookedFish && HookedFish->State==EBHFishState::Hooked)HookedFish->State=EBHFishState::Wander; HookedFish=nullptr; Reeling=false; Tension=0; }
 void ABHPlayer::Tick(float D) {
- Super::Tick(D); MessageTime-=D; AttackCooldown-=D; if(Charging)CastCharge+=D;
+ Super::Tick(D); if(GetCharacterMovement()->IsMovingOnGround())GetCharacterMovement()->MaxWalkSpeed=SprintRequested?800.f:500.f; MessageTime-=D; AttackCooldown-=D; if(Charging)CastCharge+=D;
  Target=Cast<ABHInteractable>(Trace(350).GetActor());
  if(GetActorLocation().Z < -2500) RecoverAtDock();
  AutoSaveTime+=D; if(AutoSaveTime>=30) { AutoSaveTime=0; SaveCheckpoint(); }

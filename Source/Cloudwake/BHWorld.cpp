@@ -150,7 +150,7 @@ ABHGameMode::ABHGameMode() { DefaultPawnClass=ABHPlayer::StaticClass(); HUDClass
 void ABHGameMode::BeginPlay() {
  Super::BeginPlay(); if(!UGameplayStatics::GetActorOfClass(this,ABHWorld::StaticClass())) GetWorld()->SpawnActor<ABHWorld>();
  if(APawn* P=UGameplayStatics::GetPlayerPawn(this,0)) { P->SetActorLocation(FVector(0,-8600,110)); if(P->GetController())P->GetController()->SetControlRotation(FRotator(0,90,0)); }
- if(FParse::Param(FCommandLine::Get(),TEXT("BHTest")) || (FParse::Param(FCommandLine::Get(),TEXT("BHWalk")) || FParse::Param(FCommandLine::Get(),TEXT("BHSideWalk"))) || FParse::Param(FCommandLine::Get(),TEXT("BHSaveTest"))) GetWorld()->SpawnActor<ABHTestDriver>();
+ if(FParse::Param(FCommandLine::Get(),TEXT("BHAirTest")) || FParse::Param(FCommandLine::Get(),TEXT("BHTest")) || (FParse::Param(FCommandLine::Get(),TEXT("BHWalk")) || FParse::Param(FCommandLine::Get(),TEXT("BHSideWalk"))) || FParse::Param(FCommandLine::Get(),TEXT("BHSaveTest"))) GetWorld()->SpawnActor<ABHTestDriver>();
 }
 void ABHWorld::Restore(bool IsRestored, bool PlayCue) {
  Restored=IsRestored;
