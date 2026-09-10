@@ -94,8 +94,14 @@ void ABHTestDriver::Tick(float D) {
  case 0:
   P->GetController()->SetIgnoreLookInput(true);
   if(!Check(P->GetActorLocation().Z>80 && P->GetActorLocation().Z<150,TEXT("Player standing on dock at correct capsule height")))return;
-  Use("Orin"); if(Check(P->Progress->Quest==1,TEXT("Camera trace talks to Orin")))Next(); break;
+  Use("Orin"); if(Check(P->Progress->Quest==1 && P->DialogueSpeaker && P->SpeakerName==TEXT("Orin"),TEXT("Camera trace talks to Orin and anchors dialogue")))Next(); break;
  case 1:
+  if(FParse::Param(FCommandLine::Get(),TEXT("BHDialoguePreview"))) {
+   if(Time<1.0f)return;
+   if(Time<1.2f)FScreenshotRequest::RequestScreenshot(FPaths::ProjectSavedDir()/TEXT("Screenshots/Bellheart_Dialogue.png"),true,false);
+   if(Time>2.f)FPlatformMisc::RequestExitWithStatus(false,0);
+   return;
+  }
   Use("Mira"); if(Check(P->Progress->HasRod && P->Progress->Quest==2,TEXT("Mira gives rod and advances tutorial")))Next(); break;
  case 2:
   P->SetActorLocation(FVector(-1000,-4000,800)); P->GetCharacterMovement()->StopMovementImmediately();

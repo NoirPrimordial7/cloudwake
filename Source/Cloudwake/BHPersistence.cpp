@@ -87,5 +87,5 @@ void ABHPlayer::RecoverAtDock() {
   It->Active=false; It->Health=180; It->PhaseTime=0; It->Telegraph=false;
   It->SetActorLocation(It->Arena+FVector(0,0,90)); It->SetActorHiddenInGame(true); It->SetActorEnableCollision(false);
  }
- Say(TEXT("Recovered at the dock. Items and Crowns retained. Use the arena lure to retry Bellcrab.")); SaveCheckpoint();
+ Say(TEXT("Your rescue tether brought you back to the dock. Gear and Crowns kept; health restored. An interrupted Bellcrab fight resets.")); SaveCheckpoint();
 }

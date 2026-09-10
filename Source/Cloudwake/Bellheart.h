@@ -95,6 +95,8 @@ public:
  UPROPERTY(VisibleAnywhere, BlueprintReadOnly) bool KnifeEquipped = false;
  UPROPERTY(VisibleAnywhere, BlueprintReadOnly) bool Reeling = false;
  UPROPERTY(VisibleAnywhere, BlueprintReadOnly) float Tension = 0;
+ UPROPERTY() ABHInteractable* DialogueSpeaker = nullptr;
+ FString SpeakerName;
  FString Message;
  float MessageTime = 0;
  float AttackCooldown = 0;

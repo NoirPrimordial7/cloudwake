@@ -2,7 +2,7 @@
 
 Branch: `art/bellheart-pass-01`. Baseline/fallback: main at `05e596c`.
 
-Current stage: **prepare and conduct user greybox playtest**. The user confirmed on 2026-09-10 that they have not tried the greybox yet. Do not claim a manual playtest or layout lock from automated tests.
+Current stage: **post-playtest narrative and interaction corrections**. On 2026-09-10 the user reported enjoying the gameplay and requested clearer motivation, Cloudsea/fall rules and speaker-attached dialogue. Preserve the tested footprints and routes; resolve these corrections before held-asset production. This is positive gameplay feedback, not a final environment-art approval.
 
 ## Production order
 

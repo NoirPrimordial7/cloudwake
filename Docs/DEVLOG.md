@@ -30,3 +30,8 @@ No source-art asset is marked implemented merely because a concept exists. Manif
 Created art/bellheart-pass-01 from the working main baseline. Fixed side paths around the giant-tree trunk and toward shop/workshop entrances without moving building footprints. Rebuilt the editable primitive map and compiled the editor target successfully. Side traversal passed in 50.61 seconds; the full arrival-to-restoration loop passed in 15.83 seconds; persistence/recovery regression passed.
 
 Added Playtest-Bellheart.cmd: fresh start, separate Bellheart_Playtest_v1 checkpoint slot, normal saves preserved. Added the manual route/checklist and the user's ordered art-production gates. Opened and visually inspected the running first-person greybox. Human playtest feedback is still pending; layout remains unlocked and final environment art has not begun.
+# 2026-09-10 — story and interaction follow-up
+
+User enjoyed the first playtest and requested clearer motivation, five-island progression, Cloudsea/fall rules and NPC-attached dialogue. Added CLOUDWAKE_STORY.md, rewrote NPC dialogue/objectives, attached wrapped speech panels to visible nearby speakers, explained the existing rescue behavior, and added non-colliding cloud-volume placeholders below the island. Final cloud art, sailing and the other islands remain future work.
+
+Editor build succeeded. Rendered full-loop regression passed in 13.54 seconds, including a new speaker-association assertion. Inspected an Orin dialogue screenshot and corrected its pointer crossing the panel when the speaker's head is above screen. Footprints and routes remain unchanged.
