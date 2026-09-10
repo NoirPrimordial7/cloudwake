@@ -10,6 +10,7 @@ class UCameraComponent;
 class UStaticMeshComponent;
 class ABHPlayer;
 class ABHWorld;
+class ABHHUD;
 
 UENUM(BlueprintType)
 enum class EBHItem : uint8 { None, Fish, Bellheart };
@@ -56,6 +57,7 @@ public:
  UPROPERTY(EditAnywhere, BlueprintReadWrite) float Health = 18;
  UPROPERTY(VisibleAnywhere, BlueprintReadOnly) EBHFishState State = EBHFishState::Wander;
  UPROPERTY(VisibleAnywhere) FVector Home;
+ UPROPERTY() int32 StoredIn = 0;
  float Age = 0;
  float BiteTime = 0;
  virtual void Tick(float DeltaSeconds) override;
@@ -97,6 +99,12 @@ public:
  UPROPERTY(VisibleAnywhere, BlueprintReadOnly) float Tension = 0;
  UPROPERTY() ABHInteractable* DialogueSpeaker = nullptr;
  FString SpeakerName;
+ UPROPERTY() bool HasBag = false;
+ UPROPERTY() bool HasBucket = false;
+ UPROPERTY() TArray<int32> Hotbar = {1,2,3,4};
+ UPROPERTY() int32 SelectedSlot = 0;
+ bool InventoryOpen = false;
+ int32 AssignGear = 0;
  FString Message;
  float MessageTime = 0;
  float AttackCooldown = 0;
@@ -123,6 +131,19 @@ public:
  void QuickSave();
  void QuickLoad();
  void RecoverAtDock();
+ bool OwnsGear(int32 Gear) const;
+ FString GearName(int32 Gear) const;
+ int32 ActiveGear() const;
+ void SelectSlot(int32 Slot);
+ void SlotOne(); void SlotTwo(); void SlotThree(); void SlotFour();
+ void ScrollNext(); void ScrollPrevious();
+ void ToggleInventory(); void InventoryClick();
+ void AssignToSlot(int32 Gear,int32 Slot);
+ void StoreHeld(); bool StoreIn(int32 Container);
+ void RetrieveStored(int32 Index);
+ TArray<ABHPhysicalItem*> StoredItems(int32 Container=0) const;
+ void DrawInventory(ABHHUD* HUD);
+
 };
 
 UCLASS()

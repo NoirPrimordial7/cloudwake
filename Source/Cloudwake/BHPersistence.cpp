@@ -17,6 +17,7 @@ FString ABHPlayer::SaveSlot() const {
 bool ABHPlayer::SaveCheckpoint() {
  if(IsLoopTest()) return false; // Progression and traversal tests never touch a player's save.
  auto* Save=Cast<UBHSaveGame>(UGameplayStatics::CreateSaveGameObject(UBHSaveGame::StaticClass()));
+ Save->HasBag=HasBag; Save->HasBucket=HasBucket; Save->Hotbar=Hotbar; Save->SelectedSlot=SelectedSlot;
  Save->Crowns=Progress->Crowns; Save->Quest=Progress->Quest; Save->FishSold=Progress->FishSold;
  Save->HasRod=Progress->HasRod; Save->HasKnife=Progress->HasKnife; Save->HasBait=Progress->HasBait;
  Save->KnifeDamage=Progress->KnifeDamage; Save->Health=Health; Save->KnifeEquipped=KnifeEquipped;
@@ -26,7 +27,7 @@ bool ABHPlayer::SaveCheckpoint() {
   if(It->Kind!=EBHItem::Bellheart && It->State!=EBHFishState::Landed && It->State!=EBHFishState::Dead)continue;
   FBHSavedItem Record;
   Record.Kind=It->Kind; Record.Health=It->Health; Record.Value=It->Value; Record.Label=It->Label;
-  Record.Position=It->GetActorLocation(); Record.Held=HeldItem==*It;
+  Record.Position=It->GetActorLocation(); Record.Held=HeldItem==*It; Record.StoredIn=It->StoredIn;
   if(Record.Position.Z < -2000) Record.Position=FVector(0,-8200,150);
   Save->Items.Add(Record);
  }
@@ -45,6 +46,8 @@ bool ABHPlayer::LoadCheckpoint() {
  for(TActorIterator<ABHPhysicalItem> It(GetWorld());It;++It) {
   if(It->Kind==EBHItem::Bellheart || It->State==EBHFishState::Landed || It->State==EBHFishState::Dead)It->Destroy();
  }
+ HasBag=Save->HasBag; HasBucket=Save->HasBucket;
+ if(Save->Hotbar.Num()==4) { TSet<int32> Seen; bool Valid=true; for(int32 Gear:Save->Hotbar) { if(Gear<1 || Gear>4 || Seen.Contains(Gear))Valid=false; Seen.Add(Gear); } if(Valid)Hotbar=Save->Hotbar; }
  Progress->Crowns=FMath::Max(0,Save->Crowns); Progress->Quest=Save->Quest; Progress->FishSold=Save->FishSold;
  Progress->HasRod=Save->HasRod; Progress->HasKnife=Save->HasKnife; Progress->HasBait=Save->HasBait;
  Progress->KnifeDamage=Save->KnifeDamage>=30 ? 30 : 18; Health=FMath::Clamp(Save->Health,1.f,100.f);
@@ -61,7 +64,9 @@ bool ABHPlayer::LoadCheckpoint() {
   Item->Kind=Record.Kind; Item->Health=FMath::Max(0.f,Record.Health); Item->Value=Record.Value; Item->Label=Record.Label;
   Item->Land(Record.Position); if(Item->Health<=0)Item->State=EBHFishState::Dead;
   if(Item->Kind==EBHItem::Bellheart) { FoundHeart=true; Item->SetActorScale3D(FVector(.3,.3,.7)); }
-  if(Record.Held && !HeldItem)Item->Use(this);
+  if((Record.StoredIn==3 || Record.StoredIn==4) && OwnsGear(Record.StoredIn) && Item->Health<=0 && (Record.StoredIn==3 || Item->Kind==EBHItem::Fish) && StoredItems(Record.StoredIn).Num()<(Record.StoredIn==3?4:6)) {
+   Item->StoredIn=Record.StoredIn; Item->Mesh->SetSimulatePhysics(false); Item->Mesh->SetCollisionEnabled(ECollisionEnabled::NoCollision); Item->SetActorHiddenInGame(true);
+  } else if(Record.Held && !HeldItem)Item->Use(this);
  }
  // A dropped quest object must never permanently block restoration.
  if(Progress->Quest==8 && !FoundHeart) {
@@ -74,6 +79,7 @@ bool ABHPlayer::LoadCheckpoint() {
   It->SetActorLocation(It->Arena+FVector(0,0,90)); It->SetActorHiddenInGame(true); It->SetActorEnableCollision(false);
  }
  for(TActorIterator<ABHWorld> It(GetWorld());It;++It)It->Restore(Progress->Quest>=9,false);
+ SelectSlot(Save->Hotbar.Num()==4 ? FMath::Clamp(Save->SelectedSlot,0,3) : (Save->KnifeEquipped?1:0));
  AutoSaveTime=0; Say(TEXT("Checkpoint loaded. Interrupted fishing and boss encounters can be restarted."));
  UE_LOG(LogTemp,Display,TEXT("BH_LOAD OK quest=%d items=%d"),Progress->Quest,Save->Items.Num());
  return true;

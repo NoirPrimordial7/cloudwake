@@ -1,0 +1,17 @@
+[2026.09.10-04.33.34:651][732]LogTemp: Display: BH_TEST_PASS Player standing on dock at correct capsule height
+[2026.09.10-04.33.34:651][732]LogTemp: Display: BH_TEST_PASS Camera trace talks to Orin and anchors dialogue
+[2026.09.10-04.33.34:987][517]LogTemp: Display: BH_TEST_PASS Mira gives rod and advances tutorial
+[2026.09.10-04.33.35:329][298]LogTemp: Display: BH_TEST_PASS Cast creates traveling physical bobber
+[2026.09.10-04.33.37:980][463]LogTemp: Display: BH_TEST_PASS Fish AI investigates and bites; input hooks it
+[2026.09.10-04.33.41:504][868]LogTemp: Display: BH_TEST_PASS Reeling lands physical fish and advances quest
+[2026.09.10-04.33.42:573][167]LogTemp: Display: BH_TEST_PASS Dead fish picked up through camera interaction
+[2026.09.10-04.33.42:890][959]LogTemp: Display: BH_TEST_PASS Sale consumes carried fish and pays Crowns
+[2026.09.10-04.33.43:208][752]LogTemp: Display: BH_TEST_PASS Shop purchase spends currency and equips knife
+[2026.09.10-04.33.43:521][542]LogTemp: Display: BH_TEST_PASS Grindstone upgrade changes damage
+[2026.09.10-04.33.43:837][334]LogTemp: Display: BH_TEST_PASS Tower inspection opens bait quest
+[2026.09.10-04.33.44:162][122]LogTemp: Display: BH_TEST_PASS Mira grants quest bait
+[2026.09.10-04.33.44:494][905]LogTemp: Display: BH_TEST_PASS Quest bait summons boss
+[2026.09.10-04.33.46:957][353]LogTemp: Display: BH_TEST_PASS Knife combat defeats boss and advances quest
+[2026.09.10-04.33.46:957][353]LogTemp: Display: BH_TEST_PASS Boss drops a physical carryable Bellheart
+[2026.09.10-04.33.47:273][142]LogTemp: Display: BH_TEST_PASS Physical Bellheart installation completes quest
+[2026.09.10-04.33.47:597][918]LogTemp: Display: BH_TEST_COMPLETE full arrival-to-restoration loop 15.83s

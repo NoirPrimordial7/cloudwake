@@ -46,6 +46,12 @@ FString ABHInteractable::Prompt(ABHPlayer* P) const {
 }
 void ABHInteractable::Use(ABHPlayer* P) {
  UBHProgress* S = P->Progress;
+ if(Action=="Bag" || Action=="Bucket") {
+  bool& Owned=Action=="Bag" ? P->HasBag : P->HasBucket;
+  if(Owned) { P->Say(TEXT("You already own this container.")); return; }
+  if(!S->Spend(Price)) { P->Say(TEXT("Not enough Crowns. Sell catches to earn more.")); return; }
+  Owned=true; P->Say(TEXT("Container purchased. Scroll to it, then F stores your carried item. Tab opens storage.")); return;
+ }
  if (Action == "Orin") {
   S->Event("MeetOrin");
   P->Say(S->Quest >= 9 ? TEXT("You brought our wind back. Bellheart can trade again. Find Tavi: four more silent bells lie beyond the Cloudsea.") : S->Quest < 6 ? TEXT("Five wind bells once guided skiffs across the Cloudsea. Ours fell silent when something tore out its heart. You are stranded here. Mira can lend you a rod: sell pond fish for tools, then inspect the tower.") : TEXT("Those bronze marks belong to Bellcrab. It hoards ringing metal beneath the pond. Recover our Bellheart and the first safe sky route will return."));
@@ -65,7 +71,7 @@ void ABHInteractable::Use(ABHPlayer* P) {
  } else if (Action == "Knife") {
   if (S->HasKnife) { P->Say(TEXT("You already own the Iron Knife.")); return; }
   if (!S->Spend(Price)) { P->Say(TEXT("Not enough Crowns. Sell another fish.")); return; }
-  S->HasKnife = true; S->Event("BuyKnife"); P->EquipKnife(); P->Say(TEXT("Iron Knife equipped. [2] knife, [1] rod. Left click to strike."));
+  S->HasKnife = true; S->Event("BuyKnife"); P->EquipKnife(); P->Say(TEXT("Iron Knife equipped. Scroll to switch tools; Tab arranges your slots. Left click to strike."));
  } else if (Action == "Sharpen") {
   if (!S->HasKnife) { P->Say(TEXT("Buy the Iron Knife first.")); return; }
   if (S->KnifeDamage >= 30) { P->Say(TEXT("Knife is fully sharpened for this slice.")); return; }
@@ -81,7 +87,7 @@ void ABHInteractable::Use(ABHPlayer* P) {
  } else if (Action == "Lure") {
   if (S->Quest != 7 || !S->HasBait) { P->Say(TEXT("Mira's Bellcrab bait is needed. Follow the current quest.")); return; }
   for (TActorIterator<ABHBellcrab> It(GetWorld()); It; ++It) { It->Active = true; It->SetActorHiddenInGame(false); It->SetActorEnableCollision(true); }
-  P->Say(TEXT("BELLCRAB EMERGES! Dodge the glowing slam. Strike between attacks. [2] equips the knife."));
+  P->Say(TEXT("BELLCRAB EMERGES! Dodge the glowing slam. Strike between attacks. Select your knife from the hotbar."));
  }
 }
 
@@ -91,7 +97,7 @@ ABHPhysicalItem::ABHPhysicalItem() {
  SetActorScale3D(FVector(.35,.13,.18));
 }
 void ABHPhysicalItem::Tick(float D) {
- Super::Tick(D); Age += D;
+ Super::Tick(D); if(StoredIn)return; Age += D;
  if(Kind==EBHItem::Bellheart && GetActorLocation().Z < -2000) { Mesh->SetSimulatePhysics(false); SetActorLocation(FVector(0,-8200,150)); Mesh->SetSimulatePhysics(true); }
  if (Kind != EBHItem::Fish) return;
  ABHPlayer* P = Cast<ABHPlayer>(UGameplayStatics::GetPlayerPawn(this,0));
@@ -124,6 +130,7 @@ void ABHPhysicalItem::Hurt(float D) {
  Health = FMath::Max(0.f,Health-D); if (Health <= 0) State = EBHFishState::Dead;
 }
 void ABHPhysicalItem::Use(ABHPlayer* P) {
+ if(StoredIn)return;
  if (Kind == EBHItem::Fish && State != EBHFishState::Dead && State != EBHFishState::Landed) return;
  if (P->HeldItem) { P->Say(TEXT("Drop the carried item first [G].")); return; }
  Mesh->SetSimulatePhysics(false); Mesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
@@ -158,35 +165,41 @@ void ABHPlayer::SetupPlayerInputComponent(UInputComponent* I) {
  I->BindAction("Interact",IE_Pressed,this,&ABHPlayer::Interact);
  I->BindAction("Primary",IE_Pressed,this,&ABHPlayer::PrimaryDown); I->BindAction("Primary",IE_Released,this,&ABHPlayer::PrimaryUp);
  I->BindAction("Drop",IE_Pressed,this,&ABHPlayer::Drop);
- I->BindAction("Rod",IE_Pressed,this,&ABHPlayer::EquipRod); I->BindAction("Knife",IE_Pressed,this,&ABHPlayer::EquipKnife);
+ I->BindAction("Rod",IE_Pressed,this,&ABHPlayer::SlotOne); I->BindAction("Knife",IE_Pressed,this,&ABHPlayer::SlotTwo);
+ I->BindKey(EKeys::Three,IE_Pressed,this,&ABHPlayer::SlotThree); I->BindKey(EKeys::Four,IE_Pressed,this,&ABHPlayer::SlotFour);
+ I->BindKey(EKeys::MouseScrollUp,IE_Pressed,this,&ABHPlayer::ScrollPrevious); I->BindKey(EKeys::MouseScrollDown,IE_Pressed,this,&ABHPlayer::ScrollNext);
+ I->BindKey(EKeys::Tab,IE_Pressed,this,&ABHPlayer::ToggleInventory);
+ I->BindKey(EKeys::F,IE_Pressed,this,&ABHPlayer::StoreHeld);
  I->BindAction("Sprint",IE_Pressed,this,&ABHPlayer::Sprint); I->BindAction("Sprint",IE_Released,this,&ABHPlayer::Walk);
  I->BindKey(EKeys::F5,IE_Pressed,this,&ABHPlayer::QuickSave);
  I->BindKey(EKeys::F9,IE_Pressed,this,&ABHPlayer::QuickLoad);
  I->BindKey(EKeys::R,IE_Pressed,this,&ABHPlayer::CancelCast);
 }
-void ABHPlayer::Forward(float V) { AddMovementInput(FRotationMatrix(FRotator(0,GetControlRotation().Yaw,0)).GetUnitAxis(EAxis::X),V); }
-void ABHPlayer::Right(float V) { AddMovementInput(FRotationMatrix(FRotator(0,GetControlRotation().Yaw,0)).GetUnitAxis(EAxis::Y),V); }
-void ABHPlayer::Turn(float V) { AddControllerYawInput(V); } void ABHPlayer::Look(float V) { AddControllerPitchInput(V); }
+void ABHPlayer::Forward(float V) { if(InventoryOpen)return; AddMovementInput(FRotationMatrix(FRotator(0,GetControlRotation().Yaw,0)).GetUnitAxis(EAxis::X),V); }
+void ABHPlayer::Right(float V) { if(InventoryOpen)return; AddMovementInput(FRotationMatrix(FRotator(0,GetControlRotation().Yaw,0)).GetUnitAxis(EAxis::Y),V); }
+void ABHPlayer::Turn(float V) { if(InventoryOpen)return; AddControllerYawInput(V); } void ABHPlayer::Look(float V) { if(InventoryOpen)return; AddControllerPitchInput(V); }
 void ABHPlayer::Sprint() { GetCharacterMovement()->MaxWalkSpeed = 800; } void ABHPlayer::Walk() { GetCharacterMovement()->MaxWalkSpeed = 500; }
 FHitResult ABHPlayer::Trace(float Range) const {
  FHitResult H; FCollisionQueryParams Q; Q.AddIgnoredActor(this); if (HeldItem) Q.AddIgnoredActor(HeldItem);
  GetWorld()->LineTraceSingleByChannel(H,Camera->GetComponentLocation(),Camera->GetComponentLocation()+Camera->GetForwardVector()*Range,ECC_Visibility,Q); return H;
 }
 void ABHPlayer::Say(const FString& T) { DialogueSpeaker=nullptr; SpeakerName.Empty(); Message=T; MessageTime=16; UE_LOG(LogTemp,Display,TEXT("BH_MESSAGE %s"),*T); }
-void ABHPlayer::Interact() { Target=Cast<ABHInteractable>(Trace(350).GetActor()); if(Target) { Target->Use(this); if(Target && (Target->Action=="Orin" || Target->Action=="Mira" || Target->Action=="Bram" || Target->Action=="Tavi")) { DialogueSpeaker=Target; SpeakerName=Target->Action.ToString(); } SaveCheckpoint(); } else UE_LOG(LogTemp,Display,TEXT("BH_INTERACT no target hit=%s camera=%s direction=%s"),*GetNameSafe(Trace(350).GetActor()),*Camera->GetComponentLocation().ToString(),*Camera->GetForwardVector().ToString()); }
-void ABHPlayer::EquipRod() { KnifeEquipped=false; HeldTool->SetVisibility(Progress->HasRod); HeldTool->SetRelativeLocation(FVector(75,28,-35)); HeldTool->SetRelativeRotation(FRotator(35,0,0)); HeldTool->SetRelativeScale3D(FVector(.025,.025,1.9)); }
-void ABHPlayer::EquipKnife() { if(!Progress->HasKnife) { Say(TEXT("Buy an Iron Knife from Bram. Bare hands can finish your first fish.")); return; } CancelCast(); KnifeEquipped=true; HeldTool->SetVisibility(true); HeldTool->SetRelativeLocation(FVector(40,23,-25)); HeldTool->SetRelativeRotation(FRotator(55,0,0)); HeldTool->SetRelativeScale3D(FVector(.04,.08,.28)); }
+void ABHPlayer::Interact() { if(InventoryOpen)return; Target=Cast<ABHInteractable>(Trace(350).GetActor()); if(Target) { Target->Use(this); if(Target && (Target->Action=="Orin" || Target->Action=="Mira" || Target->Action=="Bram" || Target->Action=="Tavi")) { DialogueSpeaker=Target; SpeakerName=Target->Action.ToString(); } SaveCheckpoint(); } else UE_LOG(LogTemp,Display,TEXT("BH_INTERACT no target hit=%s camera=%s direction=%s"),*GetNameSafe(Trace(350).GetActor()),*Camera->GetComponentLocation().ToString(),*Camera->GetForwardVector().ToString()); }
+void ABHPlayer::EquipRod() { int32 Index=Hotbar.Find(1); if(Index!=INDEX_NONE)SelectedSlot=Index; KnifeEquipped=false; HeldTool->SetVisibility(Progress->HasRod); HeldTool->SetRelativeLocation(FVector(75,28,-35)); HeldTool->SetRelativeRotation(FRotator(35,0,0)); HeldTool->SetRelativeScale3D(FVector(.025,.025,1.9)); }
+void ABHPlayer::EquipKnife() { if(!Progress->HasKnife) { Say(TEXT("Buy an Iron Knife from Bram. Bare hands can finish your first fish.")); return; } CancelCast(); int32 Index=Hotbar.Find(2); if(Index!=INDEX_NONE)SelectedSlot=Index; KnifeEquipped=true; HeldTool->SetVisibility(true); HeldTool->SetRelativeLocation(FVector(40,23,-25)); HeldTool->SetRelativeRotation(FRotator(55,0,0)); HeldTool->SetRelativeScale3D(FVector(.04,.08,.28)); }
 void ABHPlayer::Drop() { if(!HeldItem)return; ABHPhysicalItem* I=HeldItem; HeldItem=nullptr; I->DetachFromActor(FDetachmentTransformRules::KeepWorldTransform); I->Mesh->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics); I->Mesh->SetSimulatePhysics(true); I->Mesh->AddImpulse(Camera->GetForwardVector()*180,NAME_None,true); }
 void ABHPlayer::PrimaryDown() {
+ if(InventoryOpen) { InventoryClick(); return; }
+ if(ActiveGear()==3 || ActiveGear()==4) { StoreHeld(); return; }
  if(AttackCooldown>0)return;
  ABHPhysicalItem* Fish=Cast<ABHPhysicalItem>(Trace(260).GetActor());
- if(Fish && Fish->State==EBHFishState::Landed) { Fish->Hurt(Progress->HasKnife ? Progress->KnifeDamage : 8); AttackCooldown=.4; Say(Fish->Health<=0 ? TEXT("Fish ready to sell. [E] pick up.") : TEXT("Fish struck. Strike again to finish it.")); return; }
+ if(Fish && Fish->State==EBHFishState::Landed) { Fish->Hurt(KnifeEquipped ? Progress->KnifeDamage : 8); AttackCooldown=.4; Say(Fish->Health<=0 ? TEXT("Fish ready to sell. [E] pick up.") : TEXT("Fish struck. Strike again to finish it.")); return; }
  if(KnifeEquipped) { if(auto* C=Cast<ABHBellcrab>(Trace(380).GetActor())) C->Hurt(Progress->KnifeDamage); AttackCooldown=.4; return; }
  if(Bobber) {
   if(!HookedFish) for(TActorIterator<ABHPhysicalItem> It(GetWorld());It;++It) if(It->State==EBHFishState::Bite) { HookedFish=*It; It->State=EBHFishState::Hooked; Say(TEXT("HOOKED! Hold to reel. Release when tension is high.")); break; }
   Reeling=true; return;
  }
- if(!Progress->HasRod) { Say(TEXT("Talk to Orin, then collect a rod from Mira.")); return; }
+ if(!Progress->HasRod || ActiveGear()!=1) { Say(TEXT("Select your fishing rod from the hotbar first.")); return; }
  if(HeldItem) { Say(TEXT("Drop the carried item before casting.")); return; }
  Charging=true; CastCharge=0;
 }
