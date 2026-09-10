@@ -66,9 +66,12 @@ void ABHTestDriver::Tick(float D) {
   UE_LOG(LogTemp,Display,TEXT("BH_SAVE_TEST_COMPLETE persistence and recovery"));
   FPlatformMisc::RequestExitWithStatus(false,0); SetActorTickEnabled(false); return;
  }
- if(FParse::Param(FCommandLine::Get(),TEXT("BHWalk"))) {
-  const TArray<FVector> Route={{0,-65,3},{0,-54,7},{0,-49,7},{17,-35,7},{27,-21,7},{29,5,7},{16,18,14},{12,22,14},{0,30,14},{-10,44,20},{-14,53,20},{-14,63,20},{-3,65,26},{0,65,26},{0,71,26}};
-  if(WalkPoint>=Route.Num()) { UE_LOG(LogTemp,Display,TEXT("BH_WALK_COMPLETE dock-to-pond-to-village-to-elder-to-tower %.2fs"),Total); FPlatformMisc::RequestExitWithStatus(false,0); SetActorTickEnabled(false); return; }
+ if(FParse::Param(FCommandLine::Get(),TEXT("BHWalk")) || FParse::Param(FCommandLine::Get(),TEXT("BHSideWalk"))) {
+  const bool SideWalk=FParse::Param(FCommandLine::Get(),TEXT("BHSideWalk"));
+  if(SideWalk && Step==0) { P->SetActorLocation(FVector(-1000,-4300,800)); P->GetCharacterMovement()->StopMovementImmediately(); Step=1; Time=0; return; }
+  TArray<FVector> Route={{0,-65,3},{0,-54,7},{0,-49,7},{17,-35,7},{27,-21,7},{29,5,7},{16,18,14},{12,22,14},{0,30,14},{-10,44,20},{-14,53,20},{-14,63,20},{-3,65,26},{0,65,26},{0,71,26}};
+  if(SideWalk)Route={{-29,-36,7},{-47,-24,6},{-53,-2,9},{-51,17,11},{-38,5,10},{-38,17,10},{-24,18,14},{-24,24,14},{0,24,14},{27,24,14},{35,24,14},{38,3,10},{46,3,10}};
+  if(WalkPoint>=Route.Num()) { UE_LOG(LogTemp,Display,TEXT("BH_WALK_COMPLETE route=%s %.2fs"),SideWalk ? TEXT("waterfall-hidden-tree-shops-workshop") : TEXT("dock-pond-village-elder-tower"),Total); FPlatformMisc::RequestExitWithStatus(false,0); SetActorTickEnabled(false); return; }
   FVector Goal=Route[WalkPoint]*100;
   if(FVector::Dist2D(P->GetActorLocation(),Goal)<65) {
    if(!Check(FMath::Abs(P->GetActorLocation().Z-Goal.Z-90)<55 && P->GetCharacterMovement()->IsMovingOnGround(),TEXT("Route waypoint reached on foot at intended elevation"))) { SetActorTickEnabled(false); return; }

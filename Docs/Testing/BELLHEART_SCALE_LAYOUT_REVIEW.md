@@ -21,6 +21,8 @@ Terrain and paths are separate editable primitives. The main path uses ramps for
 
 ## Remaining playtest questions
 
+Update 2026-09-10: the waterfall/hidden/tree/shop/workshop side route now passes automated grounded traversal after correcting tree and wall collisions. Checkpoint persistence and recovery are implemented and tested. Human pacing/readability feedback remains pending; use MANUAL_PLAYTEST.md. No final layout lock has been made.
+
 - Main traversal and progression are verified. Side-path traversal, intentional edge falls, prolonged fishing, fish exhaustion and every boss dodge direction still need broader player testing.
 - The broad pond and 500 cm/s movement make the island readable at first-person scale. Whether the return trips feel too long needs human playtesting.
 - Shop/NPC text markers and HUD are functional debug presentation. Dialogue choices, a polished four-slot inventory, full fish species, boss animation, multiplayer and save/load are not represented as finished features.

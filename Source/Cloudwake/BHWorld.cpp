@@ -92,7 +92,7 @@ void ABHWorld::Build() {
  const TArray<FVector> Main={ {0,-86,0},{0,-65,3},{0,-54,7},{0,-49,7},{17,-35,7},{27,-21,7},{29,5,7},{16,18,14},{12,22,14},{0,30,14},{-10,44,20},{-14,53,20},{-14,63,20},{-3,65,26},{0,65,26},{0,76,26} };
  for(int32 I=1;I<Main.Num();++I)Path(Main[I-1],Main[I]);
  Path(FVector(-14,53,20),FVector(-20,53,20));
- const TArray<FVector> Side={ {-10,-43,7},{-29,-36,7},{-47,-24,6},{-53,-2,9},{-51,17,11},{-34,5,10},{-24,30,14},{0,30,14},{27,30,14},{46,10,10} };
+ const TArray<FVector> Side={ {-10,-43,7},{-29,-36,7},{-47,-24,6},{-53,-2,9},{-51,17,11},{-38,5,10},{-38,17,10},{-24,18,14},{-24,24,14},{0,24,14},{27,24,14},{35,24,14},{38,3,10},{46,3,10} };
  for(int32 I=1;I<Side.Num();++I)Path(Side[I-1],Side[I],1.8);
  Path(FVector(0,-49,7),FVector(-10,-43,7)); Path(FVector(29,5,7),FVector(26,-11,7));
  Path(FVector(26,-11,7),FVector(27,-21,7)); Path(FVector(0,76,26),FVector(0,92,30));
@@ -140,7 +140,7 @@ ABHGameMode::ABHGameMode() { DefaultPawnClass=ABHPlayer::StaticClass(); HUDClass
 void ABHGameMode::BeginPlay() {
  Super::BeginPlay(); if(!UGameplayStatics::GetActorOfClass(this,ABHWorld::StaticClass())) GetWorld()->SpawnActor<ABHWorld>();
  if(APawn* P=UGameplayStatics::GetPlayerPawn(this,0)) { P->SetActorLocation(FVector(0,-8600,110)); if(P->GetController())P->GetController()->SetControlRotation(FRotator(0,90,0)); }
- if(FParse::Param(FCommandLine::Get(),TEXT("BHTest")) || FParse::Param(FCommandLine::Get(),TEXT("BHWalk")) || FParse::Param(FCommandLine::Get(),TEXT("BHSaveTest"))) GetWorld()->SpawnActor<ABHTestDriver>();
+ if(FParse::Param(FCommandLine::Get(),TEXT("BHTest")) || (FParse::Param(FCommandLine::Get(),TEXT("BHWalk")) || FParse::Param(FCommandLine::Get(),TEXT("BHSideWalk"))) || FParse::Param(FCommandLine::Get(),TEXT("BHSaveTest"))) GetWorld()->SpawnActor<ABHTestDriver>();
 }
 void ABHWorld::Restore(bool IsRestored, bool PlayCue) {
  Restored=IsRestored;

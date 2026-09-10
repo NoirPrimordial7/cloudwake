@@ -149,7 +149,7 @@ ABHPlayer::ABHPlayer() {
  GetCharacterMovement()->MaxWalkSpeed = 500; GetCharacterMovement()->JumpZVelocity = 500;
  GetCharacterMovement()->MaxStepHeight = 35;
 }
-void ABHPlayer::BeginPlay() { Super::BeginPlay(); EquipRod(); Say(TEXT("BELLHEART ISLE - WASD move, E interact, F5 save, F9 load, R cancel cast.")); GetWorldTimerManager().SetTimerForNextTick(FTimerDelegate::CreateWeakLambda(this,[this]() { if(!FParse::Param(FCommandLine::Get(),TEXT("BHSaveTest"))) LoadCheckpoint(); })); }
+void ABHPlayer::BeginPlay() { Super::BeginPlay(); EquipRod(); Say(TEXT("BELLHEART ISLE - WASD move, E interact, F5 save, F9 load, R cancel cast.")); GetWorldTimerManager().SetTimerForNextTick(FTimerDelegate::CreateWeakLambda(this,[this]() { if(!FParse::Param(FCommandLine::Get(),TEXT("BHSaveTest")) && !FParse::Param(FCommandLine::Get(),TEXT("BHFresh"))) LoadCheckpoint(); })); }
 void ABHPlayer::SetupPlayerInputComponent(UInputComponent* I) {
  Super::SetupPlayerInputComponent(I);
  I->BindAxis("Forward",this,&ABHPlayer::Forward); I->BindAxis("Right",this,&ABHPlayer::Right);

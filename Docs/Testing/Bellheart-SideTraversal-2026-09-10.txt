@@ -1,0 +1,14 @@
+[2026.09.10-04.07.00:644][447]LogTemp: Display: BH_WALK_PASS point=0 position=X=-2839.279 Y=-3622.371 Z=792.150
+[2026.09.10-04.07.04:721][894]LogTemp: Display: BH_WALK_PASS point=1 position=X=-4645.886 Y=-2435.695 Z=695.202
+[2026.09.10-04.07.08:892][794]LogTemp: Display: BH_WALK_PASS point=2 position=X=-5282.127 Y=-262.266 Z=984.066
+[2026.09.10-04.07.12:444][261]LogTemp: Display: BH_WALK_PASS point=3 position=X=-5106.212 Y=1635.455 Z=1189.926
+[2026.09.10-04.07.15:710][882]LogTemp: Display: BH_WALK_PASS point=4 position=X=-3848.631 Y=543.009 Z=1095.812
+[2026.09.10-04.07.18:023][261]LogTemp: Display: BH_WALK_PASS point=5 position=X=-3801.936 Y=1635.206 Z=1092.375
+[2026.09.10-04.07.20:792][472]LogTemp: Display: BH_WALK_PASS point=6 position=X=-2464.494 Y=1793.258 Z=1491.974
+[2026.09.10-04.07.22:163][657]LogTemp: Display: BH_WALK_PASS point=7 position=X=-2404.958 Y=2335.227 Z=1491.974
+[2026.09.10-04.07.26:835][795]LogTemp: Display: BH_WALK_PASS point=8 position=X=-64.871 Y=2398.744 Z=1491.974
+[2026.09.10-04.07.32:268][300]LogTemp: Display: BH_WALK_PASS point=9 position=X=2635.028 Y=2399.979 Z=1491.974
+[2026.09.10-04.07.34:211][387]LogTemp: Display: BH_WALK_PASS point=10 position=X=3435.197 Y=2399.999 Z=1494.642
+[2026.09.10-04.07.38:254][422]LogTemp: Display: BH_WALK_PASS point=11 position=X=3789.449 Y=363.946 Z=1105.469
+[2026.09.10-04.07.39:909][370]LogTemp: Display: BH_WALK_PASS point=12 position=X=4535.253 Y=303.681 Z=1092.337
+[2026.09.10-04.07.40:234][163]LogTemp: Display: BH_WALK_COMPLETE route=waterfall-hidden-tree-shops-workshop 50.61s

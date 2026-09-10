@@ -25,3 +25,8 @@ Created the Bellheart art directory, supplied-reference archive, written style b
 Aerial candidate initially lacked the workshop. A targeted image edit added it while preserving the remaining island. Measured top-down, flow and elevation diagrams use one coordinate source. Generated building and character masters are under review, not yet production-approved.
 
 No source-art asset is marked implemented merely because a concept exists. Manifest and gallery distinguish planned, candidate and reviewed states.
+# 2026-09-10 — prepare first human playtest
+
+Created art/bellheart-pass-01 from the working main baseline. Fixed side paths around the giant-tree trunk and toward shop/workshop entrances without moving building footprints. Rebuilt the editable primitive map and compiled the editor target successfully. Side traversal passed in 50.61 seconds; the full arrival-to-restoration loop passed in 15.83 seconds; persistence/recovery regression passed.
+
+Added Playtest-Bellheart.cmd: fresh start, separate Bellheart_Playtest_v1 checkpoint slot, normal saves preserved. Added the manual route/checklist and the user's ordered art-production gates. Opened and visually inspected the running first-person greybox. Human playtest feedback is still pending; layout remains unlocked and final environment art has not begun.
