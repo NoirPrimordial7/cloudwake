@@ -1,0 +1,134 @@
+{
+  "assets": [
+    {
+      "name": "SM_BH_WoodBeam_A",
+      "category": "ArchitectureKit",
+      "reference": "BH-FISHSHOP-MASTER; BH-BLACKSMITH-MASTER; BH-MATERIAL-BIBLE",
+      "source": "E:\\Try\\Tools\\Blender\\Source\\SM_BH_WoodBeam_A.blend",
+      "fbx": "E:\\Try\\Content\\Cloudwake\\Art\\ArchitectureKit\\Source\\SM_BH_WoodBeam_A.fbx",
+      "collision": false
+    },
+    {
+      "name": "SM_BH_WoodBeam_B",
+      "category": "ArchitectureKit",
+      "reference": "BH-FISHSHOP-MASTER; BH-BLACKSMITH-MASTER; BH-MATERIAL-BIBLE",
+      "source": "E:\\Try\\Tools\\Blender\\Source\\SM_BH_WoodBeam_B.blend",
+      "fbx": "E:\\Try\\Content\\Cloudwake\\Art\\ArchitectureKit\\Source\\SM_BH_WoodBeam_B.fbx",
+      "collision": false
+    },
+    {
+      "name": "SM_BH_Wall_Wood_A",
+      "category": "ArchitectureKit",
+      "reference": "BH-FISHSHOP-MASTER; BH-BLACKSMITH-MASTER; BH-MATERIAL-BIBLE",
+      "source": "E:\\Try\\Tools\\Blender\\Source\\SM_BH_Wall_Wood_A.blend",
+      "fbx": "E:\\Try\\Content\\Cloudwake\\Art\\ArchitectureKit\\Source\\SM_BH_Wall_Wood_A.fbx",
+      "collision": false
+    },
+    {
+      "name": "SM_BH_Wall_Stone_A",
+      "category": "ArchitectureKit",
+      "reference": "BH-FISHSHOP-MASTER; BH-BLACKSMITH-MASTER; BH-MATERIAL-BIBLE",
+      "source": "E:\\Try\\Tools\\Blender\\Source\\SM_BH_Wall_Stone_A.blend",
+      "fbx": "E:\\Try\\Content\\Cloudwake\\Art\\ArchitectureKit\\Source\\SM_BH_Wall_Stone_A.fbx",
+      "collision": false
+    },
+    {
+      "name": "SM_BH_Foundation_Stone_A",
+      "category": "ArchitectureKit",
+      "reference": "BH-FISHSHOP-MASTER; BH-BLACKSMITH-MASTER; BH-MATERIAL-BIBLE",
+      "source": "E:\\Try\\Tools\\Blender\\Source\\SM_BH_Foundation_Stone_A.blend",
+      "fbx": "E:\\Try\\Content\\Cloudwake\\Art\\ArchitectureKit\\Source\\SM_BH_Foundation_Stone_A.fbx",
+      "collision": false
+    },
+    {
+      "name": "SM_BH_Roof_Teal_A",
+      "category": "ArchitectureKit",
+      "reference": "BH-FISHSHOP-MASTER; BH-BLACKSMITH-MASTER; BH-MATERIAL-BIBLE",
+      "source": "E:\\Try\\Tools\\Blender\\Source\\SM_BH_Roof_Teal_A.blend",
+      "fbx": "E:\\Try\\Content\\Cloudwake\\Art\\ArchitectureKit\\Source\\SM_BH_Roof_Teal_A.fbx",
+      "collision": false
+    },
+    {
+      "name": "SM_BH_Roof_Teal_Corner",
+      "category": "ArchitectureKit",
+      "reference": "BH-FISHSHOP-MASTER; BH-BLACKSMITH-MASTER; BH-MATERIAL-BIBLE",
+      "source": "E:\\Try\\Tools\\Blender\\Source\\SM_BH_Roof_Teal_Corner.blend",
+      "fbx": "E:\\Try\\Content\\Cloudwake\\Art\\ArchitectureKit\\Source\\SM_BH_Roof_Teal_Corner.fbx",
+      "collision": false
+    },
+    {
+      "name": "SM_BH_Window_A",
+      "category": "ArchitectureKit",
+      "reference": "BH-FISHSHOP-MASTER; BH-BLACKSMITH-MASTER; BH-MATERIAL-BIBLE",
+      "source": "E:\\Try\\Tools\\Blender\\Source\\SM_BH_Window_A.blend",
+      "fbx": "E:\\Try\\Content\\Cloudwake\\Art\\ArchitectureKit\\Source\\SM_BH_Window_A.fbx",
+      "collision": false
+    },
+    {
+      "name": "SM_BH_Door_A",
+      "category": "ArchitectureKit",
+      "reference": "BH-FISHSHOP-MASTER; BH-BLACKSMITH-MASTER; BH-MATERIAL-BIBLE",
+      "source": "E:\\Try\\Tools\\Blender\\Source\\SM_BH_Door_A.blend",
+      "fbx": "E:\\Try\\Content\\Cloudwake\\Art\\ArchitectureKit\\Source\\SM_BH_Door_A.fbx",
+      "collision": false
+    },
+    {
+      "name": "SM_BH_Stairs_A",
+      "category": "ArchitectureKit",
+      "reference": "BH-FISHSHOP-MASTER; BH-BLACKSMITH-MASTER; BH-MATERIAL-BIBLE",
+      "source": "E:\\Try\\Tools\\Blender\\Source\\SM_BH_Stairs_A.blend",
+      "fbx": "E:\\Try\\Content\\Cloudwake\\Art\\ArchitectureKit\\Source\\SM_BH_Stairs_A.fbx",
+      "collision": false
+    },
+    {
+      "name": "SM_BH_Railing_A",
+      "category": "ArchitectureKit",
+      "reference": "BH-FISHSHOP-MASTER; BH-BLACKSMITH-MASTER; BH-MATERIAL-BIBLE",
+      "source": "E:\\Try\\Tools\\Blender\\Source\\SM_BH_Railing_A.blend",
+      "fbx": "E:\\Try\\Content\\Cloudwake\\Art\\ArchitectureKit\\Source\\SM_BH_Railing_A.fbx",
+      "collision": false
+    },
+    {
+      "name": "SM_BH_Fence_A",
+      "category": "ArchitectureKit",
+      "reference": "BH-FISHSHOP-MASTER; BH-BLACKSMITH-MASTER; BH-MATERIAL-BIBLE",
+      "source": "E:\\Try\\Tools\\Blender\\Source\\SM_BH_Fence_A.blend",
+      "fbx": "E:\\Try\\Content\\Cloudwake\\Art\\ArchitectureKit\\Source\\SM_BH_Fence_A.fbx",
+      "collision": false
+    },
+    {
+      "name": "SM_BH_Awning_A",
+      "category": "ArchitectureKit",
+      "reference": "BH-FISHSHOP-MASTER; BH-BLACKSMITH-MASTER; BH-MATERIAL-BIBLE",
+      "source": "E:\\Try\\Tools\\Blender\\Source\\SM_BH_Awning_A.blend",
+      "fbx": "E:\\Try\\Content\\Cloudwake\\Art\\ArchitectureKit\\Source\\SM_BH_Awning_A.fbx",
+      "collision": false
+    },
+    {
+      "name": "SM_BH_Banner_A",
+      "category": "ArchitectureKit",
+      "reference": "BH-FISHSHOP-MASTER; BH-BLACKSMITH-MASTER; BH-MATERIAL-BIBLE",
+      "source": "E:\\Try\\Tools\\Blender\\Source\\SM_BH_Banner_A.blend",
+      "fbx": "E:\\Try\\Content\\Cloudwake\\Art\\ArchitectureKit\\Source\\SM_BH_Banner_A.fbx",
+      "collision": false
+    },
+    {
+      "name": "SM_BH_DockModule_A",
+      "category": "ArchitectureKit",
+      "reference": "BH-FISHSHOP-MASTER; BH-BLACKSMITH-MASTER; BH-MATERIAL-BIBLE",
+      "source": "E:\\Try\\Tools\\Blender\\Source\\SM_BH_DockModule_A.blend",
+      "fbx": "E:\\Try\\Content\\Cloudwake\\Art\\ArchitectureKit\\Source\\SM_BH_DockModule_A.fbx",
+      "collision": false
+    },
+    {
+      "name": "SM_BH_Bridge_A",
+      "category": "ArchitectureKit",
+      "reference": "BH-FISHSHOP-MASTER; BH-BLACKSMITH-MASTER; BH-MATERIAL-BIBLE",
+      "source": "E:\\Try\\Tools\\Blender\\Source\\SM_BH_Bridge_A.blend",
+      "fbx": "E:\\Try\\Content\\Cloudwake\\Art\\ArchitectureKit\\Source\\SM_BH_Bridge_A.fbx",
+      "collision": false
+    }
+  ],
+  "instances": [],
+  "references": "Docs/Art/Bellheart/ASSET_REFERENCE_MAP.md"
+}

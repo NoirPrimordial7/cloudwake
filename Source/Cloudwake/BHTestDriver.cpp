@@ -37,6 +37,22 @@ void ABHTestDriver::Tick(float D) {
  if(FParse::Param(FCommandLine::Get(),TEXT("BHAirTest"))) { AirTest(D); return; }
  if(Total>(FParse::Param(FCommandLine::Get(),TEXT("BHManualPreview"))?1200:120)) { Check(false,TEXT("120 second loop timeout")); SetActorTickEnabled(false); return; }
  auto* P=Cast<ABHPlayer>(UGameplayStatics::GetPlayerPawn(this,0)); if(!P || Time<.4)return;
+ if(FParse::Param(FCommandLine::Get(),TEXT("BHArtShots"))) {
+  // Fixed photographic stations in the real playable map; not a movement test.
+  const FVector Locations[]={ {0,-8500,100},{-1000,-4200,800},{1500,-4200,800},{0,1900,1500},{-2400,2250,1500},{2700,2200,1500},{-2800,-300,1100},{0,6200,2400},{12000,-19000,13500} };
+  const FVector Targets[]={ {0,3000,2000},{-500,-1400,900},{0,7600,4800},{-2000,3300,1900},{-2400,3000,1650},{2700,3000,1700},{-3400,500,2100},{0,7600,4400},{0,0,1400} };
+  if(Step>=9) { UE_LOG(LogTemp,Display,TEXT("BH_ART_SHOTS_COMPLETE")); FPlatformMisc::RequestExit(false); return; }
+  if(Step==8)P->GetCharacterMovement()->DisableMovement();
+  if(Time<1.f) {
+   P->SetActorLocation(Locations[Step]); P->GetCharacterMovement()->StopMovementImmediately();
+   P->GetController()->SetControlRotation((Targets[Step]-P->Camera->GetComponentLocation()).Rotation());
+  }
+  if(Time>5.f) {
+   FScreenshotRequest::RequestScreenshot(FPaths::ProjectSavedDir()/FString::Printf(TEXT("Screenshots/ArtPass/Bellheart_%02d.png"),Step+1),true,false);
+   ++Step; Time=0;
+  }
+  return;
+ }
  if(FParse::Param(FCommandLine::Get(),TEXT("BHSaveTest"))) {
   UGameplayStatics::DeleteGameInSlot(P->SaveSlot(),0);
   P->Progress->Quest=8; P->Progress->Crowns=91; P->Progress->HasRod=true; P->Progress->HasKnife=true; P->Progress->KnifeDamage=30;

@@ -1,0 +1,245 @@
+{
+  "assets": [
+    {
+      "name": "SM_BH_WoodBeam_A",
+      "unreal_asset": "/Game/Cloudwake/Art/ArchitectureKit/SM_BH_WoodBeam_A",
+      "dimensions_cm": [
+        30.46,
+        29.0,
+        300.22
+      ],
+      "collision": "none; decorative kit",
+      "placement_scale": [
+        1,
+        -1,
+        1
+      ]
+    },
+    {
+      "name": "SM_BH_WoodBeam_B",
+      "unreal_asset": "/Game/Cloudwake/Art/ArchitectureKit/SM_BH_WoodBeam_B",
+      "dimensions_cm": [
+        137.15,
+        20.0,
+        137.15
+      ],
+      "collision": "none; decorative kit",
+      "placement_scale": [
+        1,
+        -1,
+        1
+      ]
+    },
+    {
+      "name": "SM_BH_Wall_Wood_A",
+      "unreal_asset": "/Game/Cloudwake/Art/ArchitectureKit/SM_BH_Wall_Wood_A",
+      "dimensions_cm": [
+        325.45,
+        25.5,
+        301.07
+      ],
+      "collision": "none; decorative kit",
+      "placement_scale": [
+        1,
+        -1,
+        1
+      ]
+    },
+    {
+      "name": "SM_BH_Wall_Stone_A",
+      "unreal_asset": "/Game/Cloudwake/Art/ArchitectureKit/SM_BH_Wall_Stone_A",
+      "dimensions_cm": [
+        297.0,
+        35.0,
+        285.0
+      ],
+      "collision": "none; decorative kit",
+      "placement_scale": [
+        1,
+        -1,
+        1
+      ]
+    },
+    {
+      "name": "SM_BH_Foundation_Stone_A",
+      "unreal_asset": "/Game/Cloudwake/Art/ArchitectureKit/SM_BH_Foundation_Stone_A",
+      "dimensions_cm": [
+        297.0,
+        60.0,
+        141.0
+      ],
+      "collision": "none; decorative kit",
+      "placement_scale": [
+        1,
+        -1,
+        1
+      ]
+    },
+    {
+      "name": "SM_BH_Roof_Teal_A",
+      "unreal_asset": "/Game/Cloudwake/Art/ArchitectureKit/SM_BH_Roof_Teal_A",
+      "dimensions_cm": [
+        320.0,
+        273.77,
+        207.95
+      ],
+      "collision": "none; decorative kit",
+      "placement_scale": [
+        1,
+        -1,
+        1
+      ]
+    },
+    {
+      "name": "SM_BH_Roof_Teal_Corner",
+      "unreal_asset": "/Game/Cloudwake/Art/ArchitectureKit/SM_BH_Roof_Teal_Corner",
+      "dimensions_cm": [
+        316.5,
+        316.5,
+        225.36
+      ],
+      "collision": "none; decorative kit",
+      "placement_scale": [
+        1,
+        -1,
+        1
+      ]
+    },
+    {
+      "name": "SM_BH_Window_A",
+      "unreal_asset": "/Game/Cloudwake/Art/ArchitectureKit/SM_BH_Window_A",
+      "dimensions_cm": [
+        146.0,
+        20.5,
+        169.0
+      ],
+      "collision": "none; decorative kit",
+      "placement_scale": [
+        1,
+        -1,
+        1
+      ]
+    },
+    {
+      "name": "SM_BH_Door_A",
+      "unreal_asset": "/Game/Cloudwake/Art/ArchitectureKit/SM_BH_Door_A",
+      "dimensions_cm": [
+        171.0,
+        27.38,
+        249.0
+      ],
+      "collision": "none; decorative kit",
+      "placement_scale": [
+        1,
+        -1,
+        1
+      ]
+    },
+    {
+      "name": "SM_BH_Stairs_A",
+      "unreal_asset": "/Game/Cloudwake/Art/ArchitectureKit/SM_BH_Stairs_A",
+      "dimensions_cm": [
+        200.0,
+        182.0,
+        96.0
+      ],
+      "collision": "none; decorative kit",
+      "placement_scale": [
+        1,
+        -1,
+        1
+      ]
+    },
+    {
+      "name": "SM_BH_Railing_A",
+      "unreal_asset": "/Game/Cloudwake/Art/ArchitectureKit/SM_BH_Railing_A",
+      "dimensions_cm": [
+        319.4,
+        17.0,
+        105.31
+      ],
+      "collision": "none; decorative kit",
+      "placement_scale": [
+        1,
+        -1,
+        1
+      ]
+    },
+    {
+      "name": "SM_BH_Fence_A",
+      "unreal_asset": "/Game/Cloudwake/Art/ArchitectureKit/SM_BH_Fence_A",
+      "dimensions_cm": [
+        319.4,
+        17.0,
+        105.31
+      ],
+      "collision": "none; decorative kit",
+      "placement_scale": [
+        1,
+        -1,
+        1
+      ]
+    },
+    {
+      "name": "SM_BH_Awning_A",
+      "unreal_asset": "/Game/Cloudwake/Art/ArchitectureKit/SM_BH_Awning_A",
+      "dimensions_cm": [
+        315.0,
+        162.5,
+        278.5
+      ],
+      "collision": "none; decorative kit",
+      "placement_scale": [
+        1,
+        -1,
+        1
+      ]
+    },
+    {
+      "name": "SM_BH_Banner_A",
+      "unreal_asset": "/Game/Cloudwake/Art/ArchitectureKit/SM_BH_Banner_A",
+      "dimensions_cm": [
+        134.0,
+        13.0,
+        169.5
+      ],
+      "collision": "none; decorative kit",
+      "placement_scale": [
+        1,
+        -1,
+        1
+      ]
+    },
+    {
+      "name": "SM_BH_DockModule_A",
+      "unreal_asset": "/Game/Cloudwake/Art/ArchitectureKit/SM_BH_DockModule_A",
+      "dimensions_cm": [
+        300.0,
+        318.0,
+        137.0
+      ],
+      "collision": "none; decorative kit",
+      "placement_scale": [
+        1,
+        -1,
+        1
+      ]
+    },
+    {
+      "name": "SM_BH_Bridge_A",
+      "unreal_asset": "/Game/Cloudwake/Art/ArchitectureKit/SM_BH_Bridge_A",
+      "dimensions_cm": [
+        300.0,
+        618.0,
+        137.0
+      ],
+      "collision": "none; decorative kit",
+      "placement_scale": [
+        1,
+        -1,
+        1
+      ]
+    }
+  ],
+  "level_modified": false
+}

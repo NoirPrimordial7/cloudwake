@@ -2,6 +2,8 @@
 
 These are **planned production destinations**, not claims of existing Blender or Unreal assets. Read all linked references before authoring. Existing browser meshes are not approved Phase 0 assets.
 
+For assets now authored and imported, see [Production asset index](PRODUCTION_ASSET_INDEX.md). The current map remains `/Game/Maps/Bellheart` to preserve gameplay. The Blender-first/Fab audit strategy supersedes generic procedural foliage expansion; existing foliage is provisional until licensed replacements pass style and performance review.
+
 | Planned asset | Reference IDs | Planned Blender source | Planned export | Planned Unreal asset |
 |---|---|---|---|---|
 | L_Bellheart | [BH-ISLAND-MASTER-AERIAL](01_Island/CW_BH_ISLAND_MASTER_AERIAL_V001.png), [BH-ISLAND-TOPDOWN](01_Island/CW_BH_ISLAND_TOPDOWN_V001.png), [BH-ISLAND-GAMEPLAY-FLOW](01_Island/CW_BH_ISLAND_GAMEPLAY_FLOW_V001.png), [BH-ISLAND-ELEVATION](01_Island/CW_BH_ISLAND_ELEVATION_V001.png), [BH-DOCK-ARRIVAL-AND-RETURN](08_Dock/CW_BH_DOCK_ARRIVAL_AND_RETURN_V001.png), [BH-POND-MASTER](10_Pond/CW_BH_POND_MASTER_V001.png), [BH-LIGHTING-DAY-MASTER](17_Lighting/CW_BH_LIGHTING_DAY_MASTER_V001.png), [BH-LIGHTING-SHOP-INTERIOR](17_Lighting/CW_BH_LIGHTING_SHOP_INTERIOR_V001.png), [BH-LIGHTING-BELLTOWER](17_Lighting/CW_BH_LIGHTING_BELLTOWER_V001.png), [BH-GAMEPLAY-ARRIVAL-FISHING-MIRA](01_Island/CW_BH_GAMEPLAY_ARRIVAL_FISHING_MIRA_V001.png), [BH-GAMEPLAY-FORGE-PATH-BOSS](01_Island/CW_BH_GAMEPLAY_FORGE_PATH_BOSS_V001.png), [BH-GAMEPLAY-COMBAT-INSTALL-FINALE](01_Island/CW_BH_GAMEPLAY_COMBAT_INSTALL_FINALE_V001.png) | Not a mesh | Not applicable | /Game/Cloudwake/Island/L_Bellheart |

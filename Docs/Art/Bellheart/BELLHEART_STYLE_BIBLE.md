@@ -1,6 +1,6 @@
 # Bellheart Isle — visual authority, version 001
 
-Phase 0 only. Concept images are production targets, never evidence of playable Unreal assets. Detailed environment production is paused until reference review is complete.
+Concept images remain production targets, never evidence of playable Unreal assets. The user authorized production on `art/bellheart-pass-01` after the greybox playtest. The first environment pass uses these references while retaining the tested gameplay coordinates. See `PRODUCTION_PASS_01.md` for implementation status and remaining visual gaps.
 
 ## Source analysis
 

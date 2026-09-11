@@ -25,7 +25,9 @@ void ABHWorld::BeginPlay() {
  Station("Bag",TEXT("Buy satchel - 4 items"),FVector(-27,25,14.48),40);
  Station("Bucket",TEXT("Buy fish bucket - 6 fish"),FVector(-29,25,14.48),28);
  // Non-colliding cloud-volume placeholders, below the playable island. Final volumetrics follow art review.
- for(int32 I=0;I<32;++I) {
+ bool HasArt=false;
+ for(TActorIterator<AActor> It(GetWorld());It;++It) if(It->ActorHasTag(TEXT("BH_Art"))) { HasArt=true; break; }
+ for(int32 I=0;!HasArt && I<32;++I) {
   const float A=I*2.f*PI/32.f; const float Radius=180.f+(I%3)*45.f;
   AActor* Cloud=Box(FString::Printf(TEXT("Cloudsea placeholder %d"),I),FVector(FMath::Cos(A)*Radius,FMath::Sin(A)*Radius,-38-(I%3)*8),FVector(130,100,25),FLinearColor(.88f,.94f,1.f),false);
   if(auto* Mesh=Cast<AStaticMeshActor>(Cloud))Mesh->GetStaticMeshComponent()->SetStaticMesh(LoadObject<UStaticMesh>(nullptr,TEXT("/Engine/BasicShapes/Sphere.Sphere")));
